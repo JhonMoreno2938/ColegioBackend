@@ -1,0 +1,143 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "API Jornada",
+    "description": "Documentacion para la API de jornada",
+    "version": "V1"
+  },
+  "paths": {
+    "/api/JornadaControlador/RegistrarJornada": {
+      "post": {
+        "tags": [
+          "JornadaControlador"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegistrarJornada"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegistrarJornada"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegistrarJornada"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/JornadaControlador/GestionarEstadoJornada": {
+      "put": {
+        "tags": [
+          "JornadaControlador"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GestionarEstadoJornada"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GestionarEstadoJornada"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/GestionarEstadoJornada"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/JornadaControlador/InformacionJornada": {
+      "get": {
+        "tags": [
+          "JornadaControlador"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/JornadaControlador/InformacionJornadaEstadoActivo": {
+      "get": {
+        "tags": [
+          "JornadaControlador"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "GestionarEstadoJornada": {
+        "required": [
+          "nombreJornada",
+          "nombreOperacion"
+        ],
+        "type": "object",
+        "properties": {
+          "nombreOperacion": {
+            "maxLength": 20,
+            "minLength": 0,
+            "type": "string"
+          },
+          "nombreJornada": {
+            "maxLength": 15,
+            "minLength": 0,
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "RegistrarJornada": {
+        "type": "object",
+        "properties": {
+          "nombreJornada": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "securitySchemes": {
+      "Bearer": {
+        "type": "apiKey",
+        "description": "Por favor ingrese el token JWT con el prefijo 'Bearer' como 'Bearer [token]'",
+        "name": "Authorization",
+        "in": "header"
+      }
+    }
+  },
+  "security": [
+    {
+      "Bearer": [ ]
+    }
+  ]
+}

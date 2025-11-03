@@ -1,0 +1,37 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "API Genero",
+    "description": "Documentacion para la API de genero",
+    "version": "V1"
+  },
+  "paths": {
+    "/api/GeneroControlador/InformacionGenero": {
+      "get": {
+        "tags": [
+          "GeneroControlador"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "Bearer": {
+        "type": "apiKey",
+        "description": "Por favor ingrese el token JWT con el prefijo 'Bearer' como 'Bearer [token]'",
+        "name": "Authorization",
+        "in": "header"
+      }
+    }
+  },
+  "security": [
+    {
+      "Bearer": [ ]
+    }
+  ]
+}

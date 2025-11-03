@@ -1,0 +1,37 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "API TipoSede",
+    "description": "Documentacion para la API de tipo sede",
+    "version": "V1"
+  },
+  "paths": {
+    "/api/TipoSedeControlador/InformacionTipoSede": {
+      "get": {
+        "tags": [
+          "TipoSedeControlador"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "Bearer": {
+        "type": "apiKey",
+        "description": "Por favor ingrese el token JWT con el prefijo 'Bearer' como 'Bearer [token]'",
+        "name": "Authorization",
+        "in": "header"
+      }
+    }
+  },
+  "security": [
+    {
+      "Bearer": [ ]
+    }
+  ]
+}

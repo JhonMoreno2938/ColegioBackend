@@ -1,0 +1,114 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "API Funcionario",
+    "description": "Documentacion para la API de funcionario",
+    "version": "V1"
+  },
+  "paths": {
+    "/api/FuncionarioControlador/RegistrarFuncionario": {
+      "post": {
+        "tags": [
+          "FuncionarioControlador"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegistrarFuncionario"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegistrarFuncionario"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegistrarFuncionario"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "RegistrarFuncionario": {
+        "required": [
+          "nombreGenero",
+          "nombreTipoDocumento",
+          "nombreTipoFuncionario",
+          "numeroDocumento",
+          "primerApellido",
+          "primerNombre"
+        ],
+        "type": "object",
+        "properties": {
+          "primerNombre": {
+            "maxLength": 100,
+            "minLength": 0,
+            "type": "string"
+          },
+          "segundoNombre": {
+            "maxLength": 100,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "primerApellido": {
+            "maxLength": 100,
+            "minLength": 0,
+            "type": "string"
+          },
+          "segundoApellido": {
+            "maxLength": 100,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "numeroDocumento": {
+            "maxLength": 10,
+            "minLength": 0,
+            "type": "string"
+          },
+          "nombreTipoDocumento": {
+            "maxLength": 35,
+            "minLength": 0,
+            "type": "string"
+          },
+          "nombreGenero": {
+            "maxLength": 10,
+            "minLength": 0,
+            "type": "string"
+          },
+          "nombreTipoFuncionario": {
+            "maxLength": 20,
+            "minLength": 0,
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "securitySchemes": {
+      "Bearer": {
+        "type": "apiKey",
+        "description": "Por favor ingrese el token JWT con el prefijo 'Bearer' como 'Bearer [token]'",
+        "name": "Authorization",
+        "in": "header"
+      }
+    }
+  },
+  "security": [
+    {
+      "Bearer": [ ]
+    }
+  ]
+}

@@ -1,0 +1,344 @@
+[
+  {
+    "ContainingType": "Colegio.Controllers.DepartamentoControlador",
+    "Method": "InformacionDepartamento",
+    "RelativePath": "api/DepartamentoControlador/InformacionDepartamento",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Colegio.Controllers.FuncionarioControlador",
+    "Method": "RegistrarFuncionario",
+    "RelativePath": "api/FuncionarioControlador/RegistrarFuncionario",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "registrarFuncionario",
+        "Type": "Colegio.Modelos.Funcionario.Procedimientos.RegistrarFuncionario",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Colegio.Controllers.GeneroControlador",
+    "Method": "InformacionGenero",
+    "RelativePath": "api/GeneroControlador/InformacionGenero",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Colegio.Controllers.GradoControlador",
+    "Method": "GestionarEstadoGrado",
+    "RelativePath": "api/GradoControlador/GestionarEstadoGrado",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "gestionarEstadoGrado",
+        "Type": "Colegio.Modelos.Grado.Procedimientos.GestionarEstadoGrado",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Colegio.Controllers.GradoControlador",
+    "Method": "InformacionGrado",
+    "RelativePath": "api/GradoControlador/InformacionGrado",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Colegio.Controllers.GradoControlador",
+    "Method": "InformacionGradoEstadoActivo",
+    "RelativePath": "api/GradoControlador/InformacionGradoEstadoActivo",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Colegio.Controllers.GradoControlador",
+    "Method": "RegistrarGrado",
+    "RelativePath": "api/GradoControlador/RegistrarGrado",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "registrarGrado",
+        "Type": "Colegio.Modelos.Grado.Procedimientos.RegistrarGrado",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Colegio.Controllers.GrupoControlador",
+    "Method": "GestionarEstadoGrupo",
+    "RelativePath": "api/GrupoControlador/GestionarEstadoGrupo",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "gestionarEstadoGrupo",
+        "Type": "Colegio.Modelos.Grupo.Procedimientos.GestionarEstadoGrupo",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Colegio.Controllers.GrupoControlador",
+    "Method": "InformacionGrupo",
+    "RelativePath": "api/GrupoControlador/InformacionGrupo",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Colegio.Controllers.GrupoControlador",
+    "Method": "InformacionGrupoEstadoActivo",
+    "RelativePath": "api/GrupoControlador/InformacionGrupoEstadoActivo",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Colegio.Controllers.GrupoControlador",
+    "Method": "RegistrarGrupo",
+    "RelativePath": "api/GrupoControlador/RegistrarGrupo",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "registrarGrupo",
+        "Type": "Colegio.Modelos.Grupo.Procedimientos.RegistrarGrupo",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Colegio.Controllers.JornadaControlador",
+    "Method": "GestionarEstadoJornada",
+    "RelativePath": "api/JornadaControlador/GestionarEstadoJornada",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "gestionarEstadoJornada",
+        "Type": "Colegio.Modelos.Jornada.Procedimientos.GestionarEstadoJornada",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Colegio.Controllers.JornadaControlador",
+    "Method": "InformacionJornada",
+    "RelativePath": "api/JornadaControlador/InformacionJornada",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Colegio.Controllers.JornadaControlador",
+    "Method": "InformacionJornadaEstadoActivo",
+    "RelativePath": "api/JornadaControlador/InformacionJornadaEstadoActivo",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Colegio.Controllers.JornadaControlador",
+    "Method": "RegistrarJornada",
+    "RelativePath": "api/JornadaControlador/RegistrarJornada",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "registrarJornada",
+        "Type": "Colegio.Modelos.Jornada.Procedimientos.RegistrarJornada",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Colegio.Controllers.RhControlador",
+    "Method": "InformacionRh",
+    "RelativePath": "api/RhControlador/InformacionRh",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Colegio.Controllers.RolUsuarioControlador",
+    "Method": "InformacionRolUsuario",
+    "RelativePath": "api/RolUsuarioControlador/InformacionRolUsuario",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Colegio.Controllers.SedeControlador",
+    "Method": "ConsultarSede",
+    "RelativePath": "api/SedeControlador/{codigoDaneSede}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "codigoDaneSede",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Colegio.Controllers.SedeControlador",
+    "Method": "GestionarEstadoSede",
+    "RelativePath": "api/SedeControlador/GestionarEstadoSede",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "gestionarEstadoSede",
+        "Type": "Colegio.Modelos.Sede.Procedimientos.GestionarEstadoSede",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Colegio.Controllers.SedeControlador",
+    "Method": "InformacionSede",
+    "RelativePath": "api/SedeControlador/InformacionSede",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Colegio.Controllers.SedeControlador",
+    "Method": "InformacionSedeEstadoActivo",
+    "RelativePath": "api/SedeControlador/InformacionSedeEstadoActivo",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Colegio.Controllers.SedeControlador",
+    "Method": "ModificarInformacionSede",
+    "RelativePath": "api/SedeControlador/ModificarInformacionSede",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "modificarInformacionSede",
+        "Type": "Colegio.Modelos.Sede.Procedimientos.ModificarInformacionSede",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Colegio.Controllers.SedeControlador",
+    "Method": "RegistrarSede",
+    "RelativePath": "api/SedeControlador/RegistrarSede",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "registrarSede",
+        "Type": "Colegio.Modelos.Sede.Procedimientos.RegistrarSede",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Colegio.Controllers.TipoDocumentoControlador",
+    "Method": "InformacionTipoDocumento",
+    "RelativePath": "api/TipoDocumentoControlador/InformacionTipoDocumento",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Colegio.Controllers.TipoFuncionarioControlador",
+    "Method": "InformacionTipoFuncioanrio",
+    "RelativePath": "api/TipoFuncionarioControlador/InformacionTipoFuncioanrio",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Colegio.Controllers.TipoSedeControlador",
+    "Method": "InformacionTipoSede",
+    "RelativePath": "api/TipoSedeControlador/InformacionTipoSede",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Colegio.Controllers.UsuarioControlador",
+    "Method": "IniciarSesion",
+    "RelativePath": "api/UsuarioControlador/IniciarSesion",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "iniciarSesion",
+        "Type": "Colegio.Modelos.Usuario.Procedimientos.IniciarSesion",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]

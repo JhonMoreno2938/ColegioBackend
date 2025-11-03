@@ -1,0 +1,256 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "API Sede",
+    "description": "Documentacion para la API de sede",
+    "version": "V1"
+  },
+  "paths": {
+    "/api/SedeControlador/RegistrarSede": {
+      "post": {
+        "tags": [
+          "SedeControlador"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegistrarSede"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegistrarSede"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegistrarSede"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/SedeControlador/ModificarInformacionSede": {
+      "put": {
+        "tags": [
+          "SedeControlador"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ModificarInformacionSede"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ModificarInformacionSede"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ModificarInformacionSede"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/SedeControlador/GestionarEstadoSede": {
+      "put": {
+        "tags": [
+          "SedeControlador"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GestionarEstadoSede"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GestionarEstadoSede"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/GestionarEstadoSede"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/SedeControlador/{codigoDaneSede}": {
+      "get": {
+        "tags": [
+          "SedeControlador"
+        ],
+        "parameters": [
+          {
+            "name": "codigoDaneSede",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/SedeControlador/InformacionSede": {
+      "get": {
+        "tags": [
+          "SedeControlador"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/SedeControlador/InformacionSedeEstadoActivo": {
+      "get": {
+        "tags": [
+          "SedeControlador"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "GestionarEstadoSede": {
+        "required": [
+          "codigoDaneSede",
+          "nombreOperacion"
+        ],
+        "type": "object",
+        "properties": {
+          "nombreOperacion": {
+            "maxLength": 20,
+            "minLength": 0,
+            "type": "string"
+          },
+          "codigoDaneSede": {
+            "maxLength": 10,
+            "minLength": 0,
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ModificarInformacionSede": {
+        "required": [
+          "codigoDaneSede",
+          "direccionSede",
+          "nombreSede",
+          "numeroContactoSede"
+        ],
+        "type": "object",
+        "properties": {
+          "codigoDaneSede": {
+            "maxLength": 10,
+            "minLength": 0,
+            "type": "string"
+          },
+          "nombreSede": {
+            "maxLength": 100,
+            "minLength": 0,
+            "type": "string"
+          },
+          "direccionSede": {
+            "maxLength": 100,
+            "minLength": 0,
+            "type": "string"
+          },
+          "numeroContactoSede": {
+            "maxLength": 10,
+            "minLength": 0,
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "RegistrarSede": {
+        "required": [
+          "codigoDaneSede",
+          "direccionSede",
+          "nombreSede",
+          "nombreTipoSede",
+          "numeroContactoSede"
+        ],
+        "type": "object",
+        "properties": {
+          "codigoDaneSede": {
+            "maxLength": 10,
+            "minLength": 0,
+            "type": "string"
+          },
+          "nombreSede": {
+            "maxLength": 100,
+            "minLength": 0,
+            "type": "string"
+          },
+          "direccionSede": {
+            "maxLength": 100,
+            "minLength": 0,
+            "type": "string"
+          },
+          "numeroContactoSede": {
+            "maxLength": 100,
+            "minLength": 0,
+            "type": "string"
+          },
+          "nombreTipoSede": {
+            "maxLength": 15,
+            "minLength": 0,
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "securitySchemes": {
+      "Bearer": {
+        "type": "apiKey",
+        "description": "Por favor ingrese el token JWT con el prefijo 'Bearer' como 'Bearer [token]'",
+        "name": "Authorization",
+        "in": "header"
+      }
+    }
+  },
+  "security": [
+    {
+      "Bearer": [ ]
+    }
+  ]
+}
