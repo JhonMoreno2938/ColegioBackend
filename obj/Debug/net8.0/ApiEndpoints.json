@@ -88,6 +88,58 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "Colegio.Controllers.GradoGrupoControlador",
+    "Method": "GestionarEstadoGradoGrupoNivelEscolaridad",
+    "RelativePath": "api/GradoGrupoControlador/GestionarEstadoGradoGrupoNivelEscolaridad",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "gestionarEstadoGradoGrupoNivelEscolaridad",
+        "Type": "Colegio.Modelos.Grado_Grupo.Procedimientos.GestionarEstadoGradoGrupoNivelEscolaridad",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Colegio.Controllers.GradoGrupoControlador",
+    "Method": "InformacionGradoGrupo",
+    "RelativePath": "api/GradoGrupoControlador/InformacionGradoGrupo",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Colegio.Controllers.GradoGrupoControlador",
+    "Method": "InformacionGradoGrupoEstadoActivo",
+    "RelativePath": "api/GradoGrupoControlador/InformacionGradoGrupoEstadoActivo",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Colegio.Controllers.GradoGrupoControlador",
+    "Method": "RegistrarGradoGrupoNivelEscolaridad",
+    "RelativePath": "api/GradoGrupoControlador/RegistrarGradoGrupoNivelEscolaridad",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "registrarGradoGrupoNivelEscolaridad",
+        "Type": "Colegio.Modelos.Grado_Grupo.Procedimientos.RegistrarGradoGrupoNivelEscolaridad",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Colegio.Controllers.GrupoControlador",
     "Method": "GestionarEstadoGrupo",
     "RelativePath": "api/GrupoControlador/GestionarEstadoGrupo",
@@ -186,6 +238,58 @@
       {
         "Name": "registrarJornada",
         "Type": "Colegio.Modelos.Jornada.Procedimientos.RegistrarJornada",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Colegio.Controllers.NivelEscolaridadControlador",
+    "Method": "GestionarEstadoNivelEscolaridad",
+    "RelativePath": "api/NivelEscolaridadControlador/GestionarEstadoNivelEscolaridad",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "gestionarEstadoNivelEscolaridad",
+        "Type": "Colegio.Modelos.Nivel_Escolaridad.Procedimientos.GestionarEstadoNivelEscolaridad",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Colegio.Controllers.NivelEscolaridadControlador",
+    "Method": "InformacionNivelEscolaridad",
+    "RelativePath": "api/NivelEscolaridadControlador/InformacionNivelEscolaridad",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Colegio.Controllers.NivelEscolaridadControlador",
+    "Method": "InformacionNivelEscolaridadEstadoActivo",
+    "RelativePath": "api/NivelEscolaridadControlador/InformacionNivelEscolaridadEstadoActivo",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Colegio.Controllers.NivelEscolaridadControlador",
+    "Method": "RegistrarNivelEscolaridad",
+    "RelativePath": "api/NivelEscolaridadControlador/RegistrarNivelEscolaridad",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "registrarNivelEscolaridad",
+        "Type": "Colegio.Modelos.Nivel_Escolaridad.Procedimientos.RegistrarNivelEscolaridad",
         "IsRequired": true
       }
     ],

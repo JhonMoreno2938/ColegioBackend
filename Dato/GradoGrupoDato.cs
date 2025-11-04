@@ -1,4 +1,7 @@
 ﻿using Colegio.Interfaz;
+using Colegio.Modelos.Grado_Grupo.Procedimientos;
+using Colegio.Modelos.Grado_Grupo.Salidas_Procedimientos;
+using Colegio.Modelos.Grado_Grupo.Vistas;
 using Colegio.Modelos.Jornada.Procedimientos;
 using Colegio.Modelos.Jornada.Salidas_Procedimientos;
 using Colegio.Modelos.Jornada.Vistas;
@@ -7,24 +10,23 @@ using System.Data;
 
 namespace Colegio.Dato
 {
-    public class JornadaDato : IJornada
+    public class GradoGrupoDato : IGradoGrupo
     {
         private readonly string conexion;
-        private static readonly string queryRegistrarJornada = "registrar_jornada";
-        private static readonly string queryGestionarEstadoJornada = "gestionar_estado_jornada";
-        private static readonly string queryListaJornada = "select nombre_jornada, estado_jornada from listar_jornadas";
-        private static readonly string queryListaJornadaActivo = "select nombre_jornada from listar_jornadas_estado_activo";
+        private static readonly string queryRegistrarGradoGrupoNivelEscolaridad = "registrar_grado_grupo_nivel_escolaridad";
+        private static readonly string queryGestionarGradoGrupo = "gestionar_grado_grupo_nivel_escolaridad";
+        private static readonly string queryListaGradoGrupo = "select nombre_grado_grupo, nombre_nivel_escolaridad, estado_grado_grupo from listar_grados_grupos";
+        private static readonly string queryListaGradoGrupoActivo = "select nombre_grado_grupo, nombre_nivel_escolaridad from listar_grados_grupos_estado_activo";
 
-        public JornadaDato(IConfiguration configuracion)
+        public GradoGrupoDato(IConfiguration configuracion)
         {
             conexion = configuracion.GetConnectionString("CadenaConexion")
                                ?? throw new ArgumentNullException(nameof(configuracion), "La cadena de conexión no puede ser nula");
         }
 
-
-        public async Task<ResultadoMensajeJornada> RegistrarJornadaAsync(RegistrarJornada registrarJornada)
+        public async Task<ResultadoMensajeGradoGrupo> RegistrarGradoGrupoNivelEscolaridadAsync(RegistrarGradoGrupoNivelEscolaridad registrarGradoGrupoNivelEscolaridad)
         {
-            var resultado = new ResultadoMensajeJornada { exito = false, mensaje = "Error de conexión/ejecución no capturado." };
+            var resultado = new ResultadoMensajeGradoGrupo { exito = false, mensaje = "Error de conexión/ejecución no capturado." };
 
             MySqlTransaction transaccion = null;
 
@@ -37,12 +39,14 @@ namespace Colegio.Dato
 
                 try
                 {
-                    using var comando = new MySqlCommand(queryRegistrarJornada, conexion2, transaccion)
+                    using var comando = new MySqlCommand(queryRegistrarGradoGrupoNivelEscolaridad, conexion2, transaccion)
                     {
                         CommandType = CommandType.StoredProcedure
                     };
 
-                    comando.Parameters.AddWithValue("@p_nombre_jornada", registrarJornada.nombreJornada);
+                    comando.Parameters.AddWithValue("@p_nombre_grado", registrarGradoGrupoNivelEscolaridad.nombreGrado);
+                    comando.Parameters.AddWithValue("@p_nombre_grupo", registrarGradoGrupoNivelEscolaridad.nombreGrupo);
+                    comando.Parameters.AddWithValue("@p_nombre_nivel_escolaridad", registrarGradoGrupoNivelEscolaridad.nombreNivelEscolaridad);
 
                     var outMensaje = comando.Parameters.Add("@mensaje", MySqlDbType.VarChar, 255);
                     outMensaje.Direction = ParameterDirection.Output;
@@ -51,7 +55,7 @@ namespace Colegio.Dato
 
                     string mensajeSP = outMensaje.Value?.ToString() ?? "Error desconocido en el SP.";
 
-                    if (mensajeSP.StartsWith("Se registró"))
+                    if (mensajeSP.EndsWith("se registro en el sistema"))
                     {
                         resultado.exito = true;
                     }
@@ -86,9 +90,9 @@ namespace Colegio.Dato
             return resultado;
         }
 
-        public async Task<ResultadoMensajeJornada> GestionarEstadoJornadaAsync(GestionarEstadoJornada gestionarEstadoJornada)
+        public async Task<ResultadoMensajeGradoGrupo> GestionarEstadoGradoGrupoNivelEscolaridadAsync(GestionarEstadoGradoGrupoNivelEscolaridad gestionarEstadoGradoGrupoNivelEscolaridad)
         {
-            var resultado = new ResultadoMensajeJornada { exito = false, mensaje = "Error de conexión/ejecución no capturado." };
+            var resultado = new ResultadoMensajeGradoGrupo { exito = false, mensaje = "Error de conexión/ejecución no capturado." };
 
             MySqlTransaction transaccion = null;
 
@@ -101,13 +105,15 @@ namespace Colegio.Dato
 
                 try
                 {
-                    using var comando = new MySqlCommand(queryGestionarEstadoJornada, conexion2, transaccion)
+                    using var comando = new MySqlCommand(queryGestionarGradoGrupo, conexion2, transaccion)
                     {
                         CommandType = CommandType.StoredProcedure
                     };
 
-                    comando.Parameters.AddWithValue("@p_operacion", gestionarEstadoJornada.nombreOperacion);
-                    comando.Parameters.AddWithValue("@p_nombre_jornada", gestionarEstadoJornada.nombreJornada);
+                    comando.Parameters.AddWithValue("@p_operacion", gestionarEstadoGradoGrupoNivelEscolaridad.nombreOperacion);
+                    comando.Parameters.AddWithValue("@p_nombre_grado", gestionarEstadoGradoGrupoNivelEscolaridad.nombreGrado);
+                    comando.Parameters.AddWithValue("@p_nombre_grupo", gestionarEstadoGradoGrupoNivelEscolaridad.nombreGrupo);
+                    comando.Parameters.AddWithValue("@p_nombre_nivel_escolaridad", gestionarEstadoGradoGrupoNivelEscolaridad.nombreNinvelEscolaridad);
 
                     var outMensaje = comando.Parameters.Add("@mensaje", MySqlDbType.VarChar, 255);
                     outMensaje.Direction = ParameterDirection.Output;
@@ -151,9 +157,9 @@ namespace Colegio.Dato
             return resultado;
         }
 
-        public async Task<List<ListarJornada>> InformacionJornadaAsync()
+        public async Task<List<ListarGradoGrupo>> InformacionGradoGrupoAsync()
         {
-            var listaJornada = new List<ListarJornada>();
+            var listaGradoGrupo = new List<ListarGradoGrupo>();
 
             try
             {
@@ -161,32 +167,33 @@ namespace Colegio.Dato
                 {
                     await conexion2.OpenAsync();
 
-                    using (var comando = new MySqlCommand(queryListaJornada, conexion2))
+                    using (var comando = new MySqlCommand(queryListaGradoGrupo, conexion2))
                     {
                         using (var leer = await comando.ExecuteReaderAsync())
                         {
                             while (await leer.ReadAsync())
                             {
-                                var listarJornada = new ListarJornada();
-                                listarJornada.nombreJornada = leer.GetString("nombre_jornada");
-                                listarJornada.estadoJornada = leer.GetString("estado_jornada");
-                                listaJornada.Add(listarJornada);
+                                var listarGradoGrupo = new ListarGradoGrupo();
+                                listarGradoGrupo.nombreGradoGrupo = leer.GetString("nombre_grado_grupo");
+                                listarGradoGrupo.nombreNivelEscolaridad = leer.GetString("nombre_nivel_escolaridad");
+                                listarGradoGrupo.estadoGradoGrupo = leer.GetString("estado_grado_grupo");
+                                listaGradoGrupo.Add(listarGradoGrupo);
                             }
                         }
                     }
                 }
-                return listaJornada;
+                return listaGradoGrupo;
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error al obtener las jornadas: {ex.Message}");
-                return new List<ListarJornada>();
+                Console.WriteLine($"Error al obtener los grados grupos: {ex.Message}");
+                return new List<ListarGradoGrupo>();
             }
         }
 
-        public async Task<List<ListarJornadaEstadoActivo>> InformacionJornadaEstadoActivoAsync()
+        public async Task<List<ListarGradoGrupoEstadoActivo>> InformacionGradoGrupoEstadoActivoAsync()
         {
-            var listaJornadaEstadoActivo = new List<ListarJornadaEstadoActivo>();
+            var listaGradoGrupoEstadoActivo = new List<ListarGradoGrupoEstadoActivo>();
 
             try
             {
@@ -194,27 +201,27 @@ namespace Colegio.Dato
                 {
                     await conexion2.OpenAsync();
 
-                    using (var comando = new MySqlCommand(queryListaJornadaActivo, conexion2))
+                    using (var comando = new MySqlCommand(queryListaGradoGrupoActivo, conexion2))
                     {
                         using (var leer = await comando.ExecuteReaderAsync())
                         {
                             while (await leer.ReadAsync())
                             {
-                                var listarJornadaEstadoActivo = new ListarJornadaEstadoActivo();
-                                listarJornadaEstadoActivo.nombreJornada = leer.GetString("nombre_jornada");
-                                listaJornadaEstadoActivo.Add(listarJornadaEstadoActivo);
+                                var listarGradoGrupoEstadoActivo = new ListarGradoGrupoEstadoActivo();
+                                listarGradoGrupoEstadoActivo.nombreGradoGrupo = leer.GetString("nombre_grado_grupo");
+                                listarGradoGrupoEstadoActivo.nombreNivelEscolaridad = leer.GetString("nombre_nivel_escolaridad");
+                                listaGradoGrupoEstadoActivo.Add(listarGradoGrupoEstadoActivo);
                             }
                         }
                     }
                 }
-                return listaJornadaEstadoActivo;
+                return listaGradoGrupoEstadoActivo;
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error al obtener las jornadas: {ex.Message}");
-                return new List<ListarJornadaEstadoActivo>();
+                Console.WriteLine($"Error al obtener los grados grupos: {ex.Message}");
+                return new List<ListarGradoGrupoEstadoActivo>();
             }
         }
-
     }
 }

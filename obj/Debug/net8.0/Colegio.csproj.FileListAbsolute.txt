@@ -59,3 +59,4 @@ C:\Users\EXITO\OneDrive\Documentos\Proyecto\Colegio\Backend\Colegio\bin\Debug\ne
 C:\Users\EXITO\OneDrive\Documentos\Proyecto\Colegio\Backend\Colegio\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 C:\Users\EXITO\OneDrive\Documentos\Proyecto\Colegio\Backend\Colegio\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
 C:\Users\EXITO\OneDrive\Documentos\Proyecto\Colegio\Backend\Colegio\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\EXITO\OneDrive\Documentos\Proyecto\Colegio\Backend\Colegio\obj\Debug\net8.0\Colegio.sourcelink.json

@@ -1,0 +1,147 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "API NivelEscolaridad",
+    "description": "Documentacion para la API de nivel escolaridad",
+    "version": "V1"
+  },
+  "paths": {
+    "/api/NivelEscolaridadControlador/RegistrarNivelEscolaridad": {
+      "post": {
+        "tags": [
+          "NivelEscolaridadControlador"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegistrarNivelEscolaridad"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegistrarNivelEscolaridad"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegistrarNivelEscolaridad"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/NivelEscolaridadControlador/GestionarEstadoNivelEscolaridad": {
+      "put": {
+        "tags": [
+          "NivelEscolaridadControlador"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GestionarEstadoNivelEscolaridad"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GestionarEstadoNivelEscolaridad"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/GestionarEstadoNivelEscolaridad"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/NivelEscolaridadControlador/InformacionNivelEscolaridad": {
+      "get": {
+        "tags": [
+          "NivelEscolaridadControlador"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/NivelEscolaridadControlador/InformacionNivelEscolaridadEstadoActivo": {
+      "get": {
+        "tags": [
+          "NivelEscolaridadControlador"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "GestionarEstadoNivelEscolaridad": {
+        "required": [
+          "nombreNivelEscolaridad",
+          "nombreOperacion"
+        ],
+        "type": "object",
+        "properties": {
+          "nombreOperacion": {
+            "maxLength": 20,
+            "minLength": 0,
+            "type": "string"
+          },
+          "nombreNivelEscolaridad": {
+            "maxLength": 20,
+            "minLength": 0,
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "RegistrarNivelEscolaridad": {
+        "required": [
+          "nombreNivelEscolaridad"
+        ],
+        "type": "object",
+        "properties": {
+          "nombreNivelEscolaridad": {
+            "maxLength": 20,
+            "minLength": 0,
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "securitySchemes": {
+      "Bearer": {
+        "type": "apiKey",
+        "description": "Por favor ingrese el token JWT con el prefijo 'Bearer' como 'Bearer [token]'",
+        "name": "Authorization",
+        "in": "header"
+      }
+    }
+  },
+  "security": [
+    {
+      "Bearer": [ ]
+    }
+  ]
+}

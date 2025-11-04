@@ -2,10 +2,8 @@ using Colegio.Dato;
 using Colegio.Interfaz;
 using Colegio.Servicios;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Builder;
 using Microsoft.IdentityModel.Tokens;
 using Swashbuckle.AspNetCore.SwaggerGen;
-using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -160,6 +158,20 @@ builder.Services.AddSwaggerGen(options =>
         Description = "Documentacion para la API de jornada"
     });
 
+    options.SwaggerDoc("NivelEscolaridad", new Microsoft.OpenApi.Models.OpenApiInfo
+    {
+        Title = "API NivelEscolaridad",
+        Version = "V1",
+        Description = "Documentacion para la API de nivel escolaridad"
+    });
+
+    options.SwaggerDoc("GradoGrupo", new Microsoft.OpenApi.Models.OpenApiInfo
+    {
+        Title = "API GradoGrupo",
+        Version = "V1",
+        Description = "Documentacion para la API de grado grupo"
+    });
+
     // Predicado para asociar controladores a documentos Swagger específicos
     options.DocInclusionPredicate((docName, apiDesc) =>
     {
@@ -218,6 +230,10 @@ builder.Services.AddScoped<IGrupo, GrupoDato>();
 builder.Services.AddScoped<GrupoServicio>();
 builder.Services.AddScoped<IJornada, JornadaDato>();
 builder.Services.AddScoped<JornadaServicio>();
+builder.Services.AddScoped<INivelEscolaridad, NivelEscolaridadDato>();
+builder.Services.AddScoped<NivelEscolaridadServicio>();
+builder.Services.AddScoped<IGradoGrupo, GradoGrupoDato>();
+builder.Services.AddScoped<GradoGrupoServicio>();
 
 
 var app = builder.Build();
@@ -238,8 +254,10 @@ app.UseSwaggerUI(options =>
     options.SwaggerEndpoint("/swagger/Funcionario/swagger.json", "API Funcionario");
     options.SwaggerEndpoint("/swagger/Genero/swagger.json", "API Genero");
     options.SwaggerEndpoint("/swagger/Grado/swagger.json", "API Grado");
+    options.SwaggerEndpoint("/swagger/GradoGrupo/swagger.json", "API Grado grupo");
     options.SwaggerEndpoint("/swagger/Grupo/swagger.json", "API Grupo");
     options.SwaggerEndpoint("/swagger/Jornada/swagger.json", "API Jornada");
+    options.SwaggerEndpoint("/swagger/NivelEscolaridad/swagger.json", "API Nivel escolaridad");
     options.SwaggerEndpoint("/swagger/Rh/swagger.json", "API Rh");
     options.SwaggerEndpoint("/swagger/RolUsuario/swagger.json", "API Rol usuario");
     options.SwaggerEndpoint("/swagger/Sede/swagger.json", "API Sede");

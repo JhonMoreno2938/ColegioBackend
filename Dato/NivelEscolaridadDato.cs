@@ -1,30 +1,29 @@
 ﻿using Colegio.Interfaz;
-using Colegio.Modelos.Jornada.Procedimientos;
-using Colegio.Modelos.Jornada.Salidas_Procedimientos;
-using Colegio.Modelos.Jornada.Vistas;
+using Colegio.Modelos.Nivel_Escolaridad.Procedimientos;
+using Colegio.Modelos.Nivel_Escolaridad.Salidas_Procedimientos;
+using Colegio.Modelos.Nivel_Escolaridad.Vistas;
 using MySql.Data.MySqlClient;
 using System.Data;
 
 namespace Colegio.Dato
 {
-    public class JornadaDato : IJornada
+    public class NivelEscolaridadDato : INivelEscolaridad
     {
         private readonly string conexion;
-        private static readonly string queryRegistrarJornada = "registrar_jornada";
-        private static readonly string queryGestionarEstadoJornada = "gestionar_estado_jornada";
-        private static readonly string queryListaJornada = "select nombre_jornada, estado_jornada from listar_jornadas";
-        private static readonly string queryListaJornadaActivo = "select nombre_jornada from listar_jornadas_estado_activo";
+        private static readonly string queryRegistrarNivelEscolaridad = "registrar_nivel_escolaridad";
+        private static readonly string queryGestionarEstadoNivelEscolaridad = "gestionar_estado_nivel_escolaridad";
+        private static readonly string queryListaNivelEscolaridad = "select nombre_nivel_escolaridad, estado_nivel_escolaridad from listar_nivel_escolaridad";
+        private static readonly string queryListaNivelEscolaridadActivo = "select nombre_nivel_escolaridad from listar_nivel_escolaridad_estado_activo";
 
-        public JornadaDato(IConfiguration configuracion)
+        public NivelEscolaridadDato(IConfiguration configuracion)
         {
             conexion = configuracion.GetConnectionString("CadenaConexion")
                                ?? throw new ArgumentNullException(nameof(configuracion), "La cadena de conexión no puede ser nula");
         }
 
-
-        public async Task<ResultadoMensajeJornada> RegistrarJornadaAsync(RegistrarJornada registrarJornada)
+        public async Task<ResultadoMensajeNivelEscolaridad> RegistrarNivelEscolaridadAsync(RegistrarNivelEscolaridad registrarNivelEscolaridad)
         {
-            var resultado = new ResultadoMensajeJornada { exito = false, mensaje = "Error de conexión/ejecución no capturado." };
+            var resultado = new ResultadoMensajeNivelEscolaridad { exito = false, mensaje = "Error de conexión/ejecución no capturado." };
 
             MySqlTransaction transaccion = null;
 
@@ -37,12 +36,12 @@ namespace Colegio.Dato
 
                 try
                 {
-                    using var comando = new MySqlCommand(queryRegistrarJornada, conexion2, transaccion)
+                    using var comando = new MySqlCommand(queryRegistrarNivelEscolaridad, conexion2, transaccion)
                     {
                         CommandType = CommandType.StoredProcedure
                     };
 
-                    comando.Parameters.AddWithValue("@p_nombre_jornada", registrarJornada.nombreJornada);
+                    comando.Parameters.AddWithValue("@p_nombre_nivel_escolaridad", registrarNivelEscolaridad.nombreNivelEscolaridad);
 
                     var outMensaje = comando.Parameters.Add("@mensaje", MySqlDbType.VarChar, 255);
                     outMensaje.Direction = ParameterDirection.Output;
@@ -86,9 +85,9 @@ namespace Colegio.Dato
             return resultado;
         }
 
-        public async Task<ResultadoMensajeJornada> GestionarEstadoJornadaAsync(GestionarEstadoJornada gestionarEstadoJornada)
+        public async Task<ResultadoMensajeNivelEscolaridad> GestionarEstadoNivelEscolaridadAsync(GestionarEstadoNivelEscolaridad gestionarEstadoNivelEscolaridad)
         {
-            var resultado = new ResultadoMensajeJornada { exito = false, mensaje = "Error de conexión/ejecución no capturado." };
+            var resultado = new ResultadoMensajeNivelEscolaridad { exito = false, mensaje = "Error de conexión/ejecución no capturado." };
 
             MySqlTransaction transaccion = null;
 
@@ -101,13 +100,13 @@ namespace Colegio.Dato
 
                 try
                 {
-                    using var comando = new MySqlCommand(queryGestionarEstadoJornada, conexion2, transaccion)
+                    using var comando = new MySqlCommand(queryGestionarEstadoNivelEscolaridad, conexion2, transaccion)
                     {
                         CommandType = CommandType.StoredProcedure
                     };
 
-                    comando.Parameters.AddWithValue("@p_operacion", gestionarEstadoJornada.nombreOperacion);
-                    comando.Parameters.AddWithValue("@p_nombre_jornada", gestionarEstadoJornada.nombreJornada);
+                    comando.Parameters.AddWithValue("@p_operacion", gestionarEstadoNivelEscolaridad.nombreOperacion);
+                    comando.Parameters.AddWithValue("@p_nombre_nivel_escolaridad", gestionarEstadoNivelEscolaridad.nombreNivelEscolaridad);
 
                     var outMensaje = comando.Parameters.Add("@mensaje", MySqlDbType.VarChar, 255);
                     outMensaje.Direction = ParameterDirection.Output;
@@ -151,9 +150,9 @@ namespace Colegio.Dato
             return resultado;
         }
 
-        public async Task<List<ListarJornada>> InformacionJornadaAsync()
+        public async Task<List<ListarNivelEscolaridad>> InformacionNivelEscolaridadAsync()
         {
-            var listaJornada = new List<ListarJornada>();
+            var listaNivelEscolaridad = new List<ListarNivelEscolaridad>();
 
             try
             {
@@ -161,32 +160,32 @@ namespace Colegio.Dato
                 {
                     await conexion2.OpenAsync();
 
-                    using (var comando = new MySqlCommand(queryListaJornada, conexion2))
+                    using (var comando = new MySqlCommand(queryListaNivelEscolaridad, conexion2))
                     {
                         using (var leer = await comando.ExecuteReaderAsync())
                         {
                             while (await leer.ReadAsync())
                             {
-                                var listarJornada = new ListarJornada();
-                                listarJornada.nombreJornada = leer.GetString("nombre_jornada");
-                                listarJornada.estadoJornada = leer.GetString("estado_jornada");
-                                listaJornada.Add(listarJornada);
+                                var listarNivelEscolaridad = new ListarNivelEscolaridad();
+                                listarNivelEscolaridad.nombreNivelEscolaridad = leer.GetString("nombre_nivel_escolaridad");
+                                listarNivelEscolaridad.estadoNivelEscolaridad = leer.GetString("estado_nivel_escolaridad");
+                                listaNivelEscolaridad.Add(listarNivelEscolaridad);
                             }
                         }
                     }
                 }
-                return listaJornada;
+                return listaNivelEscolaridad;
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error al obtener las jornadas: {ex.Message}");
-                return new List<ListarJornada>();
+                Console.WriteLine($"Error al obtener los niveles de escolaridad: {ex.Message}");
+                return new List<ListarNivelEscolaridad>();
             }
         }
 
-        public async Task<List<ListarJornadaEstadoActivo>> InformacionJornadaEstadoActivoAsync()
+        public async Task<List<ListarNivelEscolaridadEstadoActivo>> InformacionNivelEscolaridadEstadoActivoAsync()
         {
-            var listaJornadaEstadoActivo = new List<ListarJornadaEstadoActivo>();
+            var listaNivelEscolaridadEstadoActivo = new List<ListarNivelEscolaridadEstadoActivo>();
 
             try
             {
@@ -194,27 +193,26 @@ namespace Colegio.Dato
                 {
                     await conexion2.OpenAsync();
 
-                    using (var comando = new MySqlCommand(queryListaJornadaActivo, conexion2))
+                    using (var comando = new MySqlCommand(queryListaNivelEscolaridadActivo, conexion2))
                     {
                         using (var leer = await comando.ExecuteReaderAsync())
                         {
                             while (await leer.ReadAsync())
                             {
-                                var listarJornadaEstadoActivo = new ListarJornadaEstadoActivo();
-                                listarJornadaEstadoActivo.nombreJornada = leer.GetString("nombre_jornada");
-                                listaJornadaEstadoActivo.Add(listarJornadaEstadoActivo);
+                                var listarNivelEscolaridadEstadoActivo = new ListarNivelEscolaridadEstadoActivo();
+                                listarNivelEscolaridadEstadoActivo.nombreNivelEscolaridad = leer.GetString("nombre_nivel_escolaridad");
+                                listaNivelEscolaridadEstadoActivo.Add(listarNivelEscolaridadEstadoActivo);
                             }
                         }
                     }
                 }
-                return listaJornadaEstadoActivo;
+                return listaNivelEscolaridadEstadoActivo;
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error al obtener las jornadas: {ex.Message}");
-                return new List<ListarJornadaEstadoActivo>();
+                Console.WriteLine($"Error al obtener los niveles de escolaridad: {ex.Message}");
+                return new List<ListarNivelEscolaridadEstadoActivo>();
             }
         }
-
     }
 }

@@ -1,0 +1,29 @@
+﻿using System.Text.Json.Serialization;
+
+namespace Colegio.Modelos.Grado_Grupo.Vistas
+{
+    public class ListarGradoGrupo
+    {
+        [JsonIgnore]
+        GradoGrupoModelo gradoGrupoModelo = new GradoGrupoModelo();
+
+
+        [JsonPropertyName("nombreGradoGrupo")]
+        public string nombreGradoGrupo { get; set; } = string.Empty;
+
+        [JsonPropertyName("nombreNivelEscolaridad")]
+        public string nombreNivelEscolaridad
+        {
+            get => gradoGrupoModelo.nivelEscolaridadModelo.nombreNivelEscolaridad;
+            set => gradoGrupoModelo.nivelEscolaridadModelo.nombreNivelEscolaridad = value;
+        }
+
+        [JsonPropertyName("estadoGradoGrupo")]
+        public string estadoGradoGrupo
+        {
+            get => gradoGrupoModelo.estadoGradoGrupo;
+            set => gradoGrupoModelo.estadoGradoGrupo = value;
+        }
+
+    }
+}
