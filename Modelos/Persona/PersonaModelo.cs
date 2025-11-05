@@ -3,7 +3,6 @@ using Colegio.Modelos.Departamento;
 using Colegio.Modelos.Genero;
 using Colegio.Modelos.Rh;
 using Colegio.Modelos.Tipo_Documento;
-using Org.BouncyCastle.Tls;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -12,13 +11,13 @@ namespace Colegio.Modelos.Persona
     [Table("persona")]
     public class PersonaModelo
     {
-        public TipoDocumentoModelo tipoDocumentoModelo = new TipoDocumentoModelo();
-        public GeneroModelo generoModelo = new GeneroModelo();
-        public DepartamentoModelo departamentoNacimientoModelo = new DepartamentoModelo();
-        public DepartamentoModelo departamentoExpedicionDocumento = new DepartamentoModelo();
-        public CiudadModelo ciudadNacimientoModelo = new CiudadModelo();
-        public CiudadModelo ciudadExpedicionModelo = new CiudadModelo();
-        public RhModelo rhModelo = new RhModelo();
+        public TipoDocumentoModelo? tipoDocumentoModelo { get; set; } = new TipoDocumentoModelo();
+        public GeneroModelo? generoModelo { get; set; } = new GeneroModelo();
+        public DepartamentoModelo? departamentoNacimientoModelo { get; set; } = new DepartamentoModelo();
+        public DepartamentoModelo? departamentoExpedicionDocumento { get; set; } = new DepartamentoModelo();
+        public CiudadModelo? ciudadNacimientoModelo { get; set; } = new CiudadModelo();
+        public CiudadModelo? ciudadExpedicionModelo { get; set; } = new CiudadModelo();
+        public RhModelo? rhModelo { get; set; } = new RhModelo();
 
         [Key]
         [Column("pk_id_persona")]
@@ -43,61 +42,88 @@ namespace Colegio.Modelos.Persona
         public string? fechaNacimientoPersona { get; set; } = string.Empty;
 
         [Column("edad_persona")]
-        public int? edadPersona  { get; set;} = 0;
+        public int? edadPersona { get; set; } = 0;
 
         [Column("fk_id_tipo_documento")]
         public int? fkIdTipoDocumento
         {
-            get => tipoDocumentoModelo.pkIdTipoDocumento;
-            set => tipoDocumentoModelo.pkIdTipoDocumento = 0;
+            get => tipoDocumentoModelo?.pkIdTipoDocumento; 
+            set
+            {
+                if (tipoDocumentoModelo != null && value.HasValue)
+                    tipoDocumentoModelo.pkIdTipoDocumento = value.Value;
+            }
         }
 
         [Column("fk_id_genero")]
         public int? fkIdGenero
         {
-            get => generoModelo.pkIdGenero;
-            set => generoModelo.pkIdGenero = 0;
+            get => generoModelo?.pkIdGenero;
+            set
+            {
+                if (generoModelo != null && value.HasValue)
+                    generoModelo.pkIdGenero = value.Value;
+            }
         }
 
         [Column("fk_id_departamento_nacimiento")]
         public int? fkIdDepartamentoNacimiento
         {
-            get => departamentoNacimientoModelo.pkIdDepartamento;
-            set => departamentoNacimientoModelo.pkIdDepartamento = 0;
+            get => departamentoNacimientoModelo?.pkIdDepartamento;
+            set
+            {
+                if (departamentoNacimientoModelo != null && value.HasValue)
+                    departamentoNacimientoModelo.pkIdDepartamento = value.Value;
+            }
         }
 
         [Column("fk_id_departamento_expedicion_documento")]
         public int? fkIdDepartamentoExpedicionDocumento
         {
-            get => departamentoExpedicionDocumento.pkIdDepartamento;
-            set => departamentoExpedicionDocumento.pkIdDepartamento = 0;
+            get => departamentoExpedicionDocumento?.pkIdDepartamento;
+            set
+            {
+                if (departamentoExpedicionDocumento != null && value.HasValue)
+                    departamentoExpedicionDocumento.pkIdDepartamento = value.Value;
+            }
         }
 
         [Column("fk_id_ciudad_nacimiento")]
         public int? fkIdCiudadNacimiento
         {
-            get => ciudadNacimientoModelo.pkIdCiudad;
-            set => ciudadNacimientoModelo.pkIdCiudad = 0;
+            get => ciudadNacimientoModelo?.pkIdCiudad;
+            set
+            {
+                if (ciudadNacimientoModelo != null && value.HasValue)
+                    ciudadNacimientoModelo.pkIdCiudad = value.Value;
+            }
         }
 
         [Column("fk_id_ciudad_expedicion_documento")]
         public int? fkIdCiudadExpedicionDocumento
         {
-            get => ciudadExpedicionModelo.pkIdCiudad;
-            set => ciudadExpedicionModelo.pkIdCiudad = 0;
+            get => ciudadExpedicionModelo?.pkIdCiudad;
+            set
+            {
+                if (ciudadExpedicionModelo != null && value.HasValue)
+                    ciudadExpedicionModelo.pkIdCiudad = value.Value;
+            }
         }
 
         [Column("fk_id_rh")]
         public int? fkIdRh
         {
-            get => rhModelo.pkIdRh;
-            set => rhModelo.pkIdRh = 0;
+            get => rhModelo?.pkIdRh;
+            set
+            {
+                if (rhModelo != null && value.HasValue)
+                    rhModelo.pkIdRh = value.Value;
+            }
         }
 
         public PersonaModelo()
         {
 
         }
-
     }
 }

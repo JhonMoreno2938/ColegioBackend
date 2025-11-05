@@ -6,7 +6,7 @@
     "version": "V1"
   },
   "paths": {
-    "/api/TipoFuncionarioControlador/InformacionTipoFuncioanrio": {
+    "/api/TipoFuncionarioControlador/InformacionTipoFuncionario": {
       "get": {
         "tags": [
           "TipoFuncionarioControlador"

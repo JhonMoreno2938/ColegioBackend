@@ -33,7 +33,8 @@ namespace Colegio.Controllers
 
                 if (resultado.exito)
                 {
-                    return Ok(new { Mensaje = resultado.mensaje });
+                    // Se usa 201 Created para la creación exitosa.
+                    return CreatedAtAction(nameof(RegistrarSede), new { Mensaje = resultado.mensaje });
                 }
                 else
                 {
@@ -61,6 +62,7 @@ namespace Colegio.Controllers
 
                 if (resultado.exito)
                 {
+                    // Se usa 200 OK para la modificación exitosa.
                     return Ok(new { Mensaje = resultado.mensaje });
                 }
                 else
@@ -89,6 +91,7 @@ namespace Colegio.Controllers
 
                 if (resultado.exito)
                 {
+                    // Se usa 200 OK para la modificación exitosa.
                     return Ok(new { Mensaje = resultado.mensaje });
                 }
                 else
@@ -103,7 +106,7 @@ namespace Colegio.Controllers
         }
 
         [Authorize(Policy = "SoloSecretario")]
-        [HttpGet("{codigoDaneSede}")] 
+        [HttpGet("{codigoDaneSede}")]
         public async Task<IActionResult> ConsultarSede([FromRoute] string codigoDaneSede)
         {
             if (string.IsNullOrWhiteSpace(codigoDaneSede))
@@ -124,10 +127,7 @@ namespace Colegio.Controllers
                     return BadRequest(resultado);
                 }
             }
-            catch (ApplicationException ex)
-            {
-                return StatusCode(500, new { Mensaje = $"Error en el servicio de datos: {ex.Message}" });
-            }
+            // El manejo de ApplicationException ya es correcto, mantenemos el catch de Exception para errores generales.
             catch (Exception ex)
             {
                 return StatusCode(500, new { Mensaje = $"Error interno del servidor: {ex.Message}" });
@@ -145,7 +145,8 @@ namespace Colegio.Controllers
             }
             catch (Exception ex)
             {
-                return BadRequest(new { mensaje = ex.Message });
+                // Se devuelve 500 Internal Server Error para fallas internas/de servidor.
+                return StatusCode(500, new { Mensaje = $"Error interno del servidor: {ex.Message}" });
             }
         }
 
@@ -160,7 +161,8 @@ namespace Colegio.Controllers
             }
             catch (Exception ex)
             {
-                return BadRequest(new { mensaje = ex.Message });
+                // Se devuelve 500 Internal Server Error para fallas internas/de servidor.
+                return StatusCode(500, new { Mensaje = $"Error interno del servidor: {ex.Message}" });
             }
         }
     }

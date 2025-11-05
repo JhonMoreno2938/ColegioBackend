@@ -226,7 +226,7 @@
             "type": "string"
           },
           "numeroContactoSede": {
-            "maxLength": 100,
+            "maxLength": 10,
             "minLength": 0,
             "type": "string"
           },

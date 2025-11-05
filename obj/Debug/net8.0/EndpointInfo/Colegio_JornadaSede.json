@@ -1,0 +1,186 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "API JornadaSede",
+    "description": "Documentacion para la API de jornada sede",
+    "version": "V1"
+  },
+  "paths": {
+    "/api/JornadaSedeControlador/RegistrarJornadaSede": {
+      "post": {
+        "tags": [
+          "JornadaSedeControlador"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegistrarJornadaSede"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegistrarJornadaSede"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegistrarJornadaSede"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/JornadaSedeControlador/GestionarEstadoJornadaSede": {
+      "put": {
+        "tags": [
+          "JornadaSedeControlador"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GestionarEstadoJornadaSede"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GestionarEstadoJornadaSede"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/GestionarEstadoJornadaSede"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/JornadaSedeControlador/{codigoDaneSede}/Todas": {
+      "get": {
+        "tags": [
+          "JornadaSedeControlador"
+        ],
+        "parameters": [
+          {
+            "name": "codigoDaneSede",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/JornadaSedeControlador/{codigoDaneSede}/Activas": {
+      "get": {
+        "tags": [
+          "JornadaSedeControlador"
+        ],
+        "parameters": [
+          {
+            "name": "codigoDaneSede",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "GestionarEstadoJornadaSede": {
+        "required": [
+          "codigoDane",
+          "nombreJornada",
+          "nombreOperacion"
+        ],
+        "type": "object",
+        "properties": {
+          "nombreOperacion": {
+            "maxLength": 20,
+            "minLength": 0,
+            "type": "string"
+          },
+          "codigoDane": {
+            "maxLength": 10,
+            "minLength": 0,
+            "type": "string"
+          },
+          "nombreJornada": {
+            "maxLength": 15,
+            "minLength": 0,
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "JornadaDetalle": {
+        "type": "object",
+        "properties": {
+          "nombreJornada": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "RegistrarJornadaSede": {
+        "type": "object",
+        "properties": {
+          "codigoDaneSede": {
+            "type": "string",
+            "nullable": true
+          },
+          "listaJornada": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/JornadaDetalle"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "securitySchemes": {
+      "Bearer": {
+        "type": "apiKey",
+        "description": "Por favor ingrese el token JWT con el prefijo 'Bearer' como 'Bearer [token]'",
+        "name": "Authorization",
+        "in": "header"
+      }
+    }
+  },
+  "security": [
+    {
+      "Bearer": [ ]
+    }
+  ]
+}

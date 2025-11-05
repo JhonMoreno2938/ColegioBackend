@@ -5,35 +5,20 @@ namespace Colegio.Modelos.Grado_Grupo.Procedimientos
 {
     public class RegistrarGradoGrupoNivelEscolaridad
     {
-        [JsonIgnore]
-        GradoGrupoModelo gradoGrupoModelo = new GradoGrupoModelo();
-
         [JsonPropertyName("nombreGrado")]
         [StringLength(2)]
         [Required]
-        public string nombreGrado
-        {
-            get => gradoGrupoModelo.gradoModelo.nombreGrado;
-            set => gradoGrupoModelo.gradoModelo.nombreGrado = value;
-        }
+        public string nombreGrado { get; set; } = string.Empty;
 
         [JsonPropertyName("nombreGrupo")]
         [StringLength(3)]
         [Required]
-        public string nombreGrupo
-        {
-            get => gradoGrupoModelo.grupoModelo.nombreGrupo;
-            set => gradoGrupoModelo.grupoModelo.nombreGrupo = value;
-        }
+        public string nombreGrupo { get; set; } = string.Empty;
 
         [JsonPropertyName("nombreNivelEscolaridad")]
         [StringLength(20)]
         [Required]
-        public string nombreNivelEscolaridad
-        {
-            get => gradoGrupoModelo.nivelEscolaridadModelo.nombreNivelEscolaridad;
-            set => gradoGrupoModelo.nivelEscolaridadModelo.nombreNivelEscolaridad = value;
-        }
+        public string nombreNivelEscolaridad { get; set; } = string.Empty;
 
     }
 }

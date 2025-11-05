@@ -1,4 +1,5 @@
 ﻿using Colegio.Interfaz;
+using Colegio.Modelos.Departamento;
 using Colegio.Modelos.Departamento.Vistas;
 
 namespace Colegio.Servicios
@@ -11,11 +12,23 @@ namespace Colegio.Servicios
         {
             this.departamento = departamento;
         }
+
+        private List<ListarDepartamento> MapearListarDepartamento(List<DepartamentoModelo> departamentoModelo)
+        {
+            return departamentoModelo.Select(modelo => new ListarDepartamento
+            {
+                nombreDepartamento = modelo.nombreDepartamento
+            }).ToList();
+        }
+
+
         public async Task<List<ListarDepartamento>> ValidarInformacionDepartamentoAsync()
         {
-            var informacionDepartamento = await departamento.InformacionDepartamentoAsync();
+            var modeloDeparamtento = await departamento.InformacionDepartamentoAsync();
 
-            return informacionDepartamento;
+            var resultado = MapearListarDepartamento(modeloDeparamtento);
+
+            return resultado;
         }
     }
 }

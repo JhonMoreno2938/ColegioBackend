@@ -1,4 +1,5 @@
 ﻿using Colegio.Interfaz;
+using Colegio.Modelos.Rh;
 using Colegio.Modelos.Rh.Vistas;
 
 namespace Colegio.Servicios
@@ -11,11 +12,22 @@ namespace Colegio.Servicios
         {
             this.rh = rh;
         }
+
+        private List<ListarRh> MapearListarRh(List<RhModelo> rhModelo)
+        {
+            return rhModelo.Select(modelo => new ListarRh
+            {
+                nombreRh = modelo.nombreRh
+            }).ToList();
+        }
+
         public async Task<List<ListarRh>> ValidarInformacionRhAsync()
         {
-            var informacionRh = await rh.InformacionRhAsync();
+            var modeloRh = await rh.InformacionRhAsync();
 
-            return informacionRh;
+            var resultado = MapearListarRh(modeloRh);
+
+            return resultado;
         }
 
     }

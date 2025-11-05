@@ -1,15 +1,14 @@
-﻿using Colegio.Modelos.Jornada.Procedimientos;
+﻿using Colegio.Modelos.Jornada;
 using Colegio.Modelos.Jornada.Salidas_Procedimientos;
-using Colegio.Modelos.Jornada.Vistas;
 
 namespace Colegio.Interfaz
 {
     public interface IJornada
     {
-        Task<ResultadoMensajeJornada> RegistrarJornadaAsync(RegistrarJornada registrarJornada);
-        Task<ResultadoMensajeJornada> GestionarEstadoJornadaAsync(GestionarEstadoJornada gestionarEstadoJornada);
-        Task<List<ListarJornada>> InformacionJornadaAsync();
-        Task<List<ListarJornadaEstadoActivo>> InformacionJornadaEstadoActivoAsync();
+        Task<ResultadoMensajeJornada> RegistrarJornadaAsync(JornadaModelo jornadaModelo);
+        Task<ResultadoMensajeJornada> GestionarEstadoJornadaAsync(string operacion, JornadaModelo jornadaModelo);
+        Task<List<JornadaModelo>> InformacionJornadaAsync();
+        Task<List<JornadaModelo>> InformacionJornadaEstadoActivoAsync();
 
 
     }

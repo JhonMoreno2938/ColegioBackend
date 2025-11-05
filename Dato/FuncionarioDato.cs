@@ -1,9 +1,9 @@
 ﻿using Colegio.Interfaz;
-using Colegio.Modelos.Funcionario.Procedimientos;
 using Colegio.Modelos.Funcionario.Salidas_Procedimientos;
 using MySql.Data.MySqlClient;
 using System.Data;
 using Colegio.Utilidades;
+using Colegio.Modelos.Funcionario;
 
 
 namespace Colegio.Dato
@@ -19,7 +19,7 @@ namespace Colegio.Dato
                                ?? throw new ArgumentNullException(nameof(configuracion), "La cadena de conexión no puede ser nula");
         }
 
-        public async Task<SalidaRegistrarFuncionario> RegistrarFuncionarioAsync(RegistrarFuncionario registrarFuncionario)
+        public async Task<SalidaRegistrarFuncionario> RegistrarFuncionarioAsync(FuncionarioModelo funcionarioModelo)
         {
             var resultado = new SalidaRegistrarFuncionario() { exito = false};
 
@@ -27,7 +27,7 @@ namespace Colegio.Dato
 
             try
             {
-                string contraseinaEncriptada = Seguridad.EncriptarContraseina(registrarFuncionario.numeroDocumento, registrarFuncionario.numeroDocumento);
+                string contraseinaEncriptada = Seguridad.EncriptarContraseina(funcionarioModelo.personaModelo.numeroDocumentoPersona, funcionarioModelo.personaModelo.numeroDocumentoPersona);
 
                 using var conexion2 = new MySqlConnection(conexion);
                 await conexion2.OpenAsync();
@@ -41,14 +41,14 @@ namespace Colegio.Dato
                         CommandType = CommandType.StoredProcedure
                     };
 
-                    comando.Parameters.AddWithValue("@p_primer_nombre", registrarFuncionario.primerNombre);
-                    comando.Parameters.AddWithValue("@p_segundo_nombre", string.IsNullOrEmpty(registrarFuncionario.segundoNombre) ? (object)DBNull.Value : registrarFuncionario.segundoNombre);
-                    comando.Parameters.AddWithValue("@p_primer_apellido", registrarFuncionario.primerApellido);
-                    comando.Parameters.AddWithValue("@p_segundo_apellido", string.IsNullOrEmpty(registrarFuncionario.segundoApellido) ? (object)DBNull.Value : registrarFuncionario.segundoApellido);
-                    comando.Parameters.AddWithValue("@p_numero_documento", registrarFuncionario.numeroDocumento);
-                    comando.Parameters.AddWithValue("@p_nombre_tipo_documento", registrarFuncionario.nombreTipoDocumento);
-                    comando.Parameters.AddWithValue("@p_nombre_genero", registrarFuncionario.nombreGenero);
-                    comando.Parameters.AddWithValue("@p_nombre_tipo_funcionario", registrarFuncionario.nombreTipoFuncionario);
+                    comando.Parameters.AddWithValue("@p_primer_nombre", funcionarioModelo.personaModelo.primerNombrePersona);
+                    comando.Parameters.AddWithValue("@p_segundo_nombre", string.IsNullOrEmpty(funcionarioModelo.personaModelo.segundoNombrePersona) ? (object)DBNull.Value : funcionarioModelo.personaModelo.segundoNombrePersona);
+                    comando.Parameters.AddWithValue("@p_primer_apellido", funcionarioModelo.personaModelo.primerApellidoPersona);
+                    comando.Parameters.AddWithValue("@p_segundo_apellido", string.IsNullOrEmpty(funcionarioModelo.personaModelo.segundoApellidoPersona) ? (object)DBNull.Value : funcionarioModelo.personaModelo.segundoApellidoPersona);
+                    comando.Parameters.AddWithValue("@p_numero_documento", funcionarioModelo.personaModelo.numeroDocumentoPersona);
+                    comando.Parameters.AddWithValue("@p_nombre_tipo_documento", funcionarioModelo.personaModelo.tipoDocumentoModelo.nombreTipoDocumento);
+                    comando.Parameters.AddWithValue("@p_nombre_genero", funcionarioModelo.personaModelo.generoModelo.nombreGenero);
+                    comando.Parameters.AddWithValue("@p_nombre_tipo_funcionario", funcionarioModelo.tipoFuncionarioModelo.nombreTipoFuncionario);
                     comando.Parameters.AddWithValue("@p_contraseina_usuario", contraseinaEncriptada);
 
                     var outMensaje = comando.Parameters.Add("@mensaje", MySqlDbType.VarChar, 255);

@@ -1,9 +1,9 @@
-﻿using Colegio.Modelos.Rh.Vistas;
+﻿using Colegio.Modelos.Rh;
 
 namespace Colegio.Interfaz
 {
     public interface IRh
     {
-        Task<List<ListarRh>> InformacionRhAsync();
+        Task<List<RhModelo>> InformacionRhAsync();
     }
 }

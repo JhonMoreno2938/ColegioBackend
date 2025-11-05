@@ -1,5 +1,6 @@
 ﻿using Colegio.Interfaz;
 using Colegio.Modelos.Tipo_Sede.Vistas;
+using Colegio.Modelos.Tipo_Sede;
 
 namespace Colegio.Servicios
 {
@@ -11,11 +12,24 @@ namespace Colegio.Servicios
         {
             this.tipoSede = tipoSede;
         }
+
+
+        private List<ListarTipoSede> MapearListarTipoSede(List<TipoSedeModelo> tipoSedeModelo)
+        {
+            return tipoSedeModelo.Select(modelo => new ListarTipoSede
+            {
+                nombreTipoSede = modelo.nombreTipoSede
+            }).ToList();
+        }
+
+
         public async Task<List<ListarTipoSede>> ValidarInformacionTipoSedeAsync()
         {
-            var informacionTipoSede = await tipoSede.InformacionTipoSedeAsync();
+            var modeloTipoSede = await tipoSede.InformacionTipoSedeAsync();
 
-            return informacionTipoSede;
+            var resultado = MapearListarTipoSede(modeloTipoSede);
+
+            return resultado;
         }
     }
 }

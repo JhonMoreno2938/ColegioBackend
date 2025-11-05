@@ -1,7 +1,12 @@
 ﻿using Colegio.Interfaz;
+using Colegio.Modelos.Grado.Vistas;
+using Colegio.Modelos.Grado;
+using Colegio.Modelos.Sede;
 using Colegio.Modelos.Sede.Procedimientos;
 using Colegio.Modelos.Sede.Salidas_Procedimientos;
 using Colegio.Modelos.Sede.Vistas;
+using Colegio.Modelos.Tipo_Sede;
+using Colegio.Modelos.Grado.Procedimientos;
 
 namespace Colegio.Servicios
 {
@@ -14,23 +19,90 @@ namespace Colegio.Servicios
             this.sede = sede;
         }
 
+        private SedeModelo MapearRegistrarSede(RegistrarSede registrarSede)
+        {
+            var tipoSede = new TipoSedeModelo()
+            {
+                pkIdTipoSede = 0,
+                nombreTipoSede = registrarSede.nombreTipoSede
+            };
+
+            return new SedeModelo
+            {
+                tipoSedeModelo = tipoSede,
+
+                codigoDaneSede = registrarSede.codigoDaneSede,
+                nombreSede = registrarSede.nombreSede,
+                direccionSede = registrarSede.direccionSede,
+                numeroContactoSede = registrarSede.numeroContactoSede,
+            };
+        }
+
+        private SedeModelo MapearModificarInformacionSede(ModificarInformacionSede modificarInformacionSede)
+        {
+            return new SedeModelo
+            {
+
+                codigoDaneSede = modificarInformacionSede.codigoDaneSede,
+                nombreSede = modificarInformacionSede.nombreSede,
+                direccionSede = modificarInformacionSede.direccionSede,
+                numeroContactoSede = modificarInformacionSede.numeroContactoSede,
+            };
+
+        }
+
+        private SedeModelo MapearGestionarEstadoSede(GestionarEstadoSede gestionarEstadoSede)
+        {
+            return new SedeModelo
+            {
+                codigoDaneSede = gestionarEstadoSede.codigoDaneSede,
+                pkIdSede = 0,
+                estadoSede = string.Empty
+            };
+        }
+
+        private List<ListarSede> MapearListarSede(List<SedeModelo> sedeModelo)
+        {
+            return sedeModelo.Select(modelo => new ListarSede
+            {
+                codigoDaneSede = modelo.codigoDaneSede,
+                nombreSede = modelo.nombreSede,
+                estadoSede = modelo.estadoSede
+            }).ToList();
+        }
+
+        private List<ListarSedeEstadoActivo> MapearListarSedeEstadoActivo(List<SedeModelo> sedeModelo)
+        {
+            return sedeModelo.Select(modelo => new ListarSedeEstadoActivo
+            {
+                codigoDaneSede = modelo.codigoDaneSede,
+                nombreSede = modelo.nombreSede
+            }).ToList();
+        }
+
         public async Task<ResultadoMensajeSede> ValidarInformacionRegistrarSedeAsync(RegistrarSede registrarSede)
         {
-            ResultadoMensajeSede resultado = await sede.RegistrarSedeAsync(registrarSede);
+            SedeModelo sedeModelo = MapearRegistrarSede(registrarSede);
+
+            ResultadoMensajeSede resultado = await sede.RegistrarSedeAsync(sedeModelo);
 
             return resultado;
         }
 
         public async Task<ResultadoMensajeSede> ValidarModificarInformacionSedeAsync(ModificarInformacionSede modificarInformacionSede)
         {
-            ResultadoMensajeSede resultado = await sede.ModificarInformacionSedeAsync(modificarInformacionSede);
+            SedeModelo sedeModelo = MapearModificarInformacionSede(modificarInformacionSede);
+
+            ResultadoMensajeSede resultado = await sede.ModificarInformacionSedeAsync(sedeModelo);
 
             return resultado;
         }
 
         public async Task<ResultadoMensajeSede> ValidarGestionarEstadoSedeAsync(GestionarEstadoSede gestionarEstadoSede)
         {
-            ResultadoMensajeSede resultado = await sede.GestionarEstadoSedeAsync(gestionarEstadoSede);
+            SedeModelo sedeModelo = MapearGestionarEstadoSede(gestionarEstadoSede);
+
+            ResultadoMensajeSede resultado = await sede.GestionarEstadoSedeAsync(gestionarEstadoSede.nombreOperacion, sedeModelo);
 
             return resultado;
         }
@@ -44,15 +116,19 @@ namespace Colegio.Servicios
 
         public async Task<List<ListarSede>> ValidarInformacionSedeAsync()
         {
-            var informacionSede = await sede.InformacionSedeAsync();
+            var sedeModelo = await sede.InformacionSedeAsync();
 
-            return informacionSede;
+            var resultado = MapearListarSede(sedeModelo);
+
+            return resultado;
         }
         public async Task<List<ListarSedeEstadoActivo>> ValidarInformacionSedeEstadoActivoAsync()
         {
-            var informacionSedeEstadoActivo = await sede.InformacionSedeEstadoActivoAsync();
+            var sedeModelo = await sede.InformacionSedeEstadoActivoAsync();
 
-            return informacionSedeEstadoActivo;
+            var resultado = MapearListarSedeEstadoActivo(sedeModelo);
+
+            return resultado;
         }
 
 

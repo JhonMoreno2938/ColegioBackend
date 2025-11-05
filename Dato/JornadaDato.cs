@@ -1,7 +1,6 @@
 ﻿using Colegio.Interfaz;
-using Colegio.Modelos.Jornada.Procedimientos;
+using Colegio.Modelos.Jornada;
 using Colegio.Modelos.Jornada.Salidas_Procedimientos;
-using Colegio.Modelos.Jornada.Vistas;
 using MySql.Data.MySqlClient;
 using System.Data;
 
@@ -22,7 +21,7 @@ namespace Colegio.Dato
         }
 
 
-        public async Task<ResultadoMensajeJornada> RegistrarJornadaAsync(RegistrarJornada registrarJornada)
+        public async Task<ResultadoMensajeJornada> RegistrarJornadaAsync(JornadaModelo jornadaModelo)
         {
             var resultado = new ResultadoMensajeJornada { exito = false, mensaje = "Error de conexión/ejecución no capturado." };
 
@@ -42,7 +41,7 @@ namespace Colegio.Dato
                         CommandType = CommandType.StoredProcedure
                     };
 
-                    comando.Parameters.AddWithValue("@p_nombre_jornada", registrarJornada.nombreJornada);
+                    comando.Parameters.AddWithValue("@p_nombre_jornada", jornadaModelo.nombreJornada);
 
                     var outMensaje = comando.Parameters.Add("@mensaje", MySqlDbType.VarChar, 255);
                     outMensaje.Direction = ParameterDirection.Output;
@@ -86,7 +85,7 @@ namespace Colegio.Dato
             return resultado;
         }
 
-        public async Task<ResultadoMensajeJornada> GestionarEstadoJornadaAsync(GestionarEstadoJornada gestionarEstadoJornada)
+        public async Task<ResultadoMensajeJornada> GestionarEstadoJornadaAsync(string operacion, JornadaModelo jornadaModelo)
         {
             var resultado = new ResultadoMensajeJornada { exito = false, mensaje = "Error de conexión/ejecución no capturado." };
 
@@ -106,8 +105,8 @@ namespace Colegio.Dato
                         CommandType = CommandType.StoredProcedure
                     };
 
-                    comando.Parameters.AddWithValue("@p_operacion", gestionarEstadoJornada.nombreOperacion);
-                    comando.Parameters.AddWithValue("@p_nombre_jornada", gestionarEstadoJornada.nombreJornada);
+                    comando.Parameters.AddWithValue("@p_operacion", operacion);
+                    comando.Parameters.AddWithValue("@p_nombre_jornada", jornadaModelo.nombreJornada);
 
                     var outMensaje = comando.Parameters.Add("@mensaje", MySqlDbType.VarChar, 255);
                     outMensaje.Direction = ParameterDirection.Output;
@@ -151,9 +150,9 @@ namespace Colegio.Dato
             return resultado;
         }
 
-        public async Task<List<ListarJornada>> InformacionJornadaAsync()
+        public async Task<List<JornadaModelo>> InformacionJornadaAsync()
         {
-            var listaJornada = new List<ListarJornada>();
+            var listaJornada = new List<JornadaModelo>();
 
             try
             {
@@ -167,7 +166,7 @@ namespace Colegio.Dato
                         {
                             while (await leer.ReadAsync())
                             {
-                                var listarJornada = new ListarJornada();
+                                var listarJornada = new JornadaModelo();
                                 listarJornada.nombreJornada = leer.GetString("nombre_jornada");
                                 listarJornada.estadoJornada = leer.GetString("estado_jornada");
                                 listaJornada.Add(listarJornada);
@@ -180,13 +179,13 @@ namespace Colegio.Dato
             catch (Exception ex)
             {
                 Console.WriteLine($"Error al obtener las jornadas: {ex.Message}");
-                return new List<ListarJornada>();
+                return new List<JornadaModelo>();
             }
         }
 
-        public async Task<List<ListarJornadaEstadoActivo>> InformacionJornadaEstadoActivoAsync()
+        public async Task<List<JornadaModelo>> InformacionJornadaEstadoActivoAsync()
         {
-            var listaJornadaEstadoActivo = new List<ListarJornadaEstadoActivo>();
+            var listaJornadaEstadoActivo = new List<JornadaModelo>();
 
             try
             {
@@ -200,7 +199,7 @@ namespace Colegio.Dato
                         {
                             while (await leer.ReadAsync())
                             {
-                                var listarJornadaEstadoActivo = new ListarJornadaEstadoActivo();
+                                var listarJornadaEstadoActivo = new JornadaModelo();
                                 listarJornadaEstadoActivo.nombreJornada = leer.GetString("nombre_jornada");
                                 listaJornadaEstadoActivo.Add(listarJornadaEstadoActivo);
                             }
@@ -212,7 +211,7 @@ namespace Colegio.Dato
             catch (Exception ex)
             {
                 Console.WriteLine($"Error al obtener las jornadas: {ex.Message}");
-                return new List<ListarJornadaEstadoActivo>();
+                return new List<JornadaModelo>();
             }
         }
 

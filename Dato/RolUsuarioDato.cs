@@ -1,5 +1,5 @@
 ﻿using Colegio.Interfaz;
-using Colegio.Modelos.Rol_Usuario.Vistas;
+using Colegio.Modelos.Rol_Usuario;
 using MySql.Data.MySqlClient;
 using System.Data;
 
@@ -15,9 +15,9 @@ namespace Colegio.Dato
             conexion = configuracion.GetConnectionString("CadenaConexion")
                        ?? throw new ArgumentNullException(nameof(configuracion), "La cadena de conexión no puede ser nula");
         }
-        public async Task<List<ListarRolUsuario>> InformacionRolUsuarioAsync()
+        public async Task<List<RolUsuarioModelo>> InformacionRolUsuarioAsync()
         {
-            var listaRolUsuario = new List<ListarRolUsuario>();
+            var listaRolUsuario = new List<RolUsuarioModelo>();
 
             try
             {
@@ -31,7 +31,7 @@ namespace Colegio.Dato
                         {
                             while (await leer.ReadAsync())
                             {
-                                var listarRolUsuario = new ListarRolUsuario();
+                                var listarRolUsuario = new RolUsuarioModelo();
                                 listarRolUsuario.nombreRolUsuario = leer.GetString("nombre_rol_usuario");
                                 listaRolUsuario.Add(listarRolUsuario);
                             }
@@ -43,7 +43,7 @@ namespace Colegio.Dato
             catch (Exception ex)
             {
                 Console.WriteLine($"Error al obtener los roles de usuario: {ex.Message}");
-                return new List<ListarRolUsuario>();
+                return new List<RolUsuarioModelo>();
             }
         }
     }

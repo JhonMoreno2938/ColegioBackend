@@ -28,7 +28,7 @@ namespace Colegio.Controllers
             }
             catch (Exception ex)
             {
-                return BadRequest(new { mensaje = ex.Message });
+                return StatusCode(500, new { Mensaje = $"Error interno del servidor: {ex.Message}" });
             }
         }
     }

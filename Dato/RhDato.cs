@@ -1,5 +1,5 @@
 ﻿using Colegio.Interfaz;
-using Colegio.Modelos.Rh.Vistas;
+using Colegio.Modelos.Rh;
 using MySql.Data.MySqlClient;
 using System.Data;
 
@@ -16,9 +16,9 @@ namespace Colegio.Dato
                        ?? throw new ArgumentNullException(nameof(configuracion), "La cadena de conexión no puede ser nula");
         }
 
-        public async Task<List<ListarRh>> InformacionRhAsync()
+        public async Task<List<RhModelo>> InformacionRhAsync()
         {
-            var listaRh = new List<ListarRh>();
+            var listaRh = new List<RhModelo>();
 
             try
             {
@@ -32,7 +32,7 @@ namespace Colegio.Dato
                         {
                             while (await leer.ReadAsync())
                             {
-                                var listarRh = new ListarRh();
+                                var listarRh = new RhModelo();
                                 listarRh.nombreRh = leer.GetString("nombre_rh");
                                 listaRh.Add(listarRh);
                             }
@@ -44,7 +44,7 @@ namespace Colegio.Dato
             catch (Exception ex)
             {
                 Console.WriteLine($"Error al obtener los RH: {ex.Message}");
-                return new List<ListarRh>();
+                return new List<RhModelo>();
             }
         }
 

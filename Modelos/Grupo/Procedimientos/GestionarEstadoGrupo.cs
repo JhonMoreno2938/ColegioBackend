@@ -5,21 +5,14 @@ namespace Colegio.Modelos.Grupo.Procedimientos
 {
     public class GestionarEstadoGrupo
     {
-        [JsonIgnore]
-        GrupoModelo grupoModelo = new GrupoModelo();
-
         [JsonPropertyName("nombreOperacion")]
         [StringLength(20)]
         [Required]
-        public string nombreOperacion { get; set; }
+        public string nombreOperacion { get; set; } = string.Empty;
 
         [JsonPropertyName("nombreGrupo")]
         [StringLength(3)]
         [Required]
-        public string nombreGrupo
-        {
-            get => grupoModelo.nombreGrupo;
-            set => grupoModelo.nombreGrupo = value;
-        }
+        public string nombreGrupo { get; set; } = string.Empty;
     }
 }

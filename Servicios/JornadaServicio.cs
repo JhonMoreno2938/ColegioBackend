@@ -1,4 +1,5 @@
 ﻿using Colegio.Interfaz;
+using Colegio.Modelos.Jornada;
 using Colegio.Modelos.Jornada.Procedimientos;
 using Colegio.Modelos.Jornada.Salidas_Procedimientos;
 using Colegio.Modelos.Jornada.Vistas;
@@ -14,29 +15,80 @@ namespace Colegio.Servicios
             this.jornada = jornada;
         }
 
+        private JornadaModelo MapearRegistrarJornada(RegistrarJornada registrarJornada)
+        {
+            return new JornadaModelo
+            {
+                nombreJornada = registrarJornada.nombreJornada,
+                pkIdJornada = 0
+            };
+        }
+
+        private JornadaModelo MapearGestionarEstadoJornada(GestionarEstadoJornada gestionarEstadoJornada)
+        {
+            return new JornadaModelo
+            {
+                nombreJornada = gestionarEstadoJornada.nombreJornada,
+                pkIdJornada = 0,
+                estadoJornada = string.Empty
+            };
+        }
+
+        private List<ListarJornada> MapearListarJornada(List<JornadaModelo> jornadaModelo)
+        {
+            return jornadaModelo.Select(modelo => new ListarJornada
+            {
+                nombreJornada = modelo.nombreJornada,
+                estadoJornada = modelo.estadoJornada
+
+            }).ToList();
+        }
+
+        private List<ListarJornadaEstadoActivo> MapearListarJornadaEstadoActivo(List<JornadaModelo> jornadaModelo)
+        {
+            return jornadaModelo.Select(modelo => new ListarJornadaEstadoActivo
+            {
+                nombreJornada = modelo.nombreJornada
+
+            }).ToList();
+        }
+
         public async Task<ResultadoMensajeJornada> ValidarInformacionRegistrarJornadaAsync(RegistrarJornada registrarJornada)
         {
-            ResultadoMensajeJornada resultado = await jornada.RegistrarJornadaAsync(registrarJornada);
+            JornadaModelo jornadaModelo = MapearRegistrarJornada(registrarJornada);
+
+            ResultadoMensajeJornada resultado = await jornada.RegistrarJornadaAsync(jornadaModelo);
 
             return resultado;
         }
+
         public async Task<ResultadoMensajeJornada> ValidarGestionarEstadoJornadaAsync(GestionarEstadoJornada gestionarEstadoJornada)
         {
-            ResultadoMensajeJornada resultado = await jornada.GestionarEstadoJornadaAsync(gestionarEstadoJornada);
+            JornadaModelo jornadaModelo = MapearGestionarEstadoJornada(gestionarEstadoJornada);
+
+            ResultadoMensajeJornada resultado = await jornada.GestionarEstadoJornadaAsync(gestionarEstadoJornada.nombreOperacion, jornadaModelo);
 
             return resultado;
         }
+
         public async Task<List<ListarJornada>> ValidarInformacionJornadaAsync()
         {
-            var informacionJornada = await jornada.InformacionJornadaAsync();
-            return informacionJornada;
-        }
+            var jornadaModelo = await jornada.InformacionJornadaAsync();
 
+            var resultado = MapearListarJornada(jornadaModelo);
+
+            return resultado;
+        }
+        
         public async Task<List<ListarJornadaEstadoActivo>> ValidarInformacionJornadaEstadoActivoAsync()
         {
-            var informacionJornada = await jornada.InformacionJornadaEstadoActivoAsync();
+            var jornadaModelo = await jornada.InformacionJornadaEstadoActivoAsync();
 
-            return informacionJornada;
+            var resultado = MapearListarJornadaEstadoActivo(jornadaModelo);
+            
+            return resultado;
         }
+
+
     }
 }

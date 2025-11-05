@@ -1,5 +1,5 @@
 ﻿using Colegio.Interfaz;
-using Colegio.Modelos.Tipo_Sede.Vistas;
+using Colegio.Modelos.Tipo_Sede;
 using MySql.Data.MySqlClient;
 using System.Data;
 
@@ -16,9 +16,9 @@ namespace Colegio.Dato
                        ?? throw new ArgumentNullException(nameof(configuracion), "La cadena de conexión no puede ser nula");
         }
 
-        public async Task<List<ListarTipoSede>> InformacionTipoSedeAsync()
+        public async Task<List<TipoSedeModelo>> InformacionTipoSedeAsync()
         {
-            var listaTipoSede = new List<ListarTipoSede>();
+            var listaTipoSede = new List<TipoSedeModelo>();
 
             try
             {
@@ -32,7 +32,7 @@ namespace Colegio.Dato
                         {
                             while (await leer.ReadAsync())
                             {
-                                var listarTipoSede = new ListarTipoSede();
+                                var listarTipoSede = new TipoSedeModelo();
                                 listarTipoSede.nombreTipoSede = leer.GetString("nombre_tipo_sede");
                                 listaTipoSede.Add(listarTipoSede);
                             }
@@ -44,7 +44,7 @@ namespace Colegio.Dato
             catch (Exception ex)
             {
                 Console.WriteLine($"Error al obtener los tipo de sedes: {ex.Message}");
-                return new List<ListarTipoSede>();
+                return new List<TipoSedeModelo>();
             }
         }
     }

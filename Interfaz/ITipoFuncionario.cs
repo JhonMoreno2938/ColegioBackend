@@ -1,9 +1,9 @@
-﻿using Colegio.Modelos.Tipo_Funcionario.Vistas;
+﻿using Colegio.Modelos.Tipo_Funcionario;
 
 namespace Colegio.Interfaz
 {
     public interface ITipoFuncionario
     {
-        Task<List<ListarTipoFuncionario>> InformacionTipoFuncionarioAsync();
+        Task<List<TipoFuncionarioModelo>> InformacionTipoFuncionarioAsync();
     }
 }

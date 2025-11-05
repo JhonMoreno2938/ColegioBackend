@@ -1,5 +1,5 @@
 ﻿using Colegio.Interfaz;
-using Colegio.Modelos.Departamento.Vistas;
+using Colegio.Modelos.Departamento;
 using MySql.Data.MySqlClient;
 using System.Data;
 
@@ -16,9 +16,9 @@ namespace Colegio.Dato
                        ?? throw new ArgumentNullException(nameof(configuracion), "La cadena de conexión no puede ser nula");
         }
 
-        public async Task<List<ListarDepartamento>> InformacionDepartamentoAsync()
+        public async Task<List<DepartamentoModelo>> InformacionDepartamentoAsync()
         {
-            var listaDepartamento = new List<ListarDepartamento>();
+            var listaDepartamento = new List<DepartamentoModelo>();
 
             try
             {
@@ -32,7 +32,7 @@ namespace Colegio.Dato
                         {
                             while (await leer.ReadAsync())
                             {
-                                var listarDepartamento = new ListarDepartamento();
+                                var listarDepartamento = new DepartamentoModelo();
                                 listarDepartamento.nombreDepartamento = leer.GetString("nombre_departamento");
                                 listaDepartamento.Add(listarDepartamento);
                             }
@@ -44,7 +44,7 @@ namespace Colegio.Dato
             catch (Exception ex)
             {
                 Console.WriteLine($"Error al obtener los departamentos: {ex.Message}");
-                return new List<ListarDepartamento>();
+                return new List<DepartamentoModelo>();
             }
         }
     }

@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-
 namespace Colegio.Controllers
 {
     [Authorize]
@@ -19,8 +18,8 @@ namespace Colegio.Controllers
         }
 
         [Authorize(Policy = "SoloSecretario")]
-        [HttpGet("InformacionTipoFuncioanrio")]
-        public async Task<IActionResult> InformacionTipoFuncioanrio()
+        [HttpGet("InformacionTipoFuncionario")] // Typo corregido
+        public async Task<IActionResult> InformacionTipoFuncionario() // Typo corregido
         {
             try
             {
@@ -29,9 +28,9 @@ namespace Colegio.Controllers
             }
             catch (Exception ex)
             {
-                return BadRequest(new { mensaje = ex.Message });
+                // Se usa 500 Internal Server Error para fallas internas/de servidor.
+                return StatusCode(500, new { Mensaje = $"Error interno del servidor: {ex.Message}" });
             }
         }
-
     }
 }

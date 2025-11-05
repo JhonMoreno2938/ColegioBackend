@@ -1,9 +1,9 @@
-﻿using Colegio.Modelos.Departamento.Vistas;
+﻿using Colegio.Modelos.Departamento;
 
 namespace Colegio.Interfaz
 {
     public interface IDepartamento
     {
-        Task<List<ListarDepartamento>> InformacionDepartamentoAsync();
+        Task<List<DepartamentoModelo>> InformacionDepartamentoAsync();
     }
 }

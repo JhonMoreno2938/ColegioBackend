@@ -1,4 +1,5 @@
 ﻿using Colegio.Interfaz;
+using Colegio.Modelos.Genero;
 using Colegio.Modelos.Genero.Vistas;
 
 namespace Colegio.Servicios
@@ -11,11 +12,22 @@ namespace Colegio.Servicios
         {
             this.genero = genero;
         }
+
+        private List<ListarGenero> MapearListarGenero(List<GeneroModelo> generoModelo)
+        {
+            return generoModelo.Select(modelo => new ListarGenero
+            {
+                nombreGenero = modelo.nombreGenero
+            }).ToList();
+        }
+
         public async Task<List<ListarGenero>> ValidarInformacionGeneroAsync()
         {
-            var informacionGenero = await genero.InformacionGeneroAsync();
+            var modeloGenero = await genero.InformacionGeneroAsync();
+            
+            var resultado = MapearListarGenero(modeloGenero);
 
-            return informacionGenero;
+            return resultado;
         }
     }
 }

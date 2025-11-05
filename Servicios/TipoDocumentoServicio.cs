@@ -1,5 +1,6 @@
 ﻿using Colegio.Interfaz;
 using Colegio.Modelos.Tipo_Documento.Vistas;
+using Colegio.Modelos.Tipo_Documento;
 
 namespace Colegio.Servicios
 {
@@ -11,11 +12,23 @@ namespace Colegio.Servicios
         {
             this.tipoDocumento = tipoDocumento;
         }
+
+        private List<ListarTipoDocumento> MapearListarTipoDocumento(List<TipoDocumentoModelo> tipoDocumentoModelo)
+        {
+            return tipoDocumentoModelo.Select(modelo => new ListarTipoDocumento
+            {
+                nombreTipoDocumento = modelo.nombreTipoDocumento
+            }).ToList();
+        }
+
+
         public async Task<List<ListarTipoDocumento>> ValidarInformacionTipoDocumentoAsync()
         {
-            var informacionTipoDocumento = await tipoDocumento.InformacionTipoDocumentoAsync();
+            var modeloTipoDocumento = await tipoDocumento.InformacionTipoDocumentoAsync();
 
-            return informacionTipoDocumento;
+            var resultado = MapearListarTipoDocumento(modeloTipoDocumento);
+
+            return resultado;
         }
     }
 }

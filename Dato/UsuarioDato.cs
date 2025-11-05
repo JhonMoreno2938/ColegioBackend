@@ -19,8 +19,7 @@ namespace Colegio.Dato
 
         public async Task<SalidaIniciarSesion> IniciarSesionAsync(IniciarSesion iniciarSesion)
         {
-
-            var resultado = new SalidaIniciarSesion() { exito = false };
+            var resultado = new SalidaIniciarSesion() { exito = false, mensaje = "Usuario no encontrado o error en la base de datos." };
 
             try
             {
@@ -40,6 +39,7 @@ namespace Colegio.Dato
                     outMensaje.Direction = ParameterDirection.Output;
 
                     using var leer = await comando.ExecuteReaderAsync();
+
                     if (await leer.ReadAsync())
                     {
                         resultado.nombrePersona = leer["nombre_completo"]?.ToString() ?? string.Empty;
@@ -48,11 +48,24 @@ namespace Colegio.Dato
                         resultado.nombreRolUsuario = leer["nombre_rol_usuario"]?.ToString() ?? string.Empty;
 
                         resultado.exito = true;
-                    }
 
-                    if (outMensaje.Value != null)
+                        if (outMensaje.Value != null && outMensaje.Value != DBNull.Value)
+                        {
+                            resultado.mensaje = outMensaje.Value.ToString() ?? string.Empty;
+                        }
+                    }
+                    else
                     {
-                        resultado.mensaje = outMensaje.Value.ToString();
+                        await leer.CloseAsync();
+
+                        if (outMensaje.Value != null && outMensaje.Value != DBNull.Value)
+                        {
+                            resultado.mensaje = outMensaje.Value.ToString() ?? "Usuario no encontrado.";
+                        }
+                        else
+                        {
+                            resultado.mensaje = "Usuario no encontrado.";
+                        }
                     }
                 }
                 catch (Exception ex)

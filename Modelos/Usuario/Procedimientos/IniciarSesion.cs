@@ -5,25 +5,14 @@ namespace Colegio.Modelos.Usuario.Procedimientos
 {
     public class IniciarSesion
     {
-        [JsonIgnore]
-        private readonly UsuarioModelo usuarioModelo = new UsuarioModelo();
-
         [JsonPropertyName("nombreUsuario")]
         [Required]
         [StringLength(10)]
-        public string nombreUsuario
-        {
-            get => usuarioModelo.nombreUsuario;
-            set => usuarioModelo.nombreUsuario = value;
-        }
+        public string nombreUsuario { get; set; } = string.Empty;
 
         [JsonPropertyName("contraseinaUsuario")]
         [Required]
         [StringLength(255)]
-        public string contraseinaUsuario
-        {
-            get => usuarioModelo.contraseinaUsuario;
-            set => usuarioModelo.contraseinaUsuario = value;
-        }
+        public string contraseinaUsuario { get; set; } = string.Empty;
     }
 }

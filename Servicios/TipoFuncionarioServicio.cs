@@ -1,5 +1,6 @@
 ﻿using Colegio.Interfaz;
 using Colegio.Modelos.Tipo_Funcionario.Vistas;
+using Colegio.Modelos.Tipo_Funcionario;
 
 namespace Colegio.Servicios
 {
@@ -11,11 +12,24 @@ namespace Colegio.Servicios
         {
             this.tipoFuncionario = tipoFuncionario;
         }
+
+
+        private List<ListarTipoFuncionario> MapearListarTipoFuncionario(List<TipoFuncionarioModelo> tipoFuncionarioModelo)
+        {
+            return tipoFuncionarioModelo.Select(modelo => new ListarTipoFuncionario
+            {
+                nombreTipoFuncionario = modelo.nombreTipoFuncionario
+            }).ToList();
+        }
+
+
         public async Task<List<ListarTipoFuncionario>> ValidarInformacionTipoFuncionarioAsync()
         {
-            var informacionTipoFuncionario = await tipoFuncionario.InformacionTipoFuncionarioAsync();
+            var modeloTipoFuncionario = await tipoFuncionario.InformacionTipoFuncionarioAsync();
 
-            return informacionTipoFuncionario;
+            var resultado = MapearListarTipoFuncionario(modeloTipoFuncionario);
+
+            return resultado;
         }
     }
 }

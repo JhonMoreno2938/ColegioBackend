@@ -1,5 +1,6 @@
 ﻿using Colegio.Interfaz;
 using Colegio.Modelos.Rol_Usuario.Vistas;
+using Colegio.Modelos.Rol_Usuario;
 
 namespace Colegio.Servicios
 {
@@ -11,11 +12,22 @@ namespace Colegio.Servicios
         {
             this.rolUsuario = rolUsuario;
         }
+
+        private List<ListarRolUsuario> MapearListarRolUsuario(List<RolUsuarioModelo> rolUsuarioModelo)
+        {
+            return rolUsuarioModelo.Select(modelo => new ListarRolUsuario
+            {
+                nombreRolUsuario = modelo.nombreRolUsuario
+            }).ToList();
+        }
+
         public async Task<List<ListarRolUsuario>> ValidarInformacionRolUsuarioAsync()
         {
-            var informacionRolUsuario = await rolUsuario.InformacionRolUsuarioAsync();
+            var modeloRolUsuario = await rolUsuario.InformacionRolUsuarioAsync();
 
-            return informacionRolUsuario;
+            var resultado = MapearListarRolUsuario(modeloRolUsuario);
+
+            return resultado;
         }
     }
 }

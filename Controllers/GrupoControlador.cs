@@ -34,7 +34,7 @@ namespace Colegio.Controllers
 
                 if (resultado.exito)
                 {
-                    return Ok(new { Mensaje = resultado.mensaje });
+                    return CreatedAtAction(nameof(RegistrarGrupo), new { Mensaje = resultado.mensaje });
                 }
                 else
                 {
@@ -86,7 +86,7 @@ namespace Colegio.Controllers
             }
             catch (Exception ex)
             {
-                return BadRequest(new { mensaje = ex.Message });
+                return StatusCode(500, new { Mensaje = $"Error interno del servidor: {ex.Message}" });
             }
         }
 
@@ -101,7 +101,7 @@ namespace Colegio.Controllers
             }
             catch (Exception ex)
             {
-                return BadRequest(new { mensaje = ex.Message });
+                return StatusCode(500, new { Mensaje = $"Error interno del servidor: {ex.Message}" });
             }
         }
     }

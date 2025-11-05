@@ -1,7 +1,6 @@
 ﻿using Colegio.Interfaz;
-using Colegio.Modelos.Nivel_Escolaridad.Procedimientos;
+using Colegio.Modelos.Nivel_Escolaridad;
 using Colegio.Modelos.Nivel_Escolaridad.Salidas_Procedimientos;
-using Colegio.Modelos.Nivel_Escolaridad.Vistas;
 using MySql.Data.MySqlClient;
 using System.Data;
 
@@ -21,7 +20,7 @@ namespace Colegio.Dato
                                ?? throw new ArgumentNullException(nameof(configuracion), "La cadena de conexión no puede ser nula");
         }
 
-        public async Task<ResultadoMensajeNivelEscolaridad> RegistrarNivelEscolaridadAsync(RegistrarNivelEscolaridad registrarNivelEscolaridad)
+        public async Task<ResultadoMensajeNivelEscolaridad> RegistrarNivelEscolaridadAsync(NivelEscolaridadModelo nivelEscolaridadModelo)
         {
             var resultado = new ResultadoMensajeNivelEscolaridad { exito = false, mensaje = "Error de conexión/ejecución no capturado." };
 
@@ -41,7 +40,7 @@ namespace Colegio.Dato
                         CommandType = CommandType.StoredProcedure
                     };
 
-                    comando.Parameters.AddWithValue("@p_nombre_nivel_escolaridad", registrarNivelEscolaridad.nombreNivelEscolaridad);
+                    comando.Parameters.AddWithValue("@p_nombre_nivel_escolaridad", nivelEscolaridadModelo.nombreNivelEscolaridad);
 
                     var outMensaje = comando.Parameters.Add("@mensaje", MySqlDbType.VarChar, 255);
                     outMensaje.Direction = ParameterDirection.Output;
@@ -85,7 +84,7 @@ namespace Colegio.Dato
             return resultado;
         }
 
-        public async Task<ResultadoMensajeNivelEscolaridad> GestionarEstadoNivelEscolaridadAsync(GestionarEstadoNivelEscolaridad gestionarEstadoNivelEscolaridad)
+        public async Task<ResultadoMensajeNivelEscolaridad> GestionarEstadoNivelEscolaridadAsync(string operacion, NivelEscolaridadModelo nivelEscolaridadModelo)
         {
             var resultado = new ResultadoMensajeNivelEscolaridad { exito = false, mensaje = "Error de conexión/ejecución no capturado." };
 
@@ -105,8 +104,8 @@ namespace Colegio.Dato
                         CommandType = CommandType.StoredProcedure
                     };
 
-                    comando.Parameters.AddWithValue("@p_operacion", gestionarEstadoNivelEscolaridad.nombreOperacion);
-                    comando.Parameters.AddWithValue("@p_nombre_nivel_escolaridad", gestionarEstadoNivelEscolaridad.nombreNivelEscolaridad);
+                    comando.Parameters.AddWithValue("@p_operacion", operacion);
+                    comando.Parameters.AddWithValue("@p_nombre_nivel_escolaridad", nivelEscolaridadModelo.nombreNivelEscolaridad);
 
                     var outMensaje = comando.Parameters.Add("@mensaje", MySqlDbType.VarChar, 255);
                     outMensaje.Direction = ParameterDirection.Output;
@@ -150,9 +149,9 @@ namespace Colegio.Dato
             return resultado;
         }
 
-        public async Task<List<ListarNivelEscolaridad>> InformacionNivelEscolaridadAsync()
+        public async Task<List<NivelEscolaridadModelo>> InformacionNivelEscolaridadAsync()
         {
-            var listaNivelEscolaridad = new List<ListarNivelEscolaridad>();
+            var listaNivelEscolaridad = new List<NivelEscolaridadModelo>();
 
             try
             {
@@ -166,7 +165,7 @@ namespace Colegio.Dato
                         {
                             while (await leer.ReadAsync())
                             {
-                                var listarNivelEscolaridad = new ListarNivelEscolaridad();
+                                var listarNivelEscolaridad = new NivelEscolaridadModelo();
                                 listarNivelEscolaridad.nombreNivelEscolaridad = leer.GetString("nombre_nivel_escolaridad");
                                 listarNivelEscolaridad.estadoNivelEscolaridad = leer.GetString("estado_nivel_escolaridad");
                                 listaNivelEscolaridad.Add(listarNivelEscolaridad);
@@ -179,13 +178,13 @@ namespace Colegio.Dato
             catch (Exception ex)
             {
                 Console.WriteLine($"Error al obtener los niveles de escolaridad: {ex.Message}");
-                return new List<ListarNivelEscolaridad>();
+                return new List<NivelEscolaridadModelo>();
             }
         }
 
-        public async Task<List<ListarNivelEscolaridadEstadoActivo>> InformacionNivelEscolaridadEstadoActivoAsync()
+        public async Task<List<NivelEscolaridadModelo>> InformacionNivelEscolaridadEstadoActivoAsync()
         {
-            var listaNivelEscolaridadEstadoActivo = new List<ListarNivelEscolaridadEstadoActivo>();
+            var listaNivelEscolaridadEstadoActivo = new List<NivelEscolaridadModelo>();
 
             try
             {
@@ -199,7 +198,7 @@ namespace Colegio.Dato
                         {
                             while (await leer.ReadAsync())
                             {
-                                var listarNivelEscolaridadEstadoActivo = new ListarNivelEscolaridadEstadoActivo();
+                                var listarNivelEscolaridadEstadoActivo = new NivelEscolaridadModelo();
                                 listarNivelEscolaridadEstadoActivo.nombreNivelEscolaridad = leer.GetString("nombre_nivel_escolaridad");
                                 listaNivelEscolaridadEstadoActivo.Add(listarNivelEscolaridadEstadoActivo);
                             }
@@ -211,7 +210,7 @@ namespace Colegio.Dato
             catch (Exception ex)
             {
                 Console.WriteLine($"Error al obtener los niveles de escolaridad: {ex.Message}");
-                return new List<ListarNivelEscolaridadEstadoActivo>();
+                return new List<NivelEscolaridadModelo>();
             }
         }
     }

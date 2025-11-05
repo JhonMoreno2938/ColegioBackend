@@ -1,4 +1,5 @@
 ﻿using Colegio.Interfaz;
+using Colegio.Modelos.Genero;
 using Colegio.Modelos.Genero.Vistas;
 using MySql.Data.MySqlClient;
 using System.Data;
@@ -16,9 +17,9 @@ namespace Colegio.Dato
                        ?? throw new ArgumentNullException(nameof(configuracion), "La cadena de conexión no puede ser nula");
         }
 
-        public async Task<List<ListarGenero>> InformacionGeneroAsync()
+        public async Task<List<GeneroModelo>> InformacionGeneroAsync()
         {
-            var listaGenero = new List<ListarGenero>();
+            var listaGenero = new List<GeneroModelo>();
 
             try
             {
@@ -32,7 +33,7 @@ namespace Colegio.Dato
                         {
                             while (await leer.ReadAsync())
                             {
-                                var listarGenero = new ListarGenero();
+                                var listarGenero = new GeneroModelo();
                                 listarGenero.nombreGenero = leer.GetString("nombre_genero");
                                 listaGenero.Add(listarGenero);
                             }
@@ -44,7 +45,7 @@ namespace Colegio.Dato
             catch (Exception ex)
             {
                 Console.WriteLine($"Error al obtener los generos: {ex.Message}");
-                return new List<ListarGenero>();
+                return new List<GeneroModelo>();
             }
         }
     }

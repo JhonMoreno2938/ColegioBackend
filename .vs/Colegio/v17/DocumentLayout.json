@@ -1,7 +1,40 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\EXITO\\OneDrive\\Documentos\\Proyecto\\Colegio\\Backend\\Colegio\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{C5FC0365-F94F-4249-AE01-36FF27ACBDCA}|Colegio.csproj|c:\\users\\exito\\onedrive\\documentos\\proyecto\\colegio\\backend\\colegio\\controllers\\sedecontrolador.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C5FC0365-F94F-4249-AE01-36FF27ACBDCA}|Colegio.csproj|solutionrelative:controllers\\sedecontrolador.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C5FC0365-F94F-4249-AE01-36FF27ACBDCA}|Colegio.csproj|c:\\users\\exito\\onedrive\\documentos\\proyecto\\colegio\\backend\\colegio\\controllers\\jornadasedecontrolador.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C5FC0365-F94F-4249-AE01-36FF27ACBDCA}|Colegio.csproj|solutionrelative:controllers\\jornadasedecontrolador.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C5FC0365-F94F-4249-AE01-36FF27ACBDCA}|Colegio.csproj|c:\\users\\exito\\onedrive\\documentos\\proyecto\\colegio\\backend\\colegio\\dato\\jornadasededato.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C5FC0365-F94F-4249-AE01-36FF27ACBDCA}|Colegio.csproj|solutionrelative:dato\\jornadasededato.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C5FC0365-F94F-4249-AE01-36FF27ACBDCA}|Colegio.csproj|c:\\users\\exito\\onedrive\\documentos\\proyecto\\colegio\\backend\\colegio\\servicios\\jornadasedeservicio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C5FC0365-F94F-4249-AE01-36FF27ACBDCA}|Colegio.csproj|solutionrelative:servicios\\jornadasedeservicio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C5FC0365-F94F-4249-AE01-36FF27ACBDCA}|Colegio.csproj|c:\\users\\exito\\onedrive\\documentos\\proyecto\\colegio\\backend\\colegio\\interfaz\\ijornadasede.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C5FC0365-F94F-4249-AE01-36FF27ACBDCA}|Colegio.csproj|solutionrelative:interfaz\\ijornadasede.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C5FC0365-F94F-4249-AE01-36FF27ACBDCA}|Colegio.csproj|c:\\users\\exito\\onedrive\\documentos\\proyecto\\colegio\\backend\\colegio\\servicios\\jornadaservicio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C5FC0365-F94F-4249-AE01-36FF27ACBDCA}|Colegio.csproj|solutionrelative:servicios\\jornadaservicio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C5FC0365-F94F-4249-AE01-36FF27ACBDCA}|Colegio.csproj|c:\\users\\exito\\onedrive\\documentos\\proyecto\\colegio\\backend\\colegio\\modelos\\jornada sede\\salidas procedimientos\\salidamostrarjornadaasociadasede.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C5FC0365-F94F-4249-AE01-36FF27ACBDCA}|Colegio.csproj|solutionrelative:modelos\\jornada sede\\salidas procedimientos\\salidamostrarjornadaasociadasede.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C5FC0365-F94F-4249-AE01-36FF27ACBDCA}|Colegio.csproj|c:\\users\\exito\\onedrive\\documentos\\proyecto\\colegio\\backend\\colegio\\modelos\\jornada sede\\jornadasedemodelo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C5FC0365-F94F-4249-AE01-36FF27ACBDCA}|Colegio.csproj|solutionrelative:modelos\\jornada sede\\jornadasedemodelo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,7 +42,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 219,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 11,
           "Children": [
             {
               "$type": "Bookmark",
@@ -54,6 +87,110 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "SedeControlador.cs",
+              "DocumentMoniker": "C:\\Users\\EXITO\\OneDrive\\Documentos\\Proyecto\\Colegio\\Backend\\Colegio\\Controllers\\SedeControlador.cs",
+              "RelativeDocumentMoniker": "Controllers\\SedeControlador.cs",
+              "ToolTip": "C:\\Users\\EXITO\\OneDrive\\Documentos\\Proyecto\\Colegio\\Backend\\Colegio\\Controllers\\SedeControlador.cs",
+              "RelativeToolTip": "Controllers\\SedeControlador.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-05T22:57:10.976Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "JornadaSedeControlador.cs",
+              "DocumentMoniker": "C:\\Users\\EXITO\\OneDrive\\Documentos\\Proyecto\\Colegio\\Backend\\Colegio\\Controllers\\JornadaSedeControlador.cs",
+              "RelativeDocumentMoniker": "Controllers\\JornadaSedeControlador.cs",
+              "ToolTip": "C:\\Users\\EXITO\\OneDrive\\Documentos\\Proyecto\\Colegio\\Backend\\Colegio\\Controllers\\JornadaSedeControlador.cs",
+              "RelativeToolTip": "Controllers\\JornadaSedeControlador.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAABIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-05T22:57:01.029Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "JornadaSedeDato.cs",
+              "DocumentMoniker": "C:\\Users\\EXITO\\OneDrive\\Documentos\\Proyecto\\Colegio\\Backend\\Colegio\\Dato\\JornadaSedeDato.cs",
+              "RelativeDocumentMoniker": "Dato\\JornadaSedeDato.cs",
+              "ToolTip": "C:\\Users\\EXITO\\OneDrive\\Documentos\\Proyecto\\Colegio\\Backend\\Colegio\\Dato\\JornadaSedeDato.cs",
+              "RelativeToolTip": "Dato\\JornadaSedeDato.cs",
+              "ViewState": "AgIAALgAAAAAAAAAAAAkwN8AAABwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-05T22:50:05.441Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "JornadaSedeServicio.cs",
+              "DocumentMoniker": "C:\\Users\\EXITO\\OneDrive\\Documentos\\Proyecto\\Colegio\\Backend\\Colegio\\Servicios\\JornadaSedeServicio.cs",
+              "RelativeDocumentMoniker": "Servicios\\JornadaSedeServicio.cs",
+              "ToolTip": "C:\\Users\\EXITO\\OneDrive\\Documentos\\Proyecto\\Colegio\\Backend\\Colegio\\Servicios\\JornadaSedeServicio.cs",
+              "RelativeToolTip": "Servicios\\JornadaSedeServicio.cs",
+              "ViewState": "AgIAAD8AAAAAAAAAAAAqwCQAAABCAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-05T22:23:54.615Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "IJornadaSede.cs",
+              "DocumentMoniker": "C:\\Users\\EXITO\\OneDrive\\Documentos\\Proyecto\\Colegio\\Backend\\Colegio\\Interfaz\\IJornadaSede.cs",
+              "RelativeDocumentMoniker": "Interfaz\\IJornadaSede.cs",
+              "ToolTip": "C:\\Users\\EXITO\\OneDrive\\Documentos\\Proyecto\\Colegio\\Backend\\Colegio\\Interfaz\\IJornadaSede.cs",
+              "RelativeToolTip": "Interfaz\\IJornadaSede.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAABmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-05T21:20:02.428Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "JornadaServicio.cs",
+              "DocumentMoniker": "C:\\Users\\EXITO\\OneDrive\\Documentos\\Proyecto\\Colegio\\Backend\\Colegio\\Servicios\\JornadaServicio.cs",
+              "RelativeDocumentMoniker": "Servicios\\JornadaServicio.cs",
+              "ToolTip": "C:\\Users\\EXITO\\OneDrive\\Documentos\\Proyecto\\Colegio\\Backend\\Colegio\\Servicios\\JornadaServicio.cs",
+              "RelativeToolTip": "Servicios\\JornadaServicio.cs",
+              "ViewState": "AgIAACwAAAAAAAAAAAAcwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-05T22:58:42.017Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "SalidaMostrarJornadaAsociadaSede.cs",
+              "DocumentMoniker": "C:\\Users\\EXITO\\OneDrive\\Documentos\\Proyecto\\Colegio\\Backend\\Colegio\\Modelos\\Jornada Sede\\Salidas Procedimientos\\SalidaMostrarJornadaAsociadaSede.cs",
+              "RelativeDocumentMoniker": "Modelos\\Jornada Sede\\Salidas Procedimientos\\SalidaMostrarJornadaAsociadaSede.cs",
+              "ToolTip": "C:\\Users\\EXITO\\OneDrive\\Documentos\\Proyecto\\Colegio\\Backend\\Colegio\\Modelos\\Jornada Sede\\Salidas Procedimientos\\SalidaMostrarJornadaAsociadaSede.cs",
+              "RelativeToolTip": "Modelos\\Jornada Sede\\Salidas Procedimientos\\SalidaMostrarJornadaAsociadaSede.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-05T22:52:54.678Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "JornadaSedeModelo.cs",
+              "DocumentMoniker": "C:\\Users\\EXITO\\OneDrive\\Documentos\\Proyecto\\Colegio\\Backend\\Colegio\\Modelos\\Jornada Sede\\JornadaSedeModelo.cs",
+              "RelativeDocumentMoniker": "Modelos\\Jornada Sede\\JornadaSedeModelo.cs",
+              "ToolTip": "C:\\Users\\EXITO\\OneDrive\\Documentos\\Proyecto\\Colegio\\Backend\\Colegio\\Modelos\\Jornada Sede\\JornadaSedeModelo.cs",
+              "RelativeToolTip": "Modelos\\Jornada Sede\\JornadaSedeModelo.cs",
+              "ViewState": "AgIAABQAAAAAAAAAAAAswCQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-05T22:29:16.598Z",
+              "EditorCaption": ""
             }
           ]
         },

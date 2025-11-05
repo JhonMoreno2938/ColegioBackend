@@ -36,6 +36,7 @@ namespace Colegio.Servicios
 
                 resultado.nombreUsuario = string.Empty;
                 resultado.nombreRolUsuario = string.Empty;
+                resultado.contraseinaUsuario = string.Empty;
 
 
                 return resultado;

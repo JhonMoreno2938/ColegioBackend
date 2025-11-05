@@ -4,6 +4,7 @@ using MySql.Data.MySqlClient;
 using System.Data;
 using Colegio.Modelos.Grupo.Salidas_Procedimientos;
 using Colegio.Modelos.Grupo.Vistas;
+using Colegio.Modelos.Grupo;
 
 namespace Colegio.Dato
 {
@@ -21,7 +22,7 @@ namespace Colegio.Dato
                                ?? throw new ArgumentNullException(nameof(configuracion), "La cadena de conexión no puede ser nula");
         }
 
-        public async Task<ResultadoMensajeGrupo> RegistrarGrupoAsync(RegistrarGrupo registrarGrupo)
+        public async Task<ResultadoMensajeGrupo> RegistrarGrupoAsync(GrupoModelo grupoModelo)
         {
             var resultado = new ResultadoMensajeGrupo { exito = false, mensaje = "Error de conexión/ejecución no capturado." };
 
@@ -41,7 +42,7 @@ namespace Colegio.Dato
                         CommandType = CommandType.StoredProcedure
                     };
 
-                    comando.Parameters.AddWithValue("@p_nombre_grupo", registrarGrupo.nombreGrupo);
+                    comando.Parameters.AddWithValue("@p_nombre_grupo", grupoModelo.nombreGrupo);
 
                     var outMensaje = comando.Parameters.Add("@mensaje", MySqlDbType.VarChar, 255);
                     outMensaje.Direction = ParameterDirection.Output;
@@ -85,7 +86,7 @@ namespace Colegio.Dato
             return resultado;
         }
 
-        public async Task<ResultadoMensajeGrupo> GestionarEstadoGrupoAsync(GestionarEstadoGrupo gestionarEstadoGrupo)
+        public async Task<ResultadoMensajeGrupo> GestionarEstadoGrupoAsync(string operacion, GrupoModelo grupoModelo)
         {
             var resultado = new ResultadoMensajeGrupo { exito = false, mensaje = "Error de conexión/ejecución no capturado." };
 
@@ -105,8 +106,8 @@ namespace Colegio.Dato
                         CommandType = CommandType.StoredProcedure
                     };
 
-                    comando.Parameters.AddWithValue("@p_operacion", gestionarEstadoGrupo.nombreOperacion);
-                    comando.Parameters.AddWithValue("@p_nombre_grupo", gestionarEstadoGrupo.nombreGrupo);
+                    comando.Parameters.AddWithValue("@p_operacion", operacion);
+                    comando.Parameters.AddWithValue("@p_nombre_grupo", grupoModelo.nombreGrupo);
 
                     var outMensaje = comando.Parameters.Add("@mensaje", MySqlDbType.VarChar, 255);
                     outMensaje.Direction = ParameterDirection.Output;
@@ -150,9 +151,9 @@ namespace Colegio.Dato
             return resultado;
         }
 
-        public async Task<List<ListarGrupo>> InformacionGrupoAsync()
+        public async Task<List<GrupoModelo>> InformacionGrupoAsync()
         {
-            var listaGrupo = new List<ListarGrupo>();
+            var listaGrupo = new List<GrupoModelo>();
 
             try
             {
@@ -166,7 +167,7 @@ namespace Colegio.Dato
                         {
                             while (await leer.ReadAsync())
                             {
-                                var listarGrupo = new ListarGrupo();
+                                var listarGrupo = new GrupoModelo();
                                 listarGrupo.nombreGrupo = leer.GetString("nombre_grupo");
                                 listarGrupo.estadoGrupo = leer.GetString("estado_grupo");
                                 listaGrupo.Add(listarGrupo);
@@ -179,13 +180,13 @@ namespace Colegio.Dato
             catch (Exception ex)
             {
                 Console.WriteLine($"Error al obtener los grupos: {ex.Message}");
-                return new List<ListarGrupo>();
+                return new List<GrupoModelo>();
             }
         }
 
-        public async Task<List<ListarGrupoEstadoActivo>> InformacionGrupoEstadoActivoAsync()
+        public async Task<List<GrupoModelo>> InformacionGrupoEstadoActivoAsync()
         {
-            var listaGrupoEstadoActivo = new List<ListarGrupoEstadoActivo>();
+            var listaGrupoEstadoActivo = new List<GrupoModelo>();
 
             try
             {
@@ -199,7 +200,7 @@ namespace Colegio.Dato
                         {
                             while (await leer.ReadAsync())
                             {
-                                var listarGrupoEstadoActivo = new ListarGrupoEstadoActivo();
+                                var listarGrupoEstadoActivo = new GrupoModelo();
                                 listarGrupoEstadoActivo.nombreGrupo = leer.GetString("nombre_grupo");
                                 listaGrupoEstadoActivo.Add(listarGrupoEstadoActivo);
                             }
@@ -211,7 +212,7 @@ namespace Colegio.Dato
             catch (Exception ex)
             {
                 Console.WriteLine($"Error al obtener los grupos: {ex.Message}");
-                return new List<ListarGrupoEstadoActivo>();
+                return new List<GrupoModelo>();
             }
         }
     }

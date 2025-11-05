@@ -5,43 +5,24 @@ namespace Colegio.Modelos.Sede.Procedimientos
 {
     public class ModificarInformacionSede
     {
-        [JsonIgnore]
-        SedeModelo sedeModelo = new SedeModelo();
-
         [JsonPropertyName("codigoDaneSede")]
         [StringLength(10)]
         [Required]
-        public string codigoDaneSede
-        {
-            get => sedeModelo.codigoDaneSede;
-            set => sedeModelo.codigoDaneSede = value;
-        }
+        public string codigoDaneSede { get; set; } = string.Empty;
 
         [JsonPropertyName("nombreSede")]
         [StringLength(100)]
         [Required]
-        public string nombreSede
-        {
-            get => sedeModelo.nombreSede;
-            set => sedeModelo.nombreSede = value;
-        }
+        public string nombreSede { get; set; } = string.Empty;
 
         [JsonPropertyName("direccionSede")]
         [StringLength(100)]
         [Required]
-        public string direccionSede
-        {
-            get => sedeModelo.direccionSede;
-            set => sedeModelo.direccionSede = value;
-        }
+        public string direccionSede { get; set; } = string.Empty;
 
         [JsonPropertyName("numeroContactoSede")]
         [StringLength(10)]
         [Required]
-        public string numeroContactoSede
-        {
-            get => sedeModelo.numeroContactoSede;
-            set => sedeModelo.numeroContactoSede = value;
-        }
+        public string numeroContactoSede { get; set; } = string.Empty;
     }
 }

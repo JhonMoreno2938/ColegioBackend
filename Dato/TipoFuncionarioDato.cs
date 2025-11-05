@@ -1,5 +1,5 @@
 ﻿using Colegio.Interfaz;
-using Colegio.Modelos.Tipo_Funcionario.Vistas;
+using Colegio.Modelos.Tipo_Funcionario;
 using MySql.Data.MySqlClient;
 using System.Data;
 
@@ -15,9 +15,9 @@ namespace Colegio.Dato
             conexion = configuracion.GetConnectionString("CadenaConexion")
                        ?? throw new ArgumentNullException(nameof(configuracion), "La cadena de conexión no puede ser nula");
         }
-        public async Task<List<ListarTipoFuncionario>> InformacionTipoFuncionarioAsync()
+        public async Task<List<TipoFuncionarioModelo>> InformacionTipoFuncionarioAsync()
         {
-            var listaTipoFuncionario = new List<ListarTipoFuncionario>();
+            var listaTipoFuncionario = new List<TipoFuncionarioModelo>();
 
             try
             {
@@ -31,7 +31,7 @@ namespace Colegio.Dato
                         {
                             while (await leer.ReadAsync())
                             {
-                                var listarTipoFuncionario = new ListarTipoFuncionario();
+                                var listarTipoFuncionario = new TipoFuncionarioModelo();
                                 listarTipoFuncionario.nombreTipoFuncionario = leer.GetString("nombre_tipo_funcionario");
                                 listaTipoFuncionario.Add(listarTipoFuncionario);
                             }
@@ -43,7 +43,7 @@ namespace Colegio.Dato
             catch (Exception ex)
             {
                 Console.WriteLine($"Error al obtener los tipos de funcionarios: {ex.Message}");
-                return new List<ListarTipoFuncionario>();
+                return new List<TipoFuncionarioModelo>();
             }
         }
     }

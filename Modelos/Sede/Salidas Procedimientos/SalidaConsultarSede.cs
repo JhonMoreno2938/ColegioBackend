@@ -6,8 +6,6 @@ namespace Colegio.Modelos.Sede.Salidas_Procedimientos
 {
     public class SalidaConsultarSede
     {
-        [JsonIgnore]
-        SedeModelo sedeModelo = new SedeModelo();
         public bool exito { get; set; }
 
         public string mensaje { get; set; }
@@ -16,53 +14,27 @@ namespace Colegio.Modelos.Sede.Salidas_Procedimientos
 
         [JsonPropertyName("codigoDaneSede")]
         [StringLength(10)]
-        public string codigoDaneSede
-        {
-            get => sedeModelo.codigoDaneSede;
-            set => sedeModelo.codigoDaneSede = value;
-        }
+        public string codigoDaneSede { get; set; } = string.Empty;
 
         [JsonPropertyName("nombreSede")]
         [StringLength(100)]
-        public string nombreSede
-        {
-            get => sedeModelo.nombreSede;
-            set => sedeModelo.nombreSede = value;
-        }
+        public string nombreSede { get; set; } = string.Empty;
 
         [JsonPropertyName("direccionSede")]
         [StringLength(100)]
-        public string direccionSede
-        {
-            get => sedeModelo.direccionSede;
-            set => sedeModelo.direccionSede = value;
-        }
+        public string direccionSede { get; set; } = string.Empty;
 
         [JsonPropertyName("numeroContactoSede")]
         [StringLength(10)]
-        public string numeroContactoSede
-        {
-            get => sedeModelo.numeroContactoSede;
-            set => sedeModelo.numeroContactoSede = value;
-        }
+        public string numeroContactoSede { get; set; } = string.Empty;
 
         [JsonPropertyName("estadoSede")]
         [StringLength(10)]
-        public string estadoSede
-        {
-            get => sedeModelo.estadoSede;
-            set => sedeModelo.estadoSede = value;
-        }
+        public string estadoSede { get; set; } = string.Empty;
 
         [JsonPropertyName("nombreTipoSede")]
         [StringLength(15)]
-        public string nombreTipoSede
-        {
-            get => sedeModelo.tipoSedeModelo.nombreTipoSede;
-            set => sedeModelo.tipoSedeModelo.nombreTipoSede = value;
-        }
-
-        // Información de los grados grupos que estan vinculados a la sede a consultar.
+        public string nombreTipoSede { get; set; } = string.Empty;
 
         [JsonPropertyName("gradosGruposVinculados")]
         public List<GradoGrupoDetalle> GradosGruposVinculados { get; set; } = new List<GradoGrupoDetalle>();

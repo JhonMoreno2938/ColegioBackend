@@ -172,6 +172,13 @@ builder.Services.AddSwaggerGen(options =>
         Description = "Documentacion para la API de grado grupo"
     });
 
+    options.SwaggerDoc("JornadaSede", new Microsoft.OpenApi.Models.OpenApiInfo
+    {
+        Title = "API JornadaSede",
+        Version = "V1",
+        Description = "Documentacion para la API de jornada sede"
+    });
+
     // Predicado para asociar controladores a documentos Swagger específicos
     options.DocInclusionPredicate((docName, apiDesc) =>
     {
@@ -234,6 +241,8 @@ builder.Services.AddScoped<INivelEscolaridad, NivelEscolaridadDato>();
 builder.Services.AddScoped<NivelEscolaridadServicio>();
 builder.Services.AddScoped<IGradoGrupo, GradoGrupoDato>();
 builder.Services.AddScoped<GradoGrupoServicio>();
+builder.Services.AddScoped<IJornadaSede, JornadaSedeDato>();
+builder.Services.AddScoped<JornadaSedeServicio>();
 
 
 var app = builder.Build();
@@ -257,6 +266,7 @@ app.UseSwaggerUI(options =>
     options.SwaggerEndpoint("/swagger/GradoGrupo/swagger.json", "API Grado grupo");
     options.SwaggerEndpoint("/swagger/Grupo/swagger.json", "API Grupo");
     options.SwaggerEndpoint("/swagger/Jornada/swagger.json", "API Jornada");
+    options.SwaggerEndpoint("/swagger/JornadaSede/swagger.json", "API Jornada sede");
     options.SwaggerEndpoint("/swagger/NivelEscolaridad/swagger.json", "API Nivel escolaridad");
     options.SwaggerEndpoint("/swagger/Rh/swagger.json", "API Rh");
     options.SwaggerEndpoint("/swagger/RolUsuario/swagger.json", "API Rol usuario");

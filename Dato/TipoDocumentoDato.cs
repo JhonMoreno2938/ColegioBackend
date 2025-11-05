@@ -1,5 +1,5 @@
 ﻿using Colegio.Interfaz;
-using Colegio.Modelos.Tipo_Documento.Vistas;
+using Colegio.Modelos.Tipo_Documento;
 using MySql.Data.MySqlClient;
 using System.Data;
 
@@ -16,9 +16,9 @@ namespace Colegio.Dato
                        ?? throw new ArgumentNullException(nameof(configuracion), "La cadena de conexión no puede ser nula");
         }
 
-        public async Task<List<ListarTipoDocumento>> InformacionTipoDocumentoAsync()
+        public async Task<List<TipoDocumentoModelo>> InformacionTipoDocumentoAsync()
         {
-            var listaTipoDocumento = new List<ListarTipoDocumento>();
+            var listaTipoDocumento = new List<TipoDocumentoModelo>();
 
             try
             {
@@ -32,7 +32,7 @@ namespace Colegio.Dato
                         {
                             while (await leer.ReadAsync())
                             {
-                                var listarTipoDocumento = new ListarTipoDocumento();
+                                var listarTipoDocumento = new TipoDocumentoModelo();
                                 listarTipoDocumento.nombreTipoDocumento = leer.GetString("nombre_tipo_documento");
                                 listaTipoDocumento.Add(listarTipoDocumento);
                             }
@@ -44,7 +44,7 @@ namespace Colegio.Dato
             catch (Exception ex)
             {
                 Console.WriteLine($"Error al obtener los tipos de documentos: {ex.Message}");
-                return new List<ListarTipoDocumento>();
+                return new List<TipoDocumentoModelo>();
             }
         }
     }

@@ -1,9 +1,9 @@
-﻿using Colegio.Modelos.Tipo_Documento.Vistas;
+﻿using Colegio.Modelos.Tipo_Documento;
 
 namespace Colegio.Interfaz
 {
     public interface ITipoDocumento
     {
-        Task<List<ListarTipoDocumento>> InformacionTipoDocumentoAsync();
+        Task<List<TipoDocumentoModelo>> InformacionTipoDocumentoAsync();
     }
 }

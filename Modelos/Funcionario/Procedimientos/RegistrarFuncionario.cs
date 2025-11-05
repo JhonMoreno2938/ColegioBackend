@@ -5,78 +5,44 @@ namespace Colegio.Modelos.Funcionario.Procedimientos
 {
     public class RegistrarFuncionario
     {
-        [JsonIgnore]
-        private readonly FuncionarioModelo funcionarioModelo = new FuncionarioModelo();
 
         [JsonPropertyName("primerNombre")]
         [StringLength(100)]
         [Required]
-        public string primerNombre
-        {
-            get => funcionarioModelo.personaModelo.primerNombrePersona;
-            set => funcionarioModelo.personaModelo.primerNombrePersona = value;
-        }
+        public string primerNombre { get; set; } = string.Empty;
 
         [JsonPropertyName("segundoNombre")]
         [StringLength(100)]
-        public string? segundoNombre
-        {
-            get => funcionarioModelo.personaModelo.segundoNombrePersona;
-            set => funcionarioModelo.personaModelo.segundoNombrePersona = value;
-        }
+        public string? segundoNombre { get; set; }
 
         [JsonPropertyName("primerApellido")]
         [StringLength(100)]
         [Required]
-        public string primerApellido
-        {
-            get => funcionarioModelo.personaModelo.primerApellidoPersona;
-            set => funcionarioModelo.personaModelo.primerApellidoPersona = value;
-        }
+        public string primerApellido { get; set; } = string.Empty;
 
         [JsonPropertyName("segundoApellido")]
         [StringLength(100)]
-        public string? segundoApellido
-        {
-            get => funcionarioModelo.personaModelo.segundoApellidoPersona;
-            set => funcionarioModelo.personaModelo.segundoApellidoPersona = value;
-        }
+        public string? segundoApellido { get; set; } = string.Empty;
 
         [JsonPropertyName("numeroDocumento")]
         [StringLength(10)]
         [Required]
-        public string numeroDocumento
-        {
-            get => funcionarioModelo.personaModelo.numeroDocumentoPersona;
-            set => funcionarioModelo.personaModelo.numeroDocumentoPersona = value;
-        }
+        public string numeroDocumento { get; set; } = string.Empty;
 
         [JsonPropertyName("nombreTipoDocumento")]
         [StringLength(35)]
         [Required]
-        public string nombreTipoDocumento
-        {
-            get => funcionarioModelo.personaModelo.tipoDocumentoModelo.nombreTipoDocumento;
-            set => funcionarioModelo.personaModelo.tipoDocumentoModelo.nombreTipoDocumento = value;
-        }
+        public string nombreTipoDocumento { get; set; } = string.Empty;
 
         [JsonPropertyName("nombreGenero")]
         [StringLength(10)]
         [Required]
-        public string nombreGenero
-        {
-            get => funcionarioModelo.personaModelo.generoModelo.nombreGenero;
-            set => funcionarioModelo.personaModelo.generoModelo.nombreGenero = value;
-        }
+        public string nombreGenero { get; set; } = string.Empty;
 
         [JsonPropertyName("nombreTipoFuncionario")]
         [StringLength(20)]
         [Required]
-        public string nombreTipoFuncionario
-        {
-            get => funcionarioModelo.tipoFuncionarioModelo.nombreTipoFuncionario;
-            set => funcionarioModelo.tipoFuncionarioModelo.nombreTipoFuncionario = value;
-        }
+        public string nombreTipoFuncionario { get; set; } = string.Empty;
 
     }
 }

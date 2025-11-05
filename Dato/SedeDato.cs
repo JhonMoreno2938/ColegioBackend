@@ -1,10 +1,9 @@
 ﻿using Colegio.Interfaz;
-using Colegio.Modelos.Sede.Procedimientos;
 using MySql.Data.MySqlClient;
 using System.Data;
 using Colegio.Modelos.Sede.Salidas_Procedimientos;
 using Colegio.Modelos.Grado_Grupo.Salidas_Procedimientos;
-using Colegio.Modelos.Sede.Vistas;
+using Colegio.Modelos.Sede;
 
 namespace Colegio.Dato
 {
@@ -24,7 +23,7 @@ namespace Colegio.Dato
                                ?? throw new ArgumentNullException(nameof(configuracion), "La cadena de conexión no puede ser nula");
         }
 
-        public async Task<ResultadoMensajeSede> RegistrarSedeAsync(RegistrarSede registrarSede)
+        public async Task<ResultadoMensajeSede> RegistrarSedeAsync(SedeModelo sedeModelo)
         {
             var resultado = new ResultadoMensajeSede { exito = false, mensaje = "Error de conexión/ejecución no capturado." };
 
@@ -44,11 +43,11 @@ namespace Colegio.Dato
                         CommandType = CommandType.StoredProcedure
                     };
 
-                    comando.Parameters.AddWithValue("@p_codigo_DANE", registrarSede.codigoDaneSede);
-                    comando.Parameters.AddWithValue("@p_nombre_sede", registrarSede.nombreSede);
-                    comando.Parameters.AddWithValue("@p_direccion_sede", registrarSede.direccionSede);
-                    comando.Parameters.AddWithValue("@p_numero_contacto_sede", registrarSede.numeroContactoSede);
-                    comando.Parameters.AddWithValue("@p_nombre_tipo_sede", registrarSede.nombreTipoSede);
+                    comando.Parameters.AddWithValue("@p_codigo_DANE", sedeModelo.codigoDaneSede);
+                    comando.Parameters.AddWithValue("@p_nombre_sede", sedeModelo.nombreSede);
+                    comando.Parameters.AddWithValue("@p_direccion_sede", sedeModelo.direccionSede);
+                    comando.Parameters.AddWithValue("@p_numero_contacto_sede", sedeModelo.numeroContactoSede);
+                    comando.Parameters.AddWithValue("@p_nombre_tipo_sede", sedeModelo.tipoSedeModelo.nombreTipoSede);
 
                     var outMensaje = comando.Parameters.Add("@mensaje", MySqlDbType.VarChar, 255);
                     outMensaje.Direction = ParameterDirection.Output;
@@ -92,7 +91,7 @@ namespace Colegio.Dato
             return resultado;
         }
 
-        public async Task<ResultadoMensajeSede> ModificarInformacionSedeAsync(ModificarInformacionSede modificarInformacionSede)
+        public async Task<ResultadoMensajeSede> ModificarInformacionSedeAsync(SedeModelo sedeModelo)
         {
             var resultado = new ResultadoMensajeSede { exito = false, mensaje = "Error de conexión/ejecución no capturado." };
 
@@ -112,10 +111,10 @@ namespace Colegio.Dato
                         CommandType = CommandType.StoredProcedure
                     };
 
-                    comando.Parameters.AddWithValue("@p_codigo_DANE_sede", modificarInformacionSede.codigoDaneSede);
-                    comando.Parameters.AddWithValue("@p_nuevo_nombre_sede", modificarInformacionSede.nombreSede);
-                    comando.Parameters.AddWithValue("@p_nueva_direccion_sede", modificarInformacionSede.direccionSede);
-                    comando.Parameters.AddWithValue("@p_nuevo_numero_contacto_sede", modificarInformacionSede.numeroContactoSede);
+                    comando.Parameters.AddWithValue("@p_codigo_DANE_sede", sedeModelo.codigoDaneSede);
+                    comando.Parameters.AddWithValue("@p_nuevo_nombre_sede", sedeModelo.nombreSede);
+                    comando.Parameters.AddWithValue("@p_nueva_direccion_sede", sedeModelo.direccionSede);
+                    comando.Parameters.AddWithValue("@p_nuevo_numero_contacto_sede", sedeModelo.numeroContactoSede);
 
                     var outMensaje = comando.Parameters.Add("@mensaje", MySqlDbType.VarChar, 255);
                     outMensaje.Direction = ParameterDirection.Output;
@@ -159,7 +158,7 @@ namespace Colegio.Dato
             return resultado;
         }
 
-        public async Task<ResultadoMensajeSede> GestionarEstadoSedeAsync(GestionarEstadoSede gestionarEstadoSede)
+        public async Task<ResultadoMensajeSede> GestionarEstadoSedeAsync(string operacion, SedeModelo sedeModelo)
         {
             var resultado = new ResultadoMensajeSede { exito = false, mensaje = "Error de conexión/ejecución no capturado." };
 
@@ -179,8 +178,8 @@ namespace Colegio.Dato
                         CommandType = CommandType.StoredProcedure
                     };
 
-                    comando.Parameters.AddWithValue("@p_operacion", gestionarEstadoSede.nombreOperacion);
-                    comando.Parameters.AddWithValue("@p_codigo_DANE_sede", gestionarEstadoSede.codigoDaneSede);
+                    comando.Parameters.AddWithValue("@p_operacion", operacion);
+                    comando.Parameters.AddWithValue("@p_codigo_DANE_sede", sedeModelo.codigoDaneSede);
 
                     var outMensaje = comando.Parameters.Add("@mensaje", MySqlDbType.VarChar, 255);
                     outMensaje.Direction = ParameterDirection.Output;
@@ -292,9 +291,9 @@ namespace Colegio.Dato
             return resultado;
         }
 
-        public async Task<List<ListarSede>> InformacionSedeAsync()
+        public async Task<List<SedeModelo>> InformacionSedeAsync()
         {
-            var listaSede = new List<ListarSede>();
+            var listaSede = new List<SedeModelo>();
 
             try
             {
@@ -308,7 +307,7 @@ namespace Colegio.Dato
                         {
                             while (await leer.ReadAsync())
                             {
-                                var listarSede = new ListarSede();
+                                var listarSede = new SedeModelo();
                                 listarSede.codigoDaneSede = leer.GetString("codigo_DANE_sede");
                                 listarSede.nombreSede = leer.GetString("nombre_sede");
                                 listarSede.estadoSede = leer.GetString("estado_sede");
@@ -322,14 +321,14 @@ namespace Colegio.Dato
             catch (Exception ex)
             {
                 Console.WriteLine($"Error al obtener las sedes: {ex.Message}");
-                return new List<ListarSede>();
+                return new List<SedeModelo>();
             }
 
         }
 
-        public async Task<List<ListarSedeEstadoActivo>> InformacionSedeEstadoActivoAsync()
+        public async Task<List<SedeModelo>> InformacionSedeEstadoActivoAsync()
         {
-            var listaSedeEstadoActivo = new List<ListarSedeEstadoActivo>();
+            var listaSedeEstadoActivo = new List<SedeModelo>();
 
             try
             {
@@ -343,7 +342,7 @@ namespace Colegio.Dato
                         {
                             while (await leer.ReadAsync())
                             {
-                                var listarSedeEstadoActivo = new ListarSedeEstadoActivo();
+                                var listarSedeEstadoActivo = new SedeModelo();
                                 listarSedeEstadoActivo.codigoDaneSede = leer.GetString("codigo_DANE_sede");
                                 listarSedeEstadoActivo.nombreSede = leer.GetString("nombre_sede");
                                 listaSedeEstadoActivo.Add(listarSedeEstadoActivo);
@@ -356,7 +355,7 @@ namespace Colegio.Dato
             catch (Exception ex)
             {
                 Console.WriteLine($"Error al obtener las sedes: {ex.Message}");
-                return new List<ListarSedeEstadoActivo>();
+                return new List<SedeModelo>();
             }
         }
     }

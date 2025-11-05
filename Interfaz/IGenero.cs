@@ -1,9 +1,9 @@
-﻿using Colegio.Modelos.Genero.Vistas;
+﻿using Colegio.Modelos.Genero;
 
 namespace Colegio.Interfaz
 {
     public interface IGenero
     {
-        Task<List<ListarGenero>> InformacionGeneroAsync();
+        Task<List<GeneroModelo>> InformacionGeneroAsync();
     }
 }

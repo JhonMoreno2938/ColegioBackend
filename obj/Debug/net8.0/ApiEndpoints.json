@@ -244,6 +244,70 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "Colegio.Controllers.JornadaSedeControlador",
+    "Method": "MostrarJornadaAsociadaSedeEstadoActivo",
+    "RelativePath": "api/JornadaSedeControlador/{codigoDaneSede}/Activas",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "codigoDaneSede",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Colegio.Controllers.JornadaSedeControlador",
+    "Method": "MostrarJornadaAsociadaSede",
+    "RelativePath": "api/JornadaSedeControlador/{codigoDaneSede}/Todas",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "codigoDaneSede",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Colegio.Controllers.JornadaSedeControlador",
+    "Method": "GestionarEstadoJornadaSede",
+    "RelativePath": "api/JornadaSedeControlador/GestionarEstadoJornadaSede",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "gestionarEstadoJornadaSede",
+        "Type": "Colegio.Modelos.Jornada_Sede.Procedimientos.GestionarEstadoJornadaSede",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Colegio.Controllers.JornadaSedeControlador",
+    "Method": "RegistrarJornadaSede",
+    "RelativePath": "api/JornadaSedeControlador/RegistrarJornadaSede",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "registrarJornadaSede",
+        "Type": "Colegio.Modelos.Jornada_Sede.Procedimientos.RegistrarJornadaSede",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Colegio.Controllers.NivelEscolaridadControlador",
     "Method": "GestionarEstadoNivelEscolaridad",
     "RelativePath": "api/NivelEscolaridadControlador/GestionarEstadoNivelEscolaridad",
@@ -411,8 +475,8 @@
   },
   {
     "ContainingType": "Colegio.Controllers.TipoFuncionarioControlador",
-    "Method": "InformacionTipoFuncioanrio",
-    "RelativePath": "api/TipoFuncionarioControlador/InformacionTipoFuncioanrio",
+    "Method": "InformacionTipoFuncionario",
+    "RelativePath": "api/TipoFuncionarioControlador/InformacionTipoFuncionario",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,

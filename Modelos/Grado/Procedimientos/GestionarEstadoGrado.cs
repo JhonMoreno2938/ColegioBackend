@@ -5,21 +5,14 @@ namespace Colegio.Modelos.Grado.Procedimientos
 {
     public class GestionarEstadoGrado
     {
-        [JsonIgnore]
-        GradoModelo gradoModelo = new GradoModelo();
-
         [JsonPropertyName("nombreOperacion")]
         [StringLength(20)]
         [Required]
-        public string nombreOperacion { get; set; }
+        public string nombreOperacion { get; set; } = string.Empty;
 
         [JsonPropertyName("nombreGrado")]
         [StringLength(2)]
         [Required]
-        public string nombreGrado
-        {
-            get => gradoModelo.nombreGrado;
-            set => gradoModelo.nombreGrado = value;
-        }
+        public string nombreGrado { get; set; } = string.Empty;
     }
 }

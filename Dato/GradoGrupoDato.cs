@@ -1,10 +1,6 @@
 ﻿using Colegio.Interfaz;
-using Colegio.Modelos.Grado_Grupo.Procedimientos;
+using Colegio.Modelos.Grado_Grupo;
 using Colegio.Modelos.Grado_Grupo.Salidas_Procedimientos;
-using Colegio.Modelos.Grado_Grupo.Vistas;
-using Colegio.Modelos.Jornada.Procedimientos;
-using Colegio.Modelos.Jornada.Salidas_Procedimientos;
-using Colegio.Modelos.Jornada.Vistas;
 using MySql.Data.MySqlClient;
 using System.Data;
 
@@ -24,7 +20,7 @@ namespace Colegio.Dato
                                ?? throw new ArgumentNullException(nameof(configuracion), "La cadena de conexión no puede ser nula");
         }
 
-        public async Task<ResultadoMensajeGradoGrupo> RegistrarGradoGrupoNivelEscolaridadAsync(RegistrarGradoGrupoNivelEscolaridad registrarGradoGrupoNivelEscolaridad)
+        public async Task<ResultadoMensajeGradoGrupo> RegistrarGradoGrupoNivelEscolaridadAsync(GradoGrupoModelo gradoGrupoModelo )
         {
             var resultado = new ResultadoMensajeGradoGrupo { exito = false, mensaje = "Error de conexión/ejecución no capturado." };
 
@@ -44,9 +40,9 @@ namespace Colegio.Dato
                         CommandType = CommandType.StoredProcedure
                     };
 
-                    comando.Parameters.AddWithValue("@p_nombre_grado", registrarGradoGrupoNivelEscolaridad.nombreGrado);
-                    comando.Parameters.AddWithValue("@p_nombre_grupo", registrarGradoGrupoNivelEscolaridad.nombreGrupo);
-                    comando.Parameters.AddWithValue("@p_nombre_nivel_escolaridad", registrarGradoGrupoNivelEscolaridad.nombreNivelEscolaridad);
+                    comando.Parameters.AddWithValue("@p_nombre_grado", gradoGrupoModelo.gradoModelo.nombreGrado);
+                    comando.Parameters.AddWithValue("@p_nombre_grupo", gradoGrupoModelo.grupoModelo.nombreGrupo);
+                    comando.Parameters.AddWithValue("@p_nombre_nivel_escolaridad", gradoGrupoModelo.nivelEscolaridadModelo.nombreNivelEscolaridad);
 
                     var outMensaje = comando.Parameters.Add("@mensaje", MySqlDbType.VarChar, 255);
                     outMensaje.Direction = ParameterDirection.Output;
@@ -90,7 +86,7 @@ namespace Colegio.Dato
             return resultado;
         }
 
-        public async Task<ResultadoMensajeGradoGrupo> GestionarEstadoGradoGrupoNivelEscolaridadAsync(GestionarEstadoGradoGrupoNivelEscolaridad gestionarEstadoGradoGrupoNivelEscolaridad)
+        public async Task<ResultadoMensajeGradoGrupo> GestionarEstadoGradoGrupoNivelEscolaridadAsync(string operacion, string nombreGrado, string nombreGrupo, string nombreNivelEscolaridad)
         {
             var resultado = new ResultadoMensajeGradoGrupo { exito = false, mensaje = "Error de conexión/ejecución no capturado." };
 
@@ -110,10 +106,10 @@ namespace Colegio.Dato
                         CommandType = CommandType.StoredProcedure
                     };
 
-                    comando.Parameters.AddWithValue("@p_operacion", gestionarEstadoGradoGrupoNivelEscolaridad.nombreOperacion);
-                    comando.Parameters.AddWithValue("@p_nombre_grado", gestionarEstadoGradoGrupoNivelEscolaridad.nombreGrado);
-                    comando.Parameters.AddWithValue("@p_nombre_grupo", gestionarEstadoGradoGrupoNivelEscolaridad.nombreGrupo);
-                    comando.Parameters.AddWithValue("@p_nombre_nivel_escolaridad", gestionarEstadoGradoGrupoNivelEscolaridad.nombreNinvelEscolaridad);
+                    comando.Parameters.AddWithValue("@p_operacion", operacion);
+                    comando.Parameters.AddWithValue("@p_nombre_grado", nombreGrado);
+                    comando.Parameters.AddWithValue("@p_nombre_grupo", nombreGrupo);
+                    comando.Parameters.AddWithValue("@p_nombre_nivel_escolaridad", nombreNivelEscolaridad);
 
                     var outMensaje = comando.Parameters.Add("@mensaje", MySqlDbType.VarChar, 255);
                     outMensaje.Direction = ParameterDirection.Output;
@@ -157,9 +153,9 @@ namespace Colegio.Dato
             return resultado;
         }
 
-        public async Task<List<ListarGradoGrupo>> InformacionGradoGrupoAsync()
+        public async Task<List<ListaGradoGrupoModelo>> InformacionGradoGrupoAsync()
         {
-            var listaGradoGrupo = new List<ListarGradoGrupo>();
+            var listaGradoGrupo = new List<ListaGradoGrupoModelo>();
 
             try
             {
@@ -173,7 +169,7 @@ namespace Colegio.Dato
                         {
                             while (await leer.ReadAsync())
                             {
-                                var listarGradoGrupo = new ListarGradoGrupo();
+                                var listarGradoGrupo = new ListaGradoGrupoModelo();
                                 listarGradoGrupo.nombreGradoGrupo = leer.GetString("nombre_grado_grupo");
                                 listarGradoGrupo.nombreNivelEscolaridad = leer.GetString("nombre_nivel_escolaridad");
                                 listarGradoGrupo.estadoGradoGrupo = leer.GetString("estado_grado_grupo");
@@ -187,13 +183,13 @@ namespace Colegio.Dato
             catch (Exception ex)
             {
                 Console.WriteLine($"Error al obtener los grados grupos: {ex.Message}");
-                return new List<ListarGradoGrupo>();
+                return new List<ListaGradoGrupoModelo>();
             }
         }
 
-        public async Task<List<ListarGradoGrupoEstadoActivo>> InformacionGradoGrupoEstadoActivoAsync()
+        public async Task<List<ListaGradoGrupoModelo>> InformacionGradoGrupoEstadoActivoAsync()
         {
-            var listaGradoGrupoEstadoActivo = new List<ListarGradoGrupoEstadoActivo>();
+            var listaGradoGrupoEstadoActivo = new List<ListaGradoGrupoModelo>();
 
             try
             {
@@ -207,7 +203,7 @@ namespace Colegio.Dato
                         {
                             while (await leer.ReadAsync())
                             {
-                                var listarGradoGrupoEstadoActivo = new ListarGradoGrupoEstadoActivo();
+                                var listarGradoGrupoEstadoActivo = new ListaGradoGrupoModelo();
                                 listarGradoGrupoEstadoActivo.nombreGradoGrupo = leer.GetString("nombre_grado_grupo");
                                 listarGradoGrupoEstadoActivo.nombreNivelEscolaridad = leer.GetString("nombre_nivel_escolaridad");
                                 listaGradoGrupoEstadoActivo.Add(listarGradoGrupoEstadoActivo);
@@ -220,7 +216,7 @@ namespace Colegio.Dato
             catch (Exception ex)
             {
                 Console.WriteLine($"Error al obtener los grados grupos: {ex.Message}");
-                return new List<ListarGradoGrupoEstadoActivo>();
+                return new List<ListaGradoGrupoModelo>();
             }
         }
     }

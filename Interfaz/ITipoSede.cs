@@ -1,9 +1,9 @@
-﻿using Colegio.Modelos.Tipo_Sede.Vistas;
+﻿using Colegio.Modelos.Tipo_Sede;
 
 namespace Colegio.Interfaz
 {
     public interface ITipoSede
     {
-        Task<List<ListarTipoSede>> InformacionTipoSedeAsync();
+        Task<List<TipoSedeModelo>> InformacionTipoSedeAsync();
     }
 }

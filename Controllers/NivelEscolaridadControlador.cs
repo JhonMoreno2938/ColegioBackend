@@ -33,7 +33,8 @@ namespace Colegio.Controllers
 
                 if (resultado.exito)
                 {
-                    return Ok(new { Mensaje = resultado.mensaje });
+                    // Se usa 201 Created para la creación exitosa.
+                    return CreatedAtAction(nameof(RegistrarNivelEscolaridad), new { Mensaje = resultado.mensaje });
                 }
                 else
                 {
@@ -61,6 +62,7 @@ namespace Colegio.Controllers
 
                 if (resultado.exito)
                 {
+                    // Se usa 200 OK para la modificación exitosa.
                     return Ok(new { Mensaje = resultado.mensaje });
                 }
                 else
@@ -85,7 +87,8 @@ namespace Colegio.Controllers
             }
             catch (Exception ex)
             {
-                return BadRequest(new { mensaje = ex.Message });
+                // Se usa 500 Internal Server Error para fallas internas.
+                return StatusCode(500, new { Mensaje = $"Error interno del servidor: {ex.Message}" });
             }
         }
 
@@ -100,7 +103,8 @@ namespace Colegio.Controllers
             }
             catch (Exception ex)
             {
-                return BadRequest(new { mensaje = ex.Message });
+                // Se usa 500 Internal Server Error para fallas internas.
+                return StatusCode(500, new { Mensaje = $"Error interno del servidor: {ex.Message}" });
             }
         }
     }
