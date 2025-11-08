@@ -3,7 +3,7 @@
   "info": {
     "title": "API Grupo",
     "description": "Documentacion para la API de grupo",
-    "version": "V1"
+    "version": "v2"
   },
   "paths": {
     "/api/GrupoControlador/RegistrarGrupo": {

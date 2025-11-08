@@ -3,7 +3,7 @@
   "info": {
     "title": "API RolUsuario",
     "description": "Documentacion para la API de rol usuario",
-    "version": "V1"
+    "version": "v2"
   },
   "paths": {
     "/api/RolUsuarioControlador/InformacionRolUsuario": {

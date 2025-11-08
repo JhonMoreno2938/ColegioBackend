@@ -14,3 +14,10 @@ Colegio_Jornada.json
 Colegio_NivelEscolaridad.json
 Colegio_GradoGrupo.json
 Colegio_JornadaSede.json
+Colegio_SedeJornadaGradoGrupo.json
+Colegio_AsignaturaNivelEscolaridad.json
+Colegio_Asignatura.json
+Colegio_AsignaturaGradoGrupo.json
+Colegio_Porcentaje.json
+Colegio_NombrePeriodoAcademico.json
+Colegio_PeriodoAcademico.json

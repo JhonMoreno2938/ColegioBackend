@@ -1,5 +1,105 @@
 [
   {
+    "ContainingType": "Colegio.Controllers.AsignaturaControlador",
+    "Method": "ConsultarAsignatura",
+    "RelativePath": "api/AsignaturaControlador/{nombreAsignatura}/Detalle",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "nombreAsignatura",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Colegio.Controllers.AsignaturaControlador",
+    "Method": "ConsultarGradoGrupoAsignaturaEstadoActivo",
+    "RelativePath": "api/AsignaturaControlador/{nombreAsignatura}/GradosActivos",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "nombreAsignatura",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Colegio.Controllers.AsignaturaControlador",
+    "Method": "InformacionAsignatura",
+    "RelativePath": "api/AsignaturaControlador/InformacionAsignatura",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Colegio.Controllers.AsignaturaControlador",
+    "Method": "InformacionAsignaturaEstadoActivo",
+    "RelativePath": "api/AsignaturaControlador/InformacionAsignaturaEstadoActivo",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Colegio.Controllers.AsignaturaGradoGrupoControlador",
+    "Method": "GestionarEstadoAsignaturaGradoGrupo",
+    "RelativePath": "api/AsignaturaGradoGrupoControlador/GestionarEstadoAsignaturaGradoGrupo",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "gestionarEstadoAsignaturaGradoGrupo",
+        "Type": "Colegio.Modelos.Asignatura_Grado_Grupo.Procedimientos.GestionarEstadoAsignaturaGradoGrupo",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Colegio.Controllers.AsignaturaGradoGrupoControlador",
+    "Method": "RegistrarAsignaturaGradoGrupo",
+    "RelativePath": "api/AsignaturaGradoGrupoControlador/RegistrarAsignaturaGradoGrupo",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "registrarAsignaturaGradoGrupo",
+        "Type": "Colegio.Modelos.Asignatura_Grado_Grupo.Procedimientos.RegistrarAsignaturaGradoGrupo",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Colegio.Controllers.AsignaturaNivelEscolaridadControlador",
+    "Method": "RegistrarJornadaSede",
+    "RelativePath": "api/AsignaturaNivelEscolaridadControlador/RegistrarAsignatura",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "registrarAsignatura",
+        "Type": "Colegio.Modelos.Asignatura_Nivel_Escolaridad.Procedimientos.RegistrarAsignatura",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Colegio.Controllers.DepartamentoControlador",
     "Method": "InformacionDepartamento",
     "RelativePath": "api/DepartamentoControlador/InformacionDepartamento",
@@ -360,6 +460,152 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "Colegio.Controllers.NombrePeriodoAcademicoControlador",
+    "Method": "InformacionNombrePeriodoAcademico",
+    "RelativePath": "api/NombrePeriodoAcademicoControlador/InformacionNombrePeriodoAcademico",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Colegio.Controllers.PeriodoAcademicoControlador",
+    "Method": "ObtenerPeriodoAcademico",
+    "RelativePath": "api/PeriodoAcademicoControlador/{annio}/annio",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "annio",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Colegio.Controllers.PeriodoAcademicoControlador",
+    "Method": "ConsultarPeriodoAcademico",
+    "RelativePath": "api/PeriodoAcademicoControlador/{idPeriodoAcademico}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "idPeriodoAcademico",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Colegio.Controllers.PeriodoAcademicoControlador",
+    "Method": "InformacionAnnioPeriodoAcademico",
+    "RelativePath": "api/PeriodoAcademicoControlador/InformacionAnnioPeriodoAcademico",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Colegio.Controllers.PeriodoAcademicoControlador",
+    "Method": "InformacionNombrePeriodoAcademico",
+    "RelativePath": "api/PeriodoAcademicoControlador/InformacionNombrePeriodoAcademico",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Colegio.Controllers.PeriodoAcademicoControlador",
+    "Method": "ModificarPeriodoAcademico",
+    "RelativePath": "api/PeriodoAcademicoControlador/ModificarPeriodoAcademico",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "modificarPeriodoAcademico",
+        "Type": "Colegio.Modelos.Periodo_Academico.Procedimientos.ModificarPeriodoAcademico",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Colegio.Controllers.PeriodoAcademicoControlador",
+    "Method": "RegistrarPeriodoAcademico",
+    "RelativePath": "api/PeriodoAcademicoControlador/RegistrarPeriodoAcademico",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "registrarPeriodoAcademico",
+        "Type": "Colegio.Modelos.Periodo_Academico.Procedimientos.RegistrarPeriodoAcademico",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Colegio.Controllers.PorcentajeControlador",
+    "Method": "GestionarEstadoPorcentaje",
+    "RelativePath": "api/PorcentajeControlador/GestionarEstadoPorcentaje",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "gestionarEstadoPorcentaje",
+        "Type": "Colegio.Modelos.Porcentaje.Procedimientos.GestionarEstadoPorcentaje",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Colegio.Controllers.PorcentajeControlador",
+    "Method": "InformacionPorcentaje",
+    "RelativePath": "api/PorcentajeControlador/InformacionPorcentaje",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Colegio.Controllers.PorcentajeControlador",
+    "Method": "InformacionGradoEstadoActivo",
+    "RelativePath": "api/PorcentajeControlador/InformacionPorcentajeEstadoActivo",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Colegio.Controllers.PorcentajeControlador",
+    "Method": "RegistrarPorcentaje",
+    "RelativePath": "api/PorcentajeControlador/RegistrarPorcentaje",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "registrarPorcentaje",
+        "Type": "Colegio.Modelos.Porcentaje.Procedimientos.RegistrarPorcentaje",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Colegio.Controllers.RhControlador",
     "Method": "InformacionRh",
     "RelativePath": "api/RhControlador/InformacionRh",
@@ -458,6 +704,38 @@
       {
         "Name": "registrarSede",
         "Type": "Colegio.Modelos.Sede.Procedimientos.RegistrarSede",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Colegio.Controllers.SedeJornadaGradoGrupoControlador",
+    "Method": "GestionarEstadoGradoGrupoSede",
+    "RelativePath": "api/SedeJornadaGradoGrupoControlador/GestionarEstadoGradoGrupoSede",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "gestionarEstadoGradoGrupoSede",
+        "Type": "Colegio.Modelos.Sede_Jornada_Grado_Grupo.Procedimientos.GestionarEstadoGradoGrupoSede",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Colegio.Controllers.SedeJornadaGradoGrupoControlador",
+    "Method": "RegistrarGradoGrupoNivelEscolaridadSede",
+    "RelativePath": "api/SedeJornadaGradoGrupoControlador/RegistrarGradoGrupoNivelEscolaridadSede",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "registrarGradoGrupoNivelEscolaridadSede",
+        "Type": "Colegio.Modelos.Sede_Jornada_Grado_Grupo.Procedimientos.RegistrarGradoGrupoNivelEscolaridadSede",
         "IsRequired": true
       }
     ],

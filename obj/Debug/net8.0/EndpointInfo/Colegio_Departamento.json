@@ -3,7 +3,7 @@
   "info": {
     "title": "API Departamento",
     "description": "Documentacion para la API de departamento",
-    "version": "V1"
+    "version": "v2"
   },
   "paths": {
     "/api/DepartamentoControlador/InformacionDepartamento": {

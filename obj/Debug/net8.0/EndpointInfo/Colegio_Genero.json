@@ -3,7 +3,7 @@
   "info": {
     "title": "API Genero",
     "description": "Documentacion para la API de genero",
-    "version": "V1"
+    "version": "v2"
   },
   "paths": {
     "/api/GeneroControlador/InformacionGenero": {

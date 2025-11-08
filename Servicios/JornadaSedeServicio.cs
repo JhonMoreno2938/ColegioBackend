@@ -14,7 +14,6 @@ namespace Colegio.Servicios
             this.jornadaSede = jornadaSede;
         }
 
-
         private string ConstruirListaJornadas(RegistrarJornadaSede registrarJornadaSede)
         {
             IEnumerable<string> nombresJornada = registrarJornadaSede.listaJornada.Select(j => j.nombreJornada);

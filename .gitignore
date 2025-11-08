@@ -1,0 +1,4 @@
+# Ignorar carpetas de VS y .NET 
+[Bb]in/ 
+[Oo]bj/ 
+.vs/ 

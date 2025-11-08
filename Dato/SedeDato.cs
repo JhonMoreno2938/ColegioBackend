@@ -269,10 +269,10 @@ namespace Colegio.Dato
                         {
                             resultado.GradosGruposVinculados.Add(new GradoGrupoDetalle
                             {
-                                NombreGradoGrupo = leer["nombre_grado_grupo"]?.ToString() ?? string.Empty,
-                                NombreNivelEscolaridad = leer["nombre_nivel_escolaridad"]?.ToString() ?? string.Empty,
-                                NombreJornada = leer["nombre_jornada"]?.ToString() ?? string.Empty,
-                                EstadoSedeJornadaGradoGrupo = leer["estado_sede_jornada_grado_grupo"]?.ToString() ?? string.Empty
+                                nombreGradoGrupo = leer["nombre_grado_grupo"]?.ToString() ?? string.Empty,
+                                nombreNivelEscolaridad = leer["nombre_nivel_escolaridad"]?.ToString() ?? string.Empty,
+                                nombreJornada = leer["nombre_jornada"]?.ToString() ?? string.Empty,
+                                estadoSedeJornadaGradoGrupo = leer["estado_sede_jornada_grado_grupo"]?.ToString() ?? string.Empty
                             });
                         }
                     }

@@ -3,7 +3,7 @@
   "info": {
     "title": "API TipoFuncionario",
     "description": "Documentacion para la API de tipo funcionario",
-    "version": "V1"
+    "version": "v2"
   },
   "paths": {
     "/api/TipoFuncionarioControlador/InformacionTipoFuncionario": {

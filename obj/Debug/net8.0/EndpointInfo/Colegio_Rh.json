@@ -3,7 +3,7 @@
   "info": {
     "title": "API Rh",
     "description": "Documentacion para la API de rh",
-    "version": "V1"
+    "version": "v2"
   },
   "paths": {
     "/api/RhControlador/InformacionRh": {

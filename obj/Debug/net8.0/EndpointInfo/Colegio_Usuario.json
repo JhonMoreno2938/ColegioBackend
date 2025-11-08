@@ -3,7 +3,7 @@
   "info": {
     "title": "API Usuario",
     "description": "Documentacion para la API de usuario",
-    "version": "V1"
+    "version": "v2"
   },
   "paths": {
     "/api/UsuarioControlador/IniciarSesion": {

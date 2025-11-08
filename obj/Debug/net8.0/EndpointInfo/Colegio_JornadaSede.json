@@ -3,7 +3,7 @@
   "info": {
     "title": "API JornadaSede",
     "description": "Documentacion para la API de jornada sede",
-    "version": "V1"
+    "version": "v2"
   },
   "paths": {
     "/api/JornadaSedeControlador/RegistrarJornadaSede": {

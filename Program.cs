@@ -70,113 +70,162 @@ builder.Services.AddSwaggerGen(options =>
     options.SwaggerDoc("Departamento", new Microsoft.OpenApi.Models.OpenApiInfo
     {
         Title = "API Departamento",
-        Version = "V1",
+        Version = "v2",
         Description = "Documentacion para la API de departamento"
     });
 
     options.SwaggerDoc("Genero", new Microsoft.OpenApi.Models.OpenApiInfo
     {
         Title = "API Genero",
-        Version = "V1",
+        Version = "v2",
         Description = "Documentacion para la API de genero"
     });
 
     options.SwaggerDoc("Rh", new Microsoft.OpenApi.Models.OpenApiInfo
     {
         Title = "API Rh",
-        Version = "V1",
+        Version = "v2",
         Description = "Documentacion para la API de rh"
     });
 
     options.SwaggerDoc("TipoDocumento", new Microsoft.OpenApi.Models.OpenApiInfo
     {
         Title = "API TipoDocumento",
-        Version = "V1",
+        Version = "v2",
         Description = "Documentacion para la API de tipo documento"
     });
 
     options.SwaggerDoc("TipoFuncionario", new Microsoft.OpenApi.Models.OpenApiInfo
     {
         Title = "API TipoFuncionario",
-        Version = "V1",
+        Version = "v2",
         Description = "Documentacion para la API de tipo funcionario"
     });
 
     options.SwaggerDoc("RolUsuario", new Microsoft.OpenApi.Models.OpenApiInfo
     {
         Title = "API RolUsuario",
-        Version = "V1",
+        Version = "v2",
         Description = "Documentacion para la API de rol usuario"
     });
 
     options.SwaggerDoc("Funcionario", new Microsoft.OpenApi.Models.OpenApiInfo
     {
         Title = "API Funcionario",
-        Version = "V1",
+        Version = "v2",
         Description = "Documentacion para la API de funcionario"
     });
 
     options.SwaggerDoc("Usuario", new Microsoft.OpenApi.Models.OpenApiInfo
     {
         Title = "API Usuario",
-        Version = "V1",
+        Version = "v2",
         Description = "Documentacion para la API de usuario"
     });
 
     options.SwaggerDoc("TipoSede", new Microsoft.OpenApi.Models.OpenApiInfo
     {
         Title = "API TipoSede",
-        Version = "V1",
+        Version = "v2",
         Description = "Documentacion para la API de tipo sede"
     });
 
     options.SwaggerDoc("Sede", new Microsoft.OpenApi.Models.OpenApiInfo
     {
         Title = "API Sede",
-        Version = "V1",
+        Version = "v2",
         Description = "Documentacion para la API de sede"
     });
 
     options.SwaggerDoc("Grado", new Microsoft.OpenApi.Models.OpenApiInfo
     {
         Title = "API Grado",
-        Version = "V1",
+        Version = "v2",
         Description = "Documentacion para la API de grado"
     });
     
     options.SwaggerDoc("Grupo", new Microsoft.OpenApi.Models.OpenApiInfo
     {
         Title = "API Grupo",
-        Version = "V1",
+        Version = "v2",
         Description = "Documentacion para la API de grupo"
     });
 
     options.SwaggerDoc("Jornada", new Microsoft.OpenApi.Models.OpenApiInfo
     {
         Title = "API Jornada",
-        Version = "V1",
+        Version = "v2",
         Description = "Documentacion para la API de jornada"
     });
 
     options.SwaggerDoc("NivelEscolaridad", new Microsoft.OpenApi.Models.OpenApiInfo
     {
         Title = "API NivelEscolaridad",
-        Version = "V1",
+        Version = "v2",
         Description = "Documentacion para la API de nivel escolaridad"
     });
 
     options.SwaggerDoc("GradoGrupo", new Microsoft.OpenApi.Models.OpenApiInfo
     {
         Title = "API GradoGrupo",
-        Version = "V1",
+        Version = "v2",
         Description = "Documentacion para la API de grado grupo"
     });
 
     options.SwaggerDoc("JornadaSede", new Microsoft.OpenApi.Models.OpenApiInfo
     {
         Title = "API JornadaSede",
-        Version = "V1",
+        Version = "v2",
         Description = "Documentacion para la API de jornada sede"
+    });
+
+    options.SwaggerDoc("SedeJornadaGradoGrupo", new Microsoft.OpenApi.Models.OpenApiInfo
+    {
+        Title = "API SedeJornadaGradoGrupo",
+        Version = "v2",
+        Description = "Documentacion para la API de sede jornada grado grupo"
+    });
+
+    options.SwaggerDoc("AsignaturaNivelEscolaridad", new Microsoft.OpenApi.Models.OpenApiInfo
+    {
+        Title = "API AsignaturaNivelEscolaridad",
+        Version = "v2",
+        Description = "Documentacion para la API de asignatura nivel escolaridad"
+    });
+
+    options.SwaggerDoc("Asignatura", new Microsoft.OpenApi.Models.OpenApiInfo
+    {
+        Title = "API Asignatura",
+        Version = "v2",
+        Description = "Documentacion para la API asignatura"
+    });
+
+    options.SwaggerDoc("AsignaturaGradoGrupo", new Microsoft.OpenApi.Models.OpenApiInfo
+    {
+        Title = "API AsignaturaGradoGrupo",
+        Version = "v2",
+        Description = "Documentacion para la API asignatura grado grupo"
+    });
+
+    options.SwaggerDoc("Porcentaje", new Microsoft.OpenApi.Models.OpenApiInfo
+    {
+        Title = "API Porcentaje",
+        Version = "v2",
+        Description = "Documentacion para la API porcentaje"
+    });
+
+    options.SwaggerDoc("NombrePeriodoAcademico", new Microsoft.OpenApi.Models.OpenApiInfo
+    {
+        Title = "API NombrePeriodoAcademico",
+        Version = "v2",
+        Description = "Documentacion para la API nombre periodo academico"
+    });
+
+    options.SwaggerDoc("PeriodoAcademico", new Microsoft.OpenApi.Models.OpenApiInfo
+    {
+        Title = "API PeriodoAcademico",
+        Version = "v2",
+        Description = "Documentacion para la API periodo academico"
     });
 
     // Predicado para asociar controladores a documentos Swagger específicos
@@ -243,6 +292,20 @@ builder.Services.AddScoped<IGradoGrupo, GradoGrupoDato>();
 builder.Services.AddScoped<GradoGrupoServicio>();
 builder.Services.AddScoped<IJornadaSede, JornadaSedeDato>();
 builder.Services.AddScoped<JornadaSedeServicio>();
+builder.Services.AddScoped<ISedeJornadaGradoGrupo, SedeJornadaGradoGrupoDato>();
+builder.Services.AddScoped<SedeJornadaGradoGrupoServicio>();
+builder.Services.AddScoped<IAsignaturaNivelEscolaridad, AsignaturaNivelEscolaridadDato>();
+builder.Services.AddScoped<AsignaturaNivelEscolaridadServicio>();
+builder.Services.AddScoped<IAsignatura, AsignaturaDato>();
+builder.Services.AddScoped<AsignaturaServicio>();
+builder.Services.AddScoped<IAsignaturaGradoGrupo, AsignaturaGradoGrupoDato>();
+builder.Services.AddScoped<AsignaturaGradoGrupoServicio>();
+builder.Services.AddScoped<IPorcentaje, PorcentajeDato>();
+builder.Services.AddScoped<PorcentajeServicio>();
+builder.Services.AddScoped<INombrePeriodoAcademico, NombrePeriodoAcademicoDato>();
+builder.Services.AddScoped<NombrePeriodoAcademicoServicio>();
+builder.Services.AddScoped<IPeriodoAcademico, PeriodoAcademicoDato>();
+builder.Services.AddScoped<PeriodoAcademicoServicio>();
 
 
 var app = builder.Build();
@@ -259,6 +322,9 @@ if (app.Environment.IsDevelopment())
 app.UseSwagger();
 app.UseSwaggerUI(options =>
 {
+    options.SwaggerEndpoint("/swagger/Asignatura/swagger.json", "API Asignatura");
+    options.SwaggerEndpoint("/swagger/AsignaturaGradoGrupo/swagger.json", "API Asignatura grado grupo");
+    options.SwaggerEndpoint("/swagger/AsignaturaNivelEscolaridad/swagger.json", "API Asignatura nivel escolaridad");
     options.SwaggerEndpoint("/swagger/Departamento/swagger.json", "API Departamento");
     options.SwaggerEndpoint("/swagger/Funcionario/swagger.json", "API Funcionario");
     options.SwaggerEndpoint("/swagger/Genero/swagger.json", "API Genero");
@@ -268,9 +334,13 @@ app.UseSwaggerUI(options =>
     options.SwaggerEndpoint("/swagger/Jornada/swagger.json", "API Jornada");
     options.SwaggerEndpoint("/swagger/JornadaSede/swagger.json", "API Jornada sede");
     options.SwaggerEndpoint("/swagger/NivelEscolaridad/swagger.json", "API Nivel escolaridad");
+    options.SwaggerEndpoint("/swagger/NombrePeriodoAcademico/swagger.json", "API Nombre periodo academico");
+    options.SwaggerEndpoint("/swagger/PeriodoAcademico/swagger.json", "API Periodo academico");
+    options.SwaggerEndpoint("/swagger/Porcentaje/swagger.json", "API Porcentaje");
     options.SwaggerEndpoint("/swagger/Rh/swagger.json", "API Rh");
     options.SwaggerEndpoint("/swagger/RolUsuario/swagger.json", "API Rol usuario");
     options.SwaggerEndpoint("/swagger/Sede/swagger.json", "API Sede");
+    options.SwaggerEndpoint("/swagger/SedeJornadaGradoGrupo/swagger.json", "API Sede jornada grado gurpo");
     options.SwaggerEndpoint("/swagger/TipoDocumento/swagger.json", "API Tipo documento");
     options.SwaggerEndpoint("/swagger/TipoFuncionario/swagger.json", "API Tipo funcionario");
     options.SwaggerEndpoint("/swagger/TipoSede/swagger.json", "API Tipo sede");

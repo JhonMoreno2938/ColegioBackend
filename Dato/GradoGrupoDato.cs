@@ -10,7 +10,7 @@ namespace Colegio.Dato
     {
         private readonly string conexion;
         private static readonly string queryRegistrarGradoGrupoNivelEscolaridad = "registrar_grado_grupo_nivel_escolaridad";
-        private static readonly string queryGestionarGradoGrupo = "gestionar_grado_grupo_nivel_escolaridad";
+        private static readonly string queryGestionarEstadoGradoGrupo = "gestionar_grado_grupo_nivel_escolaridad";
         private static readonly string queryListaGradoGrupo = "select nombre_grado_grupo, nombre_nivel_escolaridad, estado_grado_grupo from listar_grados_grupos";
         private static readonly string queryListaGradoGrupoActivo = "select nombre_grado_grupo, nombre_nivel_escolaridad from listar_grados_grupos_estado_activo";
 
@@ -101,7 +101,7 @@ namespace Colegio.Dato
 
                 try
                 {
-                    using var comando = new MySqlCommand(queryGestionarGradoGrupo, conexion2, transaccion)
+                    using var comando = new MySqlCommand(queryGestionarEstadoGradoGrupo, conexion2, transaccion)
                     {
                         CommandType = CommandType.StoredProcedure
                     };

@@ -3,7 +3,7 @@
   "info": {
     "title": "API TipoSede",
     "description": "Documentacion para la API de tipo sede",
-    "version": "V1"
+    "version": "v2"
   },
   "paths": {
     "/api/TipoSedeControlador/InformacionTipoSede": {

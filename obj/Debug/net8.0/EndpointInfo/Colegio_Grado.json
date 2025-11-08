@@ -3,7 +3,7 @@
   "info": {
     "title": "API Grado",
     "description": "Documentacion para la API de grado",
-    "version": "V1"
+    "version": "v2"
   },
   "paths": {
     "/api/GradoControlador/RegistrarGrado": {
