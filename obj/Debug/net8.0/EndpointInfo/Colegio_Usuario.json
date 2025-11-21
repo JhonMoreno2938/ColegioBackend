@@ -7,29 +7,32 @@
   },
   "paths": {
     "/api/UsuarioControlador/IniciarSesion": {
-      "post": {
+      "get": {
         "tags": [
           "UsuarioControlador"
         ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/IniciarSesion"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/IniciarSesion"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/IniciarSesion"
-              }
+        "parameters": [
+          {
+            "name": "nombreUsuario",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "maxLength": 10,
+              "minLength": 0,
+              "type": "string"
+            }
+          },
+          {
+            "name": "contraseinaUsuario",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "maxLength": 255,
+              "minLength": 0,
+              "type": "string"
             }
           }
-        },
+        ],
         "responses": {
           "200": {
             "description": "OK"
@@ -39,28 +42,6 @@
     }
   },
   "components": {
-    "schemas": {
-      "IniciarSesion": {
-        "required": [
-          "contraseinaUsuario",
-          "nombreUsuario"
-        ],
-        "type": "object",
-        "properties": {
-          "nombreUsuario": {
-            "maxLength": 10,
-            "minLength": 0,
-            "type": "string"
-          },
-          "contraseinaUsuario": {
-            "maxLength": 255,
-            "minLength": 0,
-            "type": "string"
-          }
-        },
-        "additionalProperties": false
-      }
-    },
     "securitySchemes": {
       "Bearer": {
         "type": "apiKey",

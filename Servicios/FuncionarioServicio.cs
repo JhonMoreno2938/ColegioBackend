@@ -1,8 +1,11 @@
 ﻿using Colegio.Interfaz;
 using Colegio.Modelos.Funcionario;
+using Colegio.Modelos.Funcionario.Consultas;
 using Colegio.Modelos.Funcionario.Procedimientos;
 using Colegio.Modelos.Funcionario.Salidas_Procedimientos;
+using Colegio.Modelos.Funcionario.Vistas;
 using Colegio.Modelos.Persona;
+using Colegio.Utilidades;
 
 namespace Colegio.Servicios
 {
@@ -47,11 +50,6 @@ namespace Colegio.Servicios
                 tipoDocumentoModelo = tipoDocumento,
                 generoModelo = genero,
 
-                departamentoNacimientoModelo = new Colegio.Modelos.Departamento.DepartamentoModelo(),
-                departamentoExpedicionDocumento = new Colegio.Modelos.Departamento.DepartamentoModelo(),
-                ciudadNacimientoModelo = new Colegio.Modelos.Ciudad.CiudadModelo(),
-                ciudadExpedicionModelo = new Colegio.Modelos.Ciudad.CiudadModelo(),
-                rhModelo = new Colegio.Modelos.Rh.RhModelo(),
 
             };
 
@@ -71,6 +69,29 @@ namespace Colegio.Servicios
             };
         }
 
+        private FuncionarioModelo MapearModificarInformacionFuncionario(ModificarInformacionFuncionario modificarInformacionFuncionario)
+        {
+
+            var persona = new PersonaModelo
+            {
+                primerNombrePersona = modificarInformacionFuncionario.primerNombre,
+                segundoNombrePersona = modificarInformacionFuncionario.segundoNombre,
+                primerApellidoPersona = modificarInformacionFuncionario.primerApellido,
+                segundoApellidoPersona = modificarInformacionFuncionario.segundoApellido,
+                numeroDocumentoPersona = modificarInformacionFuncionario.numeroDocumento,
+
+            };
+
+           
+            return new FuncionarioModelo
+            {
+                personaModelo = persona,
+
+                pkIdFuncionario = 0,
+                intensidadHorariaFuncionario = 0
+            };
+        }
+
         public async Task<SalidaRegistrarFuncionario> ValidarInformacionRegistrarFuncionarioAsync(RegistrarFuncionario registrarFuncionario)
         {
             FuncionarioModelo funcionarioModelo = MapearRegistrarFuncionario(registrarFuncionario);
@@ -78,6 +99,43 @@ namespace Colegio.Servicios
             SalidaRegistrarFuncionario resultado = await funcionario.RegistrarFuncionarioAsync(funcionarioModelo);
 
             return resultado;
+        }
+
+        public async Task<ResultadoOperacion> ValidarModificarInformacionFuncionarioAsync(ModificarInformacionFuncionario modificarInformacionFuncionario)
+        {
+            FuncionarioModelo funcionarioModelo = MapearModificarInformacionFuncionario(modificarInformacionFuncionario);
+
+            ResultadoOperacion resultadoOperacion = await funcionario.ModificarInformacionFuncionarioAsync(funcionarioModelo);
+
+            return resultadoOperacion;
+        }
+
+        public async Task<ConsultarFuncionario> ValidarConsultarFuncionarioAsync(string numeroDocumento)
+        {
+            ConsultarFuncionario consultarFuncionario = await funcionario.ConsultarFuncionarioAsync(numeroDocumento);
+
+            return consultarFuncionario;
+        }
+
+        public async Task<List<ListarFuncionario>> ValidarInformacionFuncionarioAsync()
+        {
+            List<ListarFuncionario> listarFuncionario = await funcionario.InformacionFuncionarioAsync();
+
+            return listarFuncionario;
+        }
+
+        public async Task<List<ConsultarGradoGrupoFuncionarioEstadoActivo>> ValidarInformacionGradoGrupoFuncionarioEstadoActivoAsync(string nombreUsuario)
+        {
+            List <ConsultarGradoGrupoFuncionarioEstadoActivo> consultarGradoGrupoFuncionarioEstadoActivo = await funcionario.InformacionGradoGrupoFuncionarioEstadoActivoAsync(nombreUsuario);
+
+            return consultarGradoGrupoFuncionarioEstadoActivo;
+        }
+
+        public async Task<List<ConsultarCompetenciaFuncionario>> ValidarConsultarCompetenciaFuncionarioAsync(string nombreUsuario)
+        {
+            List<ConsultarCompetenciaFuncionario> mostrarCompetenciaFuncionario = await funcionario.ConsultarCompetenciaFuncionarioAsync(nombreUsuario);
+
+            return mostrarCompetenciaFuncionario;
         }
 
     }

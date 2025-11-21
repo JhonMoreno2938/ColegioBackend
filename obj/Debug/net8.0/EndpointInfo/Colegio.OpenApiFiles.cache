@@ -21,3 +21,11 @@ Colegio_AsignaturaGradoGrupo.json
 Colegio_Porcentaje.json
 Colegio_NombrePeriodoAcademico.json
 Colegio_PeriodoAcademico.json
+Colegio_Estudiante.json
+Colegio_Auditoria.json
+Colegio_FuncionarioAsignatura.json
+Colegio_TipoCalificacionAcademica.json
+Colegio_FuncionarioPeriodoAcademico.json
+Colegio_EstudiantePeriodoAcademico.json
+Colegio_Competencia.json
+Colegio_CompetenciaEstudiante.json

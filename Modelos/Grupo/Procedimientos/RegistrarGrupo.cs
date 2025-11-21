@@ -6,7 +6,7 @@ namespace Colegio.Modelos.Grupo.Procedimientos
     public class RegistrarGrupo
     {
         [JsonPropertyName("nombre_grupo")]
-        [StringLength(3)]
+        [StringLength(4)]
         public string nombreGrupo { get; set; } = string.Empty;
     }
 }

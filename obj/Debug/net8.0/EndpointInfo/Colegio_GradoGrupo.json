@@ -135,7 +135,7 @@
             "type": "string"
           },
           "nombreGrupo": {
-            "maxLength": 3,
+            "maxLength": 4,
             "minLength": 0,
             "type": "string"
           },

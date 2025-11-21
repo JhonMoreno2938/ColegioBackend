@@ -11,7 +11,7 @@ namespace Colegio.Modelos.Grado_Grupo.Procedimientos
         public string nombreGrado { get; set; } = string.Empty;
 
         [JsonPropertyName("nombreGrupo")]
-        [StringLength(3)]
+        [StringLength(4)]
         [Required]
         public string nombreGrupo { get; set; } = string.Empty;
 

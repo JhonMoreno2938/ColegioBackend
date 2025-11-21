@@ -36,10 +36,145 @@
           }
         }
       }
+    },
+    "/api/FuncionarioControlador/ModificarInformacionFuncionario": {
+      "put": {
+        "tags": [
+          "FuncionarioControlador"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ModificarInformacionFuncionario"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ModificarInformacionFuncionario"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ModificarInformacionFuncionario"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/FuncionarioControlador/{numeroDocumento}/ConsultarFuncionario": {
+      "get": {
+        "tags": [
+          "FuncionarioControlador"
+        ],
+        "parameters": [
+          {
+            "name": "numeroDocumento",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/FuncionarioControlador/InformacionFuncionario": {
+      "get": {
+        "tags": [
+          "FuncionarioControlador"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/FuncionarioControlador/{nombreUsuario}/ConsultarGradoGrupoFuncionarioEstadoActivo": {
+      "get": {
+        "tags": [
+          "FuncionarioControlador"
+        ],
+        "parameters": [
+          {
+            "name": "nombreUsuario",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/FuncionarioControlador/{nombreUsuario}/ConsultarCompetenciaFuncionario": {
+      "get": {
+        "tags": [
+          "FuncionarioControlador"
+        ],
+        "parameters": [
+          {
+            "name": "nombreUsuario",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
     }
   },
   "components": {
     "schemas": {
+      "ModificarInformacionFuncionario": {
+        "type": "object",
+        "properties": {
+          "primerNombre": {
+            "type": "string",
+            "nullable": true
+          },
+          "segundoNombre": {
+            "type": "string",
+            "nullable": true
+          },
+          "primerApellido": {
+            "type": "string",
+            "nullable": true
+          },
+          "segundoApellido": {
+            "type": "string",
+            "nullable": true
+          },
+          "numeroDocumento": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "RegistrarFuncionario": {
         "required": [
           "nombreGenero",

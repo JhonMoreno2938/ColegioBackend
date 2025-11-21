@@ -100,6 +100,107 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "Colegio.Controllers.AuditoriaControlador",
+    "Method": "AuditoriaCsv",
+    "RelativePath": "api/AuditoriaControlador/{nombreUsuario}/AuditoriaCsv",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "nombreUsuario",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Colegio.Controllers.CompetenciaControlador",
+    "Method": "EliminarCompetencai",
+    "RelativePath": "api/CompetenciaControlador/{idCompetencia}/EliminarCompetencia",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "idCompetencia",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Colegio.Controllers.CompetenciaControlador",
+    "Method": "ConsultarCompetenciaAsocadaGradoGrupo",
+    "RelativePath": "api/CompetenciaControlador/ConsultarCompetenciaAsocadaGradoGrupo",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "idFuncionarioAsignaturaGradoGrupo",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "idPeriodoAcademico",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Colegio.Controllers.CompetenciaControlador",
+    "Method": "ModificarDescripcionCompetencia",
+    "RelativePath": "api/CompetenciaControlador/ModificarDescripcionCompetencia",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "modificarDescripcionCompetencia",
+        "Type": "Colegio.Modelos.Competencia.Procedimientos.ModificarDescripcionCompetencia",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Colegio.Controllers.CompetenciaControlador",
+    "Method": "RegistrarCompetencia",
+    "RelativePath": "api/CompetenciaControlador/RegistrarCompetencia",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "registrarCompetencia",
+        "Type": "Colegio.Modelos.Competencia.Procedimientos.RegistrarCompetencia",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Colegio.Controllers.CompetenciaEstudianteControlador",
+    "Method": "CalificarCompetencia",
+    "RelativePath": "api/CompetenciaEstudianteControlador/CalificarCompetencia",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "calificarCompetencia",
+        "Type": "Colegio.Modelos.Competencia_Estudiante.Procedimientos.CalificarCompetencia",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Colegio.Controllers.DepartamentoControlador",
     "Method": "InformacionDepartamento",
     "RelativePath": "api/DepartamentoControlador/InformacionDepartamento",
@@ -107,6 +208,212 @@
     "IsController": true,
     "Order": 0,
     "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Colegio.Controllers.EstudianteControlador",
+    "Method": "ConsultarEstudiante",
+    "RelativePath": "api/EstudianteControlador/{numeroDocumento}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "numeroDocumento",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Colegio.Controllers.EstudianteControlador",
+    "Method": "CargarArchivoEstudiantes",
+    "RelativePath": "api/EstudianteControlador/CargarArchivoEstudiantes",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "archivo",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Colegio.Controllers.EstudianteControlador",
+    "Method": "InformacionEstudiante",
+    "RelativePath": "api/EstudianteControlador/InformacionEstudiante",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Colegio.Controllers.EstudianteControlador",
+    "Method": "ModificarInformacionEstudiante",
+    "RelativePath": "api/EstudianteControlador/ModificarInformacionEstudiante",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "modificarInformacionEstudiante",
+        "Type": "Colegio.Modelos.Estudiante.Procedimientos.ModificarInformacionEstudiante",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Colegio.Controllers.EstudianteControlador",
+    "Method": "ProcesarCargueEstudianteAsync",
+    "RelativePath": "api/EstudianteControlador/ProcesarCargueEstudianteAsync",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Colegio.Controllers.EstudianteControlador",
+    "Method": "RegistrarEstudiante",
+    "RelativePath": "api/EstudianteControlador/RegistrarEstudiante",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "registrarEstudiante",
+        "Type": "Colegio.Modelos.Estudiante.Procedimientos.RegistrarEstudiante",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Colegio.Controllers.EstudiantePeriodoAcademicoControlador",
+    "Method": "PrematricularEstudiantePeriodoAcademico",
+    "RelativePath": "api/EstudiantePeriodoAcademicoControlador/PrematricularEstudiantePeriodoAcademico",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "prematricularEstudiantePeriodoAcademico",
+        "Type": "Colegio.Modelos.Estudiante_Periodo_Academico.Procedimientos.PrematricularEstudiantePeriodoAcademico",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Colegio.Controllers.FuncionarioAsignaturaControlador",
+    "Method": "AsignarFuncionarioAsignatura",
+    "RelativePath": "api/FuncionarioAsignaturaControlador/AsignarFuncionarioAsignatura",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "asignarFuncionarioAsignatura",
+        "Type": "Colegio.Modelos.Funcionario_Asignatura.Procedimientos.AsignarFuncionarioAsignatura",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Colegio.Controllers.FuncionarioAsignaturaControlador",
+    "Method": "GestioanrEstadoFuncionarioAsignatura",
+    "RelativePath": "api/FuncionarioAsignaturaControlador/GestioanrEstadoFuncionarioAsignatura",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "gestionarEstadoFuncionarioAsignatura",
+        "Type": "Colegio.Modelos.Funcionario_Asignatura.Procedimientos.GestionarEstadoFuncionarioAsignatura",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Colegio.Controllers.FuncionarioControlador",
+    "Method": "ConsultarCompetenciaFuncionario",
+    "RelativePath": "api/FuncionarioControlador/{nombreUsuario}/ConsultarCompetenciaFuncionario",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "nombreUsuario",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Colegio.Controllers.FuncionarioControlador",
+    "Method": "ConsultarGradoGrupoFuncionarioEstadoActivo",
+    "RelativePath": "api/FuncionarioControlador/{nombreUsuario}/ConsultarGradoGrupoFuncionarioEstadoActivo",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "nombreUsuario",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Colegio.Controllers.FuncionarioControlador",
+    "Method": "ConsultarFuncioanrio",
+    "RelativePath": "api/FuncionarioControlador/{numeroDocumento}/ConsultarFuncionario",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "numeroDocumento",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Colegio.Controllers.FuncionarioControlador",
+    "Method": "InformacionFuncionario",
+    "RelativePath": "api/FuncionarioControlador/InformacionFuncionario",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Colegio.Controllers.FuncionarioControlador",
+    "Method": "ModificarInformacionFuncionario",
+    "RelativePath": "api/FuncionarioControlador/ModificarInformacionFuncionario",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "modificarInformacionFuncionario",
+        "Type": "Colegio.Modelos.Funcionario.Procedimientos.ModificarInformacionFuncionario",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": []
   },
   {
@@ -120,6 +427,54 @@
       {
         "Name": "registrarFuncionario",
         "Type": "Colegio.Modelos.Funcionario.Procedimientos.RegistrarFuncionario",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Colegio.Controllers.FuncionarioPeriodoAcademicoControlador",
+    "Method": "ActualizarFechaHabilitacionFuncionarioPeriodoAcademico",
+    "RelativePath": "api/FuncionarioPeriodoAcademicoControlador/ActualizarFechaHabilitacionFuncionarioPeriodoAcademico",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "actualizarFechaHabilitacionFuncionarioPeriodoAcademico",
+        "Type": "Colegio.Modelos.Funcionario_Periodo_Academico.Procedimientos.ActualizarFechaHabilitacionFuncionarioPeriodoAcademico",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Colegio.Controllers.FuncionarioPeriodoAcademicoControlador",
+    "Method": "MatricularFuncionarioPeriodoAcademico",
+    "RelativePath": "api/FuncionarioPeriodoAcademicoControlador/MatricularFuncionarioPeriodoAcademico",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "matricularFuncionarioPeriodoAcademico",
+        "Type": "Colegio.Modelos.Funcionario_Periodo_Academico.Procedimientos.MatricularFuncionarioPeriodoAcademico",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Colegio.Controllers.FuncionarioPeriodoAcademicoControlador",
+    "Method": "MatricularFuncionariosPeriodoAcademico",
+    "RelativePath": "api/FuncionarioPeriodoAcademicoControlador/MatricularFuncionariosPeriodoAcademico",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "matricularFuncionariosPeriodoAcademico",
+        "Type": "Colegio.Modelos.Funcionario_Periodo_Academico.Procedimientos.MatricularFuncionariosPeriodoAcademico",
         "IsRequired": true
       }
     ],
@@ -742,6 +1097,48 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "Colegio.Controllers.TipoCalificacionAcademicaControlador",
+    "Method": "InformacionTipoCalificacionAcademica",
+    "RelativePath": "api/TipoCalificacionAcademicaControlador/InformacionTipoCalificacionAcademica",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Colegio.Controllers.TipoCalificacionAcademicaControlador",
+    "Method": "ModificarInformacionTipoCalificacionAcademica",
+    "RelativePath": "api/TipoCalificacionAcademicaControlador/ModificarInformacionTipoCalificacionAcademica",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "modificarTipoCalificacionAcademica",
+        "Type": "Colegio.Modelos.Tipo_Calificacion_Academica.Procedimientos.ModificarTipoCalificacionAcademica",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Colegio.Controllers.TipoCalificacionAcademicaControlador",
+    "Method": "RegistrarTipoCalificacionAcademica",
+    "RelativePath": "api/TipoCalificacionAcademicaControlador/RegistrarTipoCalificacionAcademica",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "registrarTipoCalificacionAcademica",
+        "Type": "Colegio.Modelos.Tipo_Calificacion_Academica.Procedimientos.RegistrarTipoCalificacionAcademica",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Colegio.Controllers.TipoDocumentoControlador",
     "Method": "InformacionTipoDocumento",
     "RelativePath": "api/TipoDocumentoControlador/InformacionTipoDocumento",
@@ -775,14 +1172,19 @@
     "ContainingType": "Colegio.Controllers.UsuarioControlador",
     "Method": "IniciarSesion",
     "RelativePath": "api/UsuarioControlador/IniciarSesion",
-    "HttpMethod": "POST",
+    "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "iniciarSesion",
-        "Type": "Colegio.Modelos.Usuario.Procedimientos.IniciarSesion",
-        "IsRequired": true
+        "Name": "nombreUsuario",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "contraseinaUsuario",
+        "Type": "System.String",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []

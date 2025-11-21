@@ -7,9 +7,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="EPPlus" Version="8.2.1" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.21" />
     <PackageReference Include="MySql.Data" Version="9.5.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Modelos\Discapcidad\Vistas\" />
+    <Folder Include="Modelos\Eps\Vistas\" />
+    <Folder Include="Modelos\Estrato Social\Vistas\" />
+    <Folder Include="Modelos\Sisben\Vistas\" />
   </ItemGroup>
 
 </Project>

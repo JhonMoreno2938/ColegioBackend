@@ -228,6 +228,62 @@ builder.Services.AddSwaggerGen(options =>
         Description = "Documentacion para la API periodo academico"
     });
 
+    options.SwaggerDoc("Estudiante", new Microsoft.OpenApi.Models.OpenApiInfo
+    {
+        Title = "API Estudiante",
+        Version = "v2",
+        Description = "Documentacion para la API estudiante"
+    });
+
+    options.SwaggerDoc("Auditoria", new Microsoft.OpenApi.Models.OpenApiInfo
+    {
+        Title = "API Auditoria",
+        Version = "v2",
+        Description = "Documentacion para la API auditoria"
+    });
+
+    options.SwaggerDoc("FuncionarioAsignatura", new Microsoft.OpenApi.Models.OpenApiInfo
+    {
+        Title = "API FuncionarioAsignatura",
+        Version = "v2",
+        Description = "Documentacion para la API funcionario asignatura"
+    });
+
+    options.SwaggerDoc("TipoCalificacionAcademica", new Microsoft.OpenApi.Models.OpenApiInfo
+    {
+        Title = "API TipoCalificacionAcademica",
+        Version = "v2",
+        Description = "Documentacion para la API tipo calificacion academica"
+    });
+
+    options.SwaggerDoc("FuncionarioPeriodoAcademico", new Microsoft.OpenApi.Models.OpenApiInfo
+    {
+        Title = "API FuncionarioPeriodoAcademico",
+        Version = "v2",
+        Description = "Documentacion para la API funcionario periodo academico"
+    });
+
+    options.SwaggerDoc("EstudiantePeriodoAcademico", new Microsoft.OpenApi.Models.OpenApiInfo
+    {
+        Title = "API EstudiantePeriodoAcademico",
+        Version = "v2",
+        Description = "Documentacion para la API estudiante periodo academico"
+    });
+
+    options.SwaggerDoc("Competencia", new Microsoft.OpenApi.Models.OpenApiInfo
+    {
+        Title = "API Competencia",
+        Version = "v2",
+        Description = "Documentacion para la API cometencia"
+    });
+
+    options.SwaggerDoc("CompetenciaEstudiante", new Microsoft.OpenApi.Models.OpenApiInfo
+    {
+        Title = "API CompetenciaEstudiante",
+        Version = "v2",
+        Description = "Documentacion para la API competencia estudiante"
+    });
+
     // Predicado para asociar controladores a documentos Swagger específicos
     options.DocInclusionPredicate((docName, apiDesc) =>
     {
@@ -306,7 +362,22 @@ builder.Services.AddScoped<INombrePeriodoAcademico, NombrePeriodoAcademicoDato>(
 builder.Services.AddScoped<NombrePeriodoAcademicoServicio>();
 builder.Services.AddScoped<IPeriodoAcademico, PeriodoAcademicoDato>();
 builder.Services.AddScoped<PeriodoAcademicoServicio>();
-
+builder.Services.AddScoped<IEstudiante, EstudianteDato>();
+builder.Services.AddScoped<EstudianteServicio>();
+builder.Services.AddScoped<IAuditoria, AuditoriaDato>();
+builder.Services.AddScoped<AuditoriaServicio>();
+builder.Services.AddScoped<IFuncionarioAsignatura, FuncionarioAsignaturaDato>();
+builder.Services.AddScoped<FuncionarioAsignaturaServicio>();
+builder.Services.AddScoped<ITipoCalificacionAcademica, TipoCalificacionAcademicaDato>();
+builder.Services.AddScoped<TipoCalificacionAcademicaServicio>();
+builder.Services.AddScoped<IFuncionarioPeriodoAcademico, FuncionarioPeriodoAcademicoDato>();
+builder.Services.AddScoped<FuncionarioPeriodoAcademicoServicio>();
+builder.Services.AddScoped<IEstudiantePeriodoAcademico, EstudiantePeriodoAcademicoDato>();
+builder.Services.AddScoped<EstudiantePeriodoAcademicoServicio>();
+builder.Services.AddScoped<ICompetencia, CompetenciaDato>();
+builder.Services.AddScoped<CompetenciaServicio>();
+builder.Services.AddScoped<ICompetenciaEstudiante, CompetenciaEstudianteDato>();
+builder.Services.AddScoped<CompetenciaEstudianteServicio>();
 
 var app = builder.Build();
 
@@ -325,8 +396,15 @@ app.UseSwaggerUI(options =>
     options.SwaggerEndpoint("/swagger/Asignatura/swagger.json", "API Asignatura");
     options.SwaggerEndpoint("/swagger/AsignaturaGradoGrupo/swagger.json", "API Asignatura grado grupo");
     options.SwaggerEndpoint("/swagger/AsignaturaNivelEscolaridad/swagger.json", "API Asignatura nivel escolaridad");
+    options.SwaggerEndpoint("/swagger/Auditoria/swagger.json", "API Auditoria");
+    options.SwaggerEndpoint("/swagger/Competencia/swagger.json", "API Competencia");
+    options.SwaggerEndpoint("/swagger/CompetenciaEstudiante/swagger.json", "API Competencia estudiante");
     options.SwaggerEndpoint("/swagger/Departamento/swagger.json", "API Departamento");
+    options.SwaggerEndpoint("/swagger/Estudiante/swagger.json", "API Estudiante");
+    options.SwaggerEndpoint("/swagger/EstudiantePeriodoAcademico/swagger.json", "API Estudiante periodo academico");
     options.SwaggerEndpoint("/swagger/Funcionario/swagger.json", "API Funcionario");
+    options.SwaggerEndpoint("/swagger/FuncionarioAsignatura/swagger.json", "API Funcionario asignatura");
+    options.SwaggerEndpoint("/swagger/FuncionarioPeriodoAcademico/swagger.json", "API Funcionario periodo academico");
     options.SwaggerEndpoint("/swagger/Genero/swagger.json", "API Genero");
     options.SwaggerEndpoint("/swagger/Grado/swagger.json", "API Grado");
     options.SwaggerEndpoint("/swagger/GradoGrupo/swagger.json", "API Grado grupo");
@@ -341,6 +419,7 @@ app.UseSwaggerUI(options =>
     options.SwaggerEndpoint("/swagger/RolUsuario/swagger.json", "API Rol usuario");
     options.SwaggerEndpoint("/swagger/Sede/swagger.json", "API Sede");
     options.SwaggerEndpoint("/swagger/SedeJornadaGradoGrupo/swagger.json", "API Sede jornada grado gurpo");
+    options.SwaggerEndpoint("/swagger/TipoCalificacionAcademica/swagger.json", "API Tipo calificacion academica");
     options.SwaggerEndpoint("/swagger/TipoDocumento/swagger.json", "API Tipo documento");
     options.SwaggerEndpoint("/swagger/TipoFuncionario/swagger.json", "API Tipo funcionario");
     options.SwaggerEndpoint("/swagger/TipoSede/swagger.json", "API Tipo sede");

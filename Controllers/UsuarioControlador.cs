@@ -23,8 +23,8 @@ namespace Colegio.Controllers
             this.configuracion = configuration;
         }
 
-        [HttpPost("IniciarSesion")]
-        public async Task<IActionResult> IniciarSesion([FromBody] IniciarSesion iniciarSesion)
+        [HttpGet("IniciarSesion")]
+        public async Task<IActionResult> IniciarSesion([FromQuery] IniciarSesion iniciarSesion)
         {
             if (!ModelState.IsValid)
             {

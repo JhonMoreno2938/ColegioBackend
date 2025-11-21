@@ -119,7 +119,7 @@
         "type": "object",
         "properties": {
           "nombre_grupo": {
-            "maxLength": 3,
+            "maxLength": 4,
             "minLength": 0,
             "type": "string",
             "nullable": true

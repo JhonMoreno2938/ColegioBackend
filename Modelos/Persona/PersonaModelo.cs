@@ -14,7 +14,7 @@ namespace Colegio.Modelos.Persona
         public TipoDocumentoModelo? tipoDocumentoModelo { get; set; } = new TipoDocumentoModelo();
         public GeneroModelo? generoModelo { get; set; } = new GeneroModelo();
         public DepartamentoModelo? departamentoNacimientoModelo { get; set; } = new DepartamentoModelo();
-        public DepartamentoModelo? departamentoExpedicionDocumento { get; set; } = new DepartamentoModelo();
+        public DepartamentoModelo? departamentoExpedicionDocumentoModelo { get; set; } = new DepartamentoModelo();
         public CiudadModelo? ciudadNacimientoModelo { get; set; } = new CiudadModelo();
         public CiudadModelo? ciudadExpedicionModelo { get; set; } = new CiudadModelo();
         public RhModelo? rhModelo { get; set; } = new RhModelo();
@@ -80,11 +80,11 @@ namespace Colegio.Modelos.Persona
         [Column("fk_id_departamento_expedicion_documento")]
         public int? fkIdDepartamentoExpedicionDocumento
         {
-            get => departamentoExpedicionDocumento?.pkIdDepartamento;
+            get => departamentoExpedicionDocumentoModelo?.pkIdDepartamento;
             set
             {
-                if (departamentoExpedicionDocumento != null && value.HasValue)
-                    departamentoExpedicionDocumento.pkIdDepartamento = value.Value;
+                if (departamentoExpedicionDocumentoModelo != null && value.HasValue)
+                    departamentoExpedicionDocumentoModelo.pkIdDepartamento = value.Value;
             }
         }
 
